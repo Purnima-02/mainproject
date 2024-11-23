@@ -1,0 +1,1016 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Partner Program</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add Bootstrap Icons link in the head of your HTML file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!---Font Style Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+  
+   
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
+    
+
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loan.css' %}">
+   
+
+
+
+    <!--JQuery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{% static 'js/common.js' %}"></script>
+    <style>
+        body{
+            /* overflow: hidden; */
+            margin: 0;
+            padding: 0;
+            font-family: "Maven pro", sans-serif;
+            box-sizing: border-box;
+        }
+        .navbar-section .dropdown-submenu {
+            position: relative;
+        }
+         {% comment %} .navbar-section .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+        }
+        .navbar-section .dropdown-submenu:hover .dropdown-menu {
+            display: block;
+        }  {% endcomment %}
+        .navbar-section .navbar-nav {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        .navbar-section .navbar-nav .nav-item {
+            padding-top: 5px;
+        }
+        .navbar-section nav {
+            position: fixed;
+            z-index: 5;
+            width: 100%;
+        }
+        .navbar-section {
+            height: 120px;
+        }
+
+        .navbar-section button{
+            text-decoration: none;
+            color: #ff4757;
+            display: inline-block;
+           /* border: 2px solid #fff; */
+        }
+        .navbar-section button:hover{
+            background-color: rgb(36,148,168);
+            color: #fff;
+        }
+        /* nav Bar css End  */
+        .form-container {
+            background-color: rgb(36, 148, 168);
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .form-control:focus {
+            border-color: rgb(36, 148, 168); /* Border color on focus */
+            box-shadow: 0 0 0 0.2rem rgba(36, 148, 168, 0.25); /* Box shadow on focus */
+        }
+        .custom-btn {
+            background-color: red; 
+            border-color: red;
+            color: #fff;
+            width: 400px;
+            height: 40px;
+            transition: background-color 0.5s ease; /* Add transition */
+        }
+        .custom-btn:hover {
+            background-color: rgb(152, 9, 9); 
+            color: #fff;
+        }
+        .clickable {
+            height: 120px;
+            width: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            padding: 5px;
+            transition: border-color 0.3s;
+        }
+        .clickable img {
+            height: 80px;
+            width: 80px;
+        }
+        .clickable.highlight {
+            border-color: rgb(2, 94, 62);
+        }
+        .card {
+            background-color: #e3dcc1;
+            margin-bottom: 25px; /* Increased margin for more gap */
+            box-shadow: 0 4px 8px rgba(83, 119, 118, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); 
+        }
+        .card h5{
+            font-weight: bold;
+        }
+        .card-header {
+            cursor: pointer; 
+        }
+        footer {
+            background-color: #09081c;
+            color: #fff;
+            padding: 20px 0;
+        }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .footer-section {
+            flex: 1;
+            margin: 10px;
+            min-width: 200px;
+        }
+        .footer-section h3 {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 5px;
+        }
+        .footer-section ul {
+           list-style: none;
+           padding: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 5px;
+        }      
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+         }
+        .footer-section ul li a:hover {
+            color: #ff9800;
+        }
+        .logo {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+        .social-icons {
+            text-align: center;
+            padding: 10px 0;
+        }
+        .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+          color: #ff9800;
+        }
+        @media (max-width: 768px) {
+        .navbar-nav .nav-link {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+        }
+        } 
+        @media (max-width: 992px) {
+            .form-container {
+                padding: 15px;
+            }
+            .form-control {
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .footer-container {
+            flex-direction: column;
+            align-items: center;
+            }
+
+        .footer-section {
+            text-align: center;
+        }
+        }
+    </style>
+</head>
+<body>
+    {% comment %} Navbar start {% endcomment %}
+
+    <div class="navbar-section">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url "index" %}"><img src="{% static "assets/img/mainlogo-removebg-preview.png" %}" alt="SLN-Logo" class="img-fluid w-100" style="height: 100px;"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link Aboutus" aria-current="page" href="{% url 'about' %}">About Us</a>
+                        </li>
+      
+                        <li class="nav-item dropdown loan">
+                            <a class="nav-link dropdown-toggle loans" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Loans
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'personalloans' %}">Personal Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'bussinessloan' %}">Business Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'homeloan' %}">Home Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'lap' %}">Loan Against Property</a></li>
+
+      
+                                <li class="dropdown-submenu hover-dropdown">
+                                    <a class="dropdown-item" href="{% url 'carloan' %}">Car Loan</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'usedcar' %}">Used Car Loans</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'newcar' %}">New Car Loans</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'educationalloan' %}">Educational Loan</a></li>
+
+                                <li><a class="dropdown-item" href="{% url 'gold' %}">Gold Loan</a></li>
+
+                                <li class="nav-item" >
+                                    <a class="dropdown-item"  href="{% url 'otherbasicdetail' %}">Other Loan</a>
+                                </li>
+                                
+      
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link credit-cards" href="{% url 'creditpage' %}">Credit Cards</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle insurance" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Insurance
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'allinsurance'%}">All Insurances</a></li>
+                                <li><a class="dropdown-item" href="{% url 'lifeinsurance'%}">Life Insurance</a></li>
+                                <li><a class="dropdown-item" href="{% url 'generalinsurance'%}">General Insurance</a></li>
+                                <li><a class="dropdown-item" href="{% url 'healthinsurance'%}">Health Insurance</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contactus" href="{% url 'contact'%}">Contact Us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle partner" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Become a Partner
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'dsa' %}">DSA Partner</a></li>
+                                <li><a class="dropdown-item" href="{% url 'franchise' %}">Franchise Program</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle insurance" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                CheckStatus
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                {% if pl %}
+            {% for item in pl %}
+                <li>
+                    <a href="{% url 'view_personal_verify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                        PersonalLoan
+                    </a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No loans available.</li>
+        {% endif %}
+        {% if bus %}
+        {% for loan in bus %}
+           <li><a href="{% url 'buscustomer-profile' application_id=loan.id %}" class="dropdown-item" style="text-decoration: none;">
+               BusinessLoan</a></li>
+               {% endfor %}
+               {% else %}
+   <li>No loans available.</li>
+{% endif %}
+                                
+                                {% if edu %}
+                                {% for item in edu %}
+                                    <li>
+                                        <a href="{% url 'Educustomer-profile' application_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                                            educationalloan
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                <li>No loans available.</li>
+                            {% endif %}
+
+                                {% if hl %}
+            {% for item in hl %}
+                <li>
+                    <a href="{% url 'view_home_verify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                        Home Loan
+                    </a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No loans available.</li>
+        {% endif %}
+                                <!-- ================================== -->
+                                {% if loans %}
+                             {% for loan in loans %}
+                                <li><a href="{% url 'viewcustomerverify' instance_id=loan.id %}" class="dropdown-item" style="text-decoration: none;">
+                                    LoanAgainstProperty</a></li>
+                                    {% endfor %}
+                                    {% else %}
+                        <li>No loans available.</li>
+                    {% endif %}
+                                <li><a class="dropdown-item" href="">carloan</a></li>
+                            </ul>
+                        </li>
+                    <!-- Navigation bar -->
+                    <li class="nav-item dropdown me-4">
+                        <a class="nav-link dropdown-toggle loans" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% if request.session.email %}
+                                My Profile
+                            {% else %}
+                                Sign In
+                            {% endif %}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            {% if request.session.email %}
+                                <li><a class="dropdown-item" href="#">{{ request.session.email }}</a></li>
+                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                            {% else %}
+                                <li><a class="dropdown-item" href="{% url 'generate-verify-otp' %}">Sign In</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                          
+                               
+                   
+                    </ul>
+                                
+                           
+          
+          
+          
+          
+                            
+                        </ul>
+      
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+      </div>
+      
+    <!-- nav bar code  -->
+
+    <script>
+        $(document).ready(function() {
+            $('.dropdown-submenu.click-dropdown .dropdown-toggle').on('click', function(e) {
+                e.stopPropagation();
+                $(this).next('.dropdown-menu').toggle();
+            });
+        });
+    </script>
+
+    <!-- nav bar end  -->
+<style>
+    .asterick{
+        color: red;
+    }
+</style>
+<!-- DSA Form -->
+
+<div id="dsa" class="content-section">
+    <div class="mt-5 mb-4">
+        <div class="container">
+            <h1>We are India's Leading SLNFinerse DSA Partner</h1>
+            <p>Earning Opportunity for all existing agents with SLNloans Loan Partner Program.At SLNFinerse, we take pride in being India's leading Direct Selling Agent (DSA) partner, 
+                revolutionizing the financial services industry with our innovative approach and unwavering commitment to excellence.</p>
+    <div class="container my-5 form-container">
+    <form method="post" action="{% url 'dsa' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+                       <!-- Row 1 -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="name" class="form-label">Name(As per PAN)<span class="asterick">*</span></label>
+                            <input type="text" class="form-control" placeholder="First Name" name="name" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="email_id" class="form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="Enter your email" id="email_id" name="emai1_id" required>
+                        </div>
+                    </div>
+            
+                    <!-- Row 2 -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="phone" class="form-label">Phone<span class="asterick">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter your phone number" id="phone" name="phone" maxlength="10" required> 
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="pan" class="form-label">PAN Number</label>
+                            <input type="text" class="form-control" placeholder="Enter your PAN number" id="pan" name="pan">
+                            <small id="panError" style="color:red; display:none;">Invalid PAN Number</small>
+                        </div>
+                    </div>
+            
+                    <!-- Row 3 -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="aadhar" class="form-label">Aadhar Number<span class="asterick">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter your Aadhar number" id="aadhar" name="aadhar" maxlength="12">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="profession" class="form-label">Profession<span class="asterick">*</span></label>
+                            <select class="form-control" id="profession" name="profession" required>
+                                <option value="" selected disabled>Select Profession</option>
+                                <option value="Agriculture/Farmer">Agriculture/Farmer</option>
+                                <option value="Builder">Builder</option>
+                                <option value="Chartered Accountant">Chartered Accountant</option>
+                                <option value="DSA/DST">DSA/DST</option>
+                                <option value="Ex-banker">Ex-banker</option>
+                                <option value="Financial Analyst">Financial Analyst</option>
+                                <option value="Financial Consultant">Financial Consultant</option>
+                                <option value="Freelancer">Freelancer</option>
+                                <option value="Insurance Advisor">Insurance Advisor</option>
+                                <option value="Loan Agent">Loan Agent</option>
+                                <option value="Mutual Fund Agent">Mutual Fund Agent</option>
+                                <option value="Real Estate Agent/Broker">Real Estate Agent/Broker</option>
+                                <option value="Tax Consultant">Tax Consultant</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                    </div>
+            
+                    <!-- Row 4 -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="state" class="form-label">State<span class="asterick">*</span></label>
+                            <select class="form-control" id="state" name="state" required>
+                                <option value="" selected disabled>Select State</option>
+                                <option value="andhra-pradesh">Andhra Pradesh</option>
+                                <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                                <option value="assam">Assam</option>
+                                <option value="bihar">Bihar</option>
+                                <option value="chhattisgarh">Chhattisgarh</option>
+                                <option value="goa">Goa</option>
+                                <option value="gujarat">Gujarat</option>
+                                <option value="haryana">Haryana</option>
+                                <option value="himachal-pradesh">Himachal Pradesh</option>
+                                <option value="jharkhand">Jharkhand</option>
+                                <option value="karnataka">Karnataka</option>
+                                <option value="kerala">Kerala</option>
+                                <option value="madhya-pradesh">Madhya Pradesh</option>
+                                <option value="maharashtra">Maharashtra</option>
+                                <option value="manipur">Manipur</option>
+                                <option value="meghalaya">Meghalaya</option>
+                                <option value="mizoram">Mizoram</option>
+                                <option value="nagaland">Nagaland</option>
+                                <option value="odisha">Odisha</option>
+                                <option value="punjab">Punjab</option>
+                                <option value="rajasthan">Rajasthan</option>
+                                <option value="sikkim">Sikkim</option>
+                                <option value="tamil-nadu">Tamil Nadu</option>
+                                <option value="telangana">Telangana</option>
+                                <option value="tripura">Tripura</option>
+                                <option value="uttar-pradesh">Uttar Pradesh</option>
+                                <option value="uttarakhand">Uttarakhand</option>
+                                <option value="west-bengal">West Bengal</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="city" class="form-label">City<span class="asterick">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter your city" id="city" name="city" required>
+                        </div>
+                    </div>
+            
+                    <!-- Row 5 - Bank Details -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="acc_number" class="form-label">Bank Account Number<span class="asterick">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter your bank account number" id="acc_number" name="acc_number" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="acc_holder_name" class="form-label">Account Holder Name (As per PAN)<span class="asterick">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter account holder name" id="acc_holder_name" name="acc_holder_name" required>
+                        </div>
+                    </div>
+            
+                    <!-- Row 6 -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="bank_name" class="form-label">Bank Name<span class="asterick">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter your bank name" id="bank_name" name="bank_name" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="ifsc_code" class="form-label">IFSC Code<span class="asterick">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter IFSC code" id="ifsc_code" name="ifsc_code" required>
+                        </div>
+                    </div>
+            
+                    <!-- Row 7 -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="branch_name" class="form-label">Branch Name<span class="asterick">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter branch name" id="branch_name" name="branch_name" required>
+                        </div>
+        
+                    <div class="form-group col-md-6">
+                        <label for="franchise(referral code)" class="form-label">Franchise(Referral Code)</label>
+                        <input type="text" class="form-control" placeholder="franchise(referral code)" id="franchiserefcode" name="franchiserefcode">
+                    </div>
+            </div>
+                    <!-- Checkbox Row -->
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" value="0" id="agreeCheck" name="agreeCheck" required>
+                                <label class="form-check-label" for="agreeCheck">
+                                    I agree to the terms & conditions and privacy policy.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Submit Button Row -->
+                    <div class="form-row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <button type="submit" class="custom-btn" >SUBMIT</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div><style>
+
+    .customer-support{
+        position: fixed;
+        bottom:100px;
+        left: calc(100% - 140px);
+        z-index: 99999;
+    }
+    
+    iframe{
+        height: 400px;
+    }
+        </style>
+    
+        <div class="customer-support" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <img src="{% static 'Images/cust.png' %}" alt="" height="50" width="50">
+        </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel8">Customer Support</h5>
+                    <button type="button" class="btn-close ModelclosedButtn" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+    
+               
+                    <div class="modal-body">
+    
+                        
+        
+                        <iframe src="http://3.208.103.10:8000/ticket_create/" frameborder="0" style="width: 100%;"></iframe>
+    
+                    </div>
+                    <!--Modal body-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger ModelclosedButtn" data-bs-dismiss="modal">Close</button>
+                       
+                    </div>
+               
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    
+        $('.customer-support').click(()=>{
+            
+            $('.customer-support').hide()
+    
+        })
+    
+        $('.ModelclosedButtn').click(()=>{
+            $('.customer-support').show()
+    })
+    </script>
+    
+
+
+
+         {% comment %} DSA Content Section {% endcomment %}
+<div class="dsapartnerWithSLNloans mb-5">
+    <div class="container">
+        <h2>Who can Become a DSA with SLNloans?</h2>
+        <p>Enhance your professional status. Fire up your entrepreneurial instincts and drive into victory! Any person with interpersonal skills and a passion for success can be a part of Team SLNloans.</p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12">
+                <div class="partnerWithSLNloans text-center clickable highlight" onclick="showContent('loan-agent', this)">
+                    <img src="{% static "Images/image1.png" %}" class="partnerWithSLNuloans mb-2 img-fluid" style="max-width: 80px;">
+                    <p>Loan Agent</p>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12">
+                <div class="partnerWithSLNloans text-center clickable" onclick="showContent('ex-banker', this)">
+                    <img src="{% static "Images/image2.png" %}" class="partnerWithSLNloans mb-2 img-fluid" style="max-width: 80px;">
+                    <p>Ex-Banker</p>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12">
+                <div class="partnerWithSLNloans text-center clickable" onclick="showContent('financial-analyst', this)">
+                    <img src="{% static "Images/image3.png" %}" class="partnerWithSLNloans mb-2 img-fluid" style="max-width: 80px;">
+                    <p>Financial Analyst</p>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12">
+                <div class="partnerWithSLNloans text-center clickable" onclick="showContent('mutual-fund-agent', this)">
+                    <img src="{% static "Images/image4.png" %}" class="partnerWithSLNloans mb-2 img-fluid" style="max-width: 80px;">
+                    <p>Mutual Fund Agent</p>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12">
+                <div class="partnerWithSLNloans text-center clickable" onclick="showContent('chartered-accountant', this)">
+                    <img src="{% static "Images/image5.jpeg" %}" class="partnerWithSLNloans mb-2 img-fluid" style="max-width: 80px;">
+                    <p>Chartered Accountant</p>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12">
+                <div class="partnerWithSLNloans text-center clickable" onclick="showContent('builder', this)">
+                    <img src="{% static "Images/image6.png" %}" class="partnerWithSLNloans mb-2 img-fluid" style="max-width: 80px;">
+                    <p>Builder</p>
+                </div>
+            </div>
+        </div>
+
+
+        {% comment %} <About DSA {% endcomment %}
+        <div id="loan-agent" class="content" style="display: none;">
+            <h3> About Loan Agent Partner</h3>
+            <p>As a Loan Agent, you possess expertise in the various loan products offered by the financial institutions you represent. 
+                Your knowledge allows you to guide individuals towards the best financing options available.
+                 Join the Ruloans Loan Agent Partner program today and help people achieve their dreams by offering them the best financial advice!</p>
+        </div>
+        <div id="ex-banker" class="content" style="display: none;">
+            <h3>About Ex-Banker Partner</h3>
+            <p>As an Ex-Banker, you have experience managing deposits, handling note discounting, and simplifying financial processes for people. 
+                Join the Ruloans Ex-Banker Partner program now to leverage your expertise and assist in financing customers innovative ideas!</p>
+        </div>
+        <div id="financial-analyst" class="content" style="display: none;">
+            <h3>About Financial Analyst Partner</h3>
+            <p>As a Financial Analyst, you specialize in gathering, monitoring, and evaluating financial data to provide insightful forecasts and recommendations. 
+                Become a Ruloans Financial Analyst Partner today and use your skills to shape and secure your clients' financial futures!</p>
+        </div>
+        <div id="mutual-fund-agent" class="content" style="display: none;">
+            <h3>About Mutual Fund Agent Partner</h3>
+            <p>As a Mutual Fund Agent, you offer expert advice and guidance on investing in mutual fund schemes to help individuals grow their wealth.
+                 Join the Ruloans Mutual Fund Agent Partner program now and support your clients investment goals for mutual benefit!</p>
+        </div>
+        <div id="chartered-accountant" class="content" style="display: none;">
+            <h3>About Chartered Accountant Partner</h3>
+            <p>As a Chartered Accountant (CA), you provide valuable advice, audit financial records, and manage accounting systems to enhance financial accuracy and transparency.
+                 Get your Ruloans CA Partner Advantage today and use your expertise to help finance your clients aspirations!</p>
+        </div>
+        <div id="builder" class="content" style="display: none;">
+            <h3>About Builder Partner</h3>
+            <p>As a Builder, you are skilled in constructing and renovating residential, commercial, and industrial properties.
+                 Join the Ruloans Builder Partner program now to help turn your clients visions into reality and finance their dream homes!</p>
+        </div>
+    </div>
+    </div>
+
+    <!-- Help finance -->
+
+    <div class="dsapartner mb-5">
+        <div class="container">
+            <h2>Help finance your client's futures now</h2>
+            <p class="partnerWithSLNloans_images">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="mx-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+                </svg><a style="color:#3c3c3c" href="/personal-loan">Personal Loans</a>
+            </p>
+            <p class="partnerWithSLNloans_images">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="mx-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+                </svg><a style="color:#3c3c3c" href="/home-loan">Home Loans</a>
+            </p>
+            <p class="partnerWithSLNloans_images">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="mx-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+                </svg><a style="color:#3c3c3c" href="/business-loan">Business Loans</a>
+            </p>
+            <p class="partnerWithSLNloans_images">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="mx-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+                </svg><a style="color:#3c3c3c" href="/auto-loan-and-more">Auto Loans and More</a>
+            </p>
+        </div>
+    </div>
+    <style>
+        .button1{
+            background-color: #20C9B6;
+            color: #fff;
+            border-color: #fff;
+            height: 40px;
+            width: 160px;
+        }
+        .button1:hover{
+            background-color: rgb(36, 148, 168);
+            color: #fff;
+        }
+
+        .button2{
+            background-color: #20C9B6;
+            color: #fff;
+            border-color: #fff;
+            height: 40px;
+            width: 160px;
+        }
+        .button2:hover{
+            background-color: rgb(36, 148, 168);
+            color: #fff;
+        }
+    </style>
+    <div class="dsapartnerWithSLNloans mb-5">
+        <div class="container">
+            <button class="submit btn btn-custom" style="background-color: red; color: white;">Contact Now</button>
+        </div>
+    </div>
+    
+    <div class="registerProcess">
+        <div class="container">
+            <h2>What Are The Eligibility Criteria For The SLNFinserve DSA Registration Process?</h2>
+            <p>SLNloans Distribution Services Private Limited (SLNloans), a registered DSA of various banks, offers a unique proposition to become a personal loan DSA in India. The Personal Loan DSA Eligibility criteria are as follows:</p>
+            <p class="registerProcess_DSA">SLNloans Loan DSA Eligibility Criteria:</p>
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul class="registerProcess__dsa">
+                        <li>Age: 23-58 years old</li>
+                        <li>Minimum Qualification: 12th pass</li>
+                        <li>Minimum Work Experience: 1 year of experience in sales and marketing</li>
+                        <li>Location: Pan-India</li>
+                        <li>Good communication skills</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="registerProcessDSA">If you meet the above eligibility criteria, you can register as a SLNloans Personal Loan DSA and start earning attractive commissions on successful loan disbursals. Join SLNloans as a Loan DSA now!</p>
+        </div>
+    </div>
+
+    {% comment %} <Join DSA Partner  {% endcomment %}
+    <div class="Slnloans-usp-section">
+        <div class="dsaRegisterProcess">
+            <div class="container">
+                    <h2>Join with Our SLN Finserve DSA Partner</h2>
+                    <p class="slnloans-usp-content">Ready to help finance your clients' futures while building a successful business? Explore the rewarding opportunities available with SLN Finserve. Join us in delivering excellence in financial services and making a positive difference in people's lives. Contact us today to learn more about franchise opportunities and take the first step towards a prosperous future.</p>
+                <div class="row slnloans-usp-points">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
+                        <div class="slnloans-usp-point">
+                            <img src="{% static "Images/animateimag-1.png" %}" alt="Best-in-Class Commissions" class="slnloans-usp-image img-fluid" style="max-width: 100px;">
+                            <p class="slnloans-usp-description">Clients identify</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+                        <div class="slnloans-usp-point">
+                            <img src="{% static "Images/animateimag-2.jpeg" %}" alt="Pan-India Presence" class="slnloans-usp-image img-fluid" style="max-width: 100px;">
+                            <p class="slnloans-usp-description">Check and Verify Leads</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
+                        <div class="slnloans-usp-point">
+                            <img src="{% static "Images/animateimag-3.jpeg" %}" alt="Diverse Product Portfolio" class="slnloans-usp-image img-fluid" style="max-width: 100px;">
+                            <p class="slnloans-usp-description">Help Online Services</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
+                        <div class="slnloans-usp-point">
+                            <img src="{% static "Images/animateimag-4.jpeg" %}" alt="Technology-Driven Processes" class="slnloans-usp-image img-fluid" style="max-width: 100px;">
+                            <p class="slnloans-usp-description">Expect Instant Loan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </div>-->
+        </div>
+    </div>
+    <div class="dsaProcess">
+        <div class="container">
+            <h2 class="dsaFinserve">How to Become a DSA Partner with SLNFinserve?</h2>
+            <p>Are you looking to leverage your network and earn attractive commissions by referring leads for loans and credit cards? Join SLNFinserve as a DSA Partner and embark on a rewarding journey with us.</p>
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul class="registerProcess">
+                        <li>Step 1: Fill in the online registration form with your personal details and contact information.</li>
+                        <li>Step 2: Submit the necessary documents such as PAN Card, Aadhar Card, and educational certificates.</li>
+                        <li>Step 3: Complete the training program provided by SLNloans to understand their products and processes.</li>
+                        <li>Step 4: Once you clear the training, you will receive your DSA ID and access to the SLNloans portal.</li>
+                        <li>Step 5: Start referring customers and earning commissions on successful loan disbursals.</li>
+                    </ul>
+                </div>
+            </div>
+            <p>Join SLNFinerse as a  DSA Partner today and embark on a rewarding career in the financial services industry.</p>
+        </div>
+    </div>
+    <div class="apply-form">
+        <div class="container">
+            <button class="submit btn btn-custom" style="background-color: red; color: white;">Apply Now</button>
+        </div>
+    </div>
+</div>
+<!-- FAQ Section -->
+ <div class="container my-5">
+    <h2>FAQs</h2>
+    <div id="faqAccordion">
+        <div class="card">
+            <div class="card-header" id="faq1Heading" data-toggle="collapse" data-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                <h5 class="mb-0">
+                    What is SlnFinserve?
+                </h5>
+            </div>
+            <div id="faq1" class="collapse" aria-labelledby="faq1Heading" data-parent="#faqAccordion">
+                <div class="card-body">
+                    <h5>High Payouts:</h5>
+                    <p>Earn competitive commissions for every successful referral you make. The more leads you refer, the higher your earnings.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header" id="faq2Heading" data-toggle="collapse" data-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                <h5 class="mb-0">
+                    Why choose SLNFinserve?
+                </h5>
+            </div>
+            <div id="faq2" class="collapse" aria-labelledby="faq2Heading" data-parent="#faqAccordion">
+                <div class="card-body">
+                    <h5>Extensive Product Range:</h5>
+                    <p>Access to a wide range of financial products including personal loans, educational loans, home loans, business loans, credit cards, and more.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="faq3Heading" data-toggle="collapse" data-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                <h5 class="mb-0">
+                    What is in store for you?
+                </h5>
+            </div>
+            <div id="faq3" class="collapse" aria-labelledby="faq3Heading" data-parent="#faqAccordion">
+                <div class="card-body">
+                    <h5>Dedicated Support:</h5>
+                    <p>Benefit from dedicated support and guidance from our experienced team throughout your partnership journey.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="faq4Heading" data-toggle="collapse" data-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                <h5 class="mb-0">
+                    How to apply for a DSA Partner?
+                </h5>
+            </div>
+            <div id="faq4" class="collapse" aria-labelledby="faq4Heading" data-parent="#faqAccordion">
+                <div class="card-body">
+                    <ol>
+                        <li><h5>Sign Up:</h5><p>Figure out why you need a loan and how much you need.</p></li>
+                        <li><h5>Training:</h5><p>Attend our comprehensive training sessions to understand our products, services, and processes</p></li>
+                        <li><h5>Start Referring:</h5><p>Utilize your network and refer potential leads for loans and credit cards to SLNFinserve</p></li>
+                        <li><h5>Earn Commissions:</h5><p>Earn commissions for every lead that successfully avails a loan or credit card through your referral.</p></li>
+                        <li><h5>Application Submission:</h5><p>Once you identify a prospective customer interested in SLNFinserves products, assist them in completing the application process.</p></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <img src="{% static 'assets/img/mainlogo-removebg-preview.png' %}" alt="" class="logo">
+            <p>&copy;2024 SLN Finserv &mdash; All Rights Reserved</p>
+            <p>Toll-free Number &mdash; 1800-266-7576</p>
+        </div>
+        <div class="footer-section">
+            <h3>LOANS</h3>
+            <ul>
+                <li><a href="#">Home Loan</a></li>
+                <li><a href="#">Personal Loan</a></li>
+                <li><a href="#">Business Loan</a></li>
+                <li><a href="#">Car Loan</a></li>
+                <li><a href="#">Car Refinance</a></li>
+                <li><a href="#">Used Car Loan</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>LEARNING HUB</h3>
+            <ul>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">Videos</a></li>
+                <li><a href="#">Product Info</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>INSURANCE</h3>
+            <ul>
+                <li><a href="#">Life Insurance</a></li>
+                <li><a href="#">Health Insurance</a></li>
+                <li><a href="#">General Insurance</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>COMPANY</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Grow With Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Data Storage Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="social-icons">
+        <a href=""><i class="bi bi-whatsapp"></i></a>
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-twitter"></i></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+        <a href=""><i class="bi bi-youtube"></i></a>
+        <a href=""><i class="bi bi-envelope-at-fill"></i></a>
+    </div>
+
+    <script>
+        function showContent(category) {
+            // Hide all content sections
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                content.style.display = 'none';
+            });
+    
+            // Show the selected content section
+            const selectedContent = document.getElementById(category);
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+            }
+        }
+        </script>
+        <script>
+          function showContent(category, element) {
+        // Hide all content sections
+        const contents = document.querySelectorAll('.content');
+        contents.forEach(content => {
+            content.style.display = 'none';
+        });
+
+        // Show the selected content section
+        const selectedContent = document.getElementById(category);
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+        }
+
+        // Remove highlight from all clickable elements
+        const clickableElements = document.querySelectorAll('.clickable');
+        clickableElements.forEach(clickable => {
+            clickable.classList.remove('highlight');
+        });
+
+        // Highlight the clicked element
+        element.classList.add('highlight');
+    }
+    </script>
+</footer>
+</body>
+</html>

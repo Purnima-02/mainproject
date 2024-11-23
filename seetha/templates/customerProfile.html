@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <title>Customer Profile</title>
+
+    <style>
+      .rounded-profile i {
+        font-size: 100px;
+      }
+      .status-label {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+
+      <div class="container mt-5">
+
+        <div class="card shadow">
+          <div class="top-layer d-flex justify-content-center align-items-center flex-column"><!--Top layer-->
+            <div class="rounded-profile">
+              <i class="bi bi-person-circle"></i>
+            </div>
+
+            <p class="fw-bold">Application ID : {{loan.application_id}}</p>
+            <p class="text-muted fw-bolder">Mobile Number : {{loan.mobile_number}}</p>
+            <p class="text-muted fw-bolder">Email ID : {{loan.mail_id}}</p>
+          </div><!--Top layer-->
+
+          <li><hr class="dropdown-divider"></li>
+
+          <div class="card-body">
+
+            <div class="row">
+              <!-- First Column -->
+              <div class="col-lg-6 col-12 mb-5">
+                <label for="">Personal Details :</label>&nbsp;
+                {% if verfyObj %}
+                  {% if verfyObj.personal_detail_verification == "Approved" %}
+                    <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                    <span class="text-warning">Pending</span>
+                  {% else %}
+                    <span class="text-danger">Rejected</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+
+              <!-- Second Column -->
+              <div class="col-lg-6 col-12 mb-5">
+                <label for="">Documents Upload Verifying :</label>&nbsp;
+                {% if verfyObj %}
+                  {% if verfyObj.documents_upload_verification == "Approved" %}
+                    <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                    <span class="text-warning">Pending</span>
+                  {% else %}
+                    <span class="text-danger">Rejected</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+
+              <!-- Third Column -->
+              <div class="col-lg-6 col-12 mb-5">
+                <label for="">Documents Verification :</label>&nbsp;
+                {% if verfyObj %}
+                  {% if verfyObj.documents_verification == "Approved" %}
+                    <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                    <span class="text-warning">Pending</span>
+                  {% else %}
+                    <span class="text-danger">Rejected</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+
+              <!-- Fourth Column -->
+              <div class="col-lg-6 col-12 mb-5">
+                <label for="">Eligibility Check :</label>&nbsp;
+                {% if verfyObj %}
+                  {% if verfyObj.eligibility_check_verification == "Approved" %}
+                    <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                    <span class="text-warning">Pending</span>
+                  {% else %}
+                    <span class="text-danger">Rejected</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+
+              <!-- Fifth Column -->
+              <div class="col-lg-6 col-12 mb-5">
+                <label for="">Bank Login Verification :</label>&nbsp;
+                {% if verfyObj %}
+                  {% if verfyObj.bank_login_verification == "Approved" %}
+                    <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                    <span class="text-warning">Pending</span>
+                  {% else %}
+                    <span class="text-danger">Rejected</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+
+              <!-- Sixth Column -->
+              <div class="col-lg-6 col-12 mb-5">
+                <label for="">Valuation :</label>&nbsp;
+                {% if verfyObj %}
+                  {% if verfyObj.valuation == "Approved" %}
+                    <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                    <span class="text-warning">Pending</span>
+                  {% else %}
+                    <span class="text-danger">Rejected</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+
+              <!-- Seventh Column -->
+              <div class="col-lg-6 col-12 mb-5">
+                <label for="">Credit Manager Inspection :</label>&nbsp;
+                {% if verfyObj %}
+                  {% if verfyObj.credit_manager_inspection == "Approved" %}
+                    <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                    <span class="text-warning">Pending</span>
+                  {% else %}
+                    <span class="text-danger">Rejected</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+
+              <!-- Eighth Column -->
+              <div class="col-lg-6 col-12 mb-5">
+                <label for="">KYC and Document Verification :</label>&nbsp;
+                {% if verfyObj %}
+                  {% if verfyObj.kyc_and_documents_verification == "Approved" %}
+                    <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                    <span class="text-warning">Pending</span>
+                  {% else %}
+                    <span class="text-danger">Rejected</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+
+              <!-- Ninth Column -->
+              <div class="col-lg-6 col-12 mb-5">
+                <label for="">E-Nach :</label>&nbsp;
+                {% if verfyObj %}
+                  {% if verfyObj.enach_verification == "Approved" %}
+                    <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                    <span class="text-warning">Pending</span>
+                  {% else %}
+                    <span class="text-danger">Rejected</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+
+              <!-- Tenth Column -->
+              <div class="col-lg-6 col-12 mb-5">
+                <label for="">Disbursment Verification:</label>&nbsp;
+                {% if verfyObj %}
+                  {% if verfyObj.disbursment_verification == "Approved" %}
+                    <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                    <span class="text-warning">Pending</span>
+                  {% else %}
+                    <span class="text-danger">Rejected</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+
+              <!-- Eleventh Column -->
+              <div class="col-lg-6 col-12 mb-5">
+                <label for="">Post Documentation:</label>&nbsp;
+                {% if verfyObj %}
+                  {% if verfyObj.post_documentation == "Approved" %}
+                    <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                    <span class="text-warning">Pending</span>
+                  {% else %}
+                    <span class="text-danger">Rejected</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+
+              <!-- Twelfth Column -->
+              <div class="col-lg-6 col-12 mb-5">
+                <label for="">RC Card Submission :</label>&nbsp;
+                {% if verfyObj %}
+                  {% if verfyObj.rc_card_submission == "Approved" %}
+                    <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                    <span class="text-warning">Pending</span>
+                  {% else %}
+                    <span class="text-danger">Rejected</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+
+              <!-- Thirteenth Column -->
+              <div class="col-lg-6 col-12 mb-5">
+                <label for="">Verification Status :</label>&nbsp;
+                {% if verfyObj %}
+                  {% if verfyObj.verification_status == "Approved" %}
+                    <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                    <span class="text-warning">Pending</span>
+                  {% else %}
+                    <span class="text-danger">Rejected</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+
+            </div><!-- Row -->
+
+          </div><!-- Card Body -->
+
+        </div><!-- Card -->
+
+      </div><!-- Container -->
+      
+    </div><!-- Container Fluid -->
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlY3/3pa65U9fSIPeH9KAAZ5SOC62zNfPZWfFfSVyMYYxWAd5S8FHnNfWTE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGgjaI5NPO6A7NG6rjO17lu0F2O8OB4z8txS2lx3dgGmI1QQZrdkF9vTGv" crossorigin="anonymous"></script>
+
+  </body>
+</html>

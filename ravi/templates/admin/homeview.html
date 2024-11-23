@@ -1,0 +1,400 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+  <title>homeloan Record Details</title>
+
+  <style>
+    .profile-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .profile-picture {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #007bff;
+    }
+
+    .profile-info {
+      margin-left: 20px;
+    }
+
+    .profile-info h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .profile-info p {
+      margin: 5px 0;
+      font-size: 1rem;
+      color: #eceff1;
+    }
+
+    .card {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .card-body {
+      background-color: #f8f9fa;
+    }
+
+    .card-header {
+      background-color: #007bff;
+      color: white;
+      padding: 15px;
+      font-size: 1.25rem;
+    }
+
+    .status-label {
+      font-weight: bold;
+    }
+
+    .text-success {
+      color: #28a745;
+    }
+
+    .text-danger {
+      color: #dc3545;
+    }
+
+    .text-warning {
+      color: #ffc107;
+    }
+
+    .mb-5 {
+      margin-bottom: 1.5rem;
+    }
+
+    .col-lg-6 {
+      display: flex;
+      align-items: center;
+    }
+
+    .col-lg-6 label {
+      font-weight: 600;
+    }
+
+    .top-layer {
+      padding: 20px;
+    }
+
+    hr.dropdown-divider {
+      margin: 0;
+      border-top: 1px solid #e9ecef;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="container mt-5">
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <div class="profile-container">
+            <img src="{% static 'img/profile.png' %}" alt="Profile Picture" class="profile-picture">
+            <div class="profile-info">
+              <h2>{{ applicant_profile.random_number }}</h2>
+              <p>+91- {{ applicant_profile.mobile_number }}</p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="dropdown-divider">
+
+        <div class="card-body">
+          <div class="row">
+            <!-- Personal Details -->
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6 col-12 mb-5">
+                  <label for="" class="status-label">Personal Details:</label>&nbsp;
+                  {% if verfyObj %}
+                  {% if verfyObj.personal_detail_verification == "Approved" %}
+                      <span class="text-success">Approved</span>
+                    {% elif verfyObj.verification_status == "Pending" %}
+                      <span class="text-warning">Pending</span>
+                  {% else %}
+                    <span class="text-danger">Rejected</span>
+                    {% endif %}
+    
+                  {% endif %}
+                </div>
+            <!-- Documents Upload -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Documents Upload:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.documents_upload_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- KYC and Documents Verification -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">KYC and Documents:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.kyc_documents_verification_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- Filed Officer Visit and Inspection -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Filed Officer Visit and Inspection:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.filed_officer_visit_inspection_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- Eligibility Check -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Eligibility Check:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.eligibility_check_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- Application Fee Paid -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Application Fee Paid:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.application_fee_paid_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- Tele Verification -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Tele Verification:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.tele_verification_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- Bank Login Fee Paid -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Bank Login Fee Paid:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.bank_login_fee_paid_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- Bank Login Done -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Bank Login Done:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.bank_login_done_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- Credit Manager Visit -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Credit Manager Visit:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.credit_manager_visit_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- Bank/NBFC Soft Loan Sanction Letter Issued -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Bank/NBFC Soft Loan Sanction Letter Issued:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.bank_nbfc_soft_loan_sanction_letter_issued_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- Legal & Technical Completed -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Legal & Technical Completed:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.legal_technical_completed_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- Final Loan Sanctioned -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Final Loan Sanctioned:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.final_loan_sanctioned_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+                {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- Agreement Signatures Done -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Agreement Signatures Done:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.agreement_signatures_done_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- E-Nach Auto Debit Done -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">E-Nach Auto Debit Done:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.enach_auto_debit_done_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- Disbursement -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Disbursement:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.disbursement_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- Post Documentation Mortgage -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Post Documentation Mortgage:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.post_documentation_mortgage_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                  {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+            <!-- Cheque Issued/Loan Amount Credited -->
+            <div class="col-lg-6 col-12 mb-5">
+              <label for="" class="status-label">Cheque Issued / Loan Amount Credited:</label>&nbsp;
+              {% if verfyObj %}
+                {% if verfyObj.cheque_issued_loan_amount_credited_status == "Approved" %}
+                  <span class="text-success">Approved</span>
+                {% elif verfyObj.verification_status == "Pending" %}
+                  <span class="text-warning">Pending</span>
+              {% else %}
+                <span class="text-danger">Rejected</span>
+                {% endif %}
+
+              {% endif %}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

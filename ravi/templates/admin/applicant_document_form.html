@@ -1,0 +1,549 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicant Document Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .field-group {
+            margin-bottom: 20px;
+        }
+        .field-group h2 {
+            margin-top: 10px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .grid-item {
+            margin-bottom: 10px;
+        }
+        .grid-item label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .grid-item label.required::after {
+            content: "*";
+            color: red;
+        }
+        .grid-item input[type="file"],
+        .grid-item input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .grid-item input[type="radio"] {
+            margin-right: 10px;
+        }
+        .grid-item button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        .grid-item button:hover {
+            background-color: #164e8b;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .invalid-feedback {
+            color: red;
+            margin-top: 5px;
+        }
+        .form-section {
+            margin-top: 20px;
+        }
+        .form-section h4 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+        .invalid-feedback {
+            display: block;
+            color: red;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        @media (max-width: 576px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script>
+          document.addEventListener('DOMContentLoaded', function() {
+        function clearErrorMessages(field) {
+            var parent = field.closest('.form-group');
+            if (parent) {
+                var errorFeedback = parent.querySelector('.invalid-feedback');
+                if (errorFeedback) {
+                    errorFeedback.innerHTML = '';
+                }
+            }
+        }
+    
+        var fields = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
+        fields.forEach(function(field) {
+            field.addEventListener('input', function() {
+                clearErrorMessages(this);
+            });
+        });
+    });
+    
+    </script>
+    <script>
+        window.addEventListener('message', function(event) {
+         
+            if (event.data === 'Apply custom styles') {
+                document.body.style.backgroundColor = 'white';
+        
+        
+                var style = document.createElement('style');
+                style.innerHTML = `
+                   body::-webkit-scrollbar{
+                   display:none;
+                   }
+                `;
+                document.head.appendChild(style);
+            
+           }
+        });
+    </script>
+</head>
+<body>
+   
+    <h1 style="text-align: center;">Home Loan Document Form</h1>
+    {% if random_number %}
+        <p><strong>Application ID:</strong> {{ random_number }}</p>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id_adhar_card_front" class="required">Adhar Card Front: <span class="text-secondary">(Image)*</span></label>
+                        {{ form.adhar_card_front }}
+                        {% if form.adhar_card_front.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.adhar_card_front.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id_adhar_card_back" class="required">Adhar Card Back:<span class="text-secondary">(Image)*</span></label>
+                        {{ form.adhar_card_back }}
+                        {% if form.adhar_card_back.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.adhar_card_back.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id_pan_card" class="required">PAN Card: <span class="text-secondary">(Image)*</span></label>
+                        {{ form.pan_card }}
+                        {% if form.pan_card.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.pan_card.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+      
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id_customer_photo" class="required">Customer Photo:<span class="text-secondary">(Image)*</span></label>
+                        {{ form.customer_photo }}
+                        {% if form.customer_photo.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.customer_photo.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id_home_plot_photo_1" class="required">Home/Plot Photo 1:<span class="text-secondary">(Image)*</span></label>
+                        {{ form.home_plot_photo_1 }}
+                        {% if form.home_plot_photo_1.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.home_plot_photo_1.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id_home_plot_photo_2" class="required">Home/Plot Photo 2:<span class="text-secondary">(Image)*</span></label>
+                        {{ form.home_plot_photo_2 }}
+                        {% if form.home_plot_photo_2.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.home_plot_photo_2.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id_home_plot_photo_3" class="required">Home/Plot Photo 3:<span class="text-secondary">(Image)*</span></label>
+                        {{ form.home_plot_photo_3 }}
+                        {% if form.home_plot_photo_3.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.home_plot_photo_3.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id_home_plot_photo_4" class="required">Home/Plot Photo 4:<span class="text-secondary">(Image)*</span></label>
+                        {{ form.home_plot_photo_4 }}
+                        {% if form.home_plot_photo_4.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.home_plot_photo_4.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+              
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+
+        {% if incomesource == 'Job' %}
+
+        <div class="field-group job-fields">
+            <h3>Job Fields</h3>
+            <div class="grid-container">
+            <div class="grid-item">
+                <label for="id_latest_3_months_payslips_1" class="required">Latest 3 Months Pay Slips 1:<span class="text-secondary">(PDF)</span></label>
+                {{ form.latest_3_months_payslips_1 }}
+                {% if form.latest_3_months_payslips_1.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.latest_3_months_payslips_1.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="grid-item">
+                <label for="id_latest_3_months_payslips_2" class="required">Latest 3 Months Pay Slips 2:<span class="text-secondary">(PDF)</span></label>
+                {{ form.latest_3_months_payslips_2 }}
+                {% if form.latest_3_months_payslips_2.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.latest_3_months_payslips_2.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="grid-item">
+                <label for="id_latest_3_months_payslips_3" class="required">Latest 3 Months Pay Slips 3:<span class="text-secondary">(PDF)</span></label>
+                {{ form.latest_3_months_payslips_3 }}
+                {% if form.latest_3_months_payslips_3.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.latest_3_months_payslips_3.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="grid-item">
+                <label for="id_latest_3_months_banked_statement" class="required">Latest 3 Months Bank Statement:<span class="text-secondary">(PDF)</span></label>
+                {{ form.latest_3_months_banked_statement }}
+                {% if form.latest_3_months_banked_statement.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.latest_3_months_banked_statement.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="grid-item">
+                <label for="id_employee_id_card" class="required">Employee ID Card: <span class="text-secondary">(Image)</span></label>
+                {{ form.employee_id_card }}
+                {% if form.employee_id_card.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.employee_id_card.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+        {% elif incomesource == 'Business' %}
+        <div class="field-group business">
+            <h2>Business Fields</h2>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="id_existing_loan_statement" class="required">Existing Loan Statement:<span class="text-secondary">(PDF)</span></label>
+                    {{ form.existing_loan_statement }}
+                    {% if form.existing_loan_statement.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.existing_loan_statement.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="grid-item">
+                    <label for="id_other_documents_1" class="required">Other Documents 1:<span class="text-secondary">(PDF)</span></label>
+                    {{ form.other_documents_1 }}
+                    {% if form.other_documents_1.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.other_documents_1.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="grid-item">
+                    <label for="id_other_documents_2" class="required">Other Documents 2:<span class="text-secondary">(PDF)</span></label>
+                    {{ form.other_documents_2 }}
+                    {% if form.other_documents_2.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.other_documents_2.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="grid-item">
+                    <label for="id_other_documents_3" class="required">Other Documents 3:<span class="text-secondary">(PDF)</span></label>
+                    {{ form.other_documents_3 }}
+                    {% if form.other_documents_3.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.other_documents_3.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="grid-item">
+                    <label for="id_other_documents_4" class="required">Other Documents 4:<span class="text-secondary">(PDF)</span></label>
+                    {{ form.other_documents_4 }}
+                    {% if form.other_documents_4.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.other_documents_4.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if loan_type == 'HLBT' %}
+        <div class="field-group HLBT">
+            <h2>HLBT Documents</h2>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="id_business_proof_1" class="required">Business Proof 1:<span class="text-secondary">(Image)</span></label>
+                    {{ form.business_proof_1 }}
+                    {% if form.business_proof_1.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.business_proof_1.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="grid-item">
+                    <label for="id_business_proof_2" class="required">Business Proof 2:<span class="text-secondary">(Image)</span></label>
+                    {{ form.business_proof_2 }}
+                    {% if form.business_proof_2.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.business_proof_2.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="grid-item">
+                    <label for="id_latest_12_months_banked_statement" class="required">Latest 12 Months Bank Statement:<span class="text-secondary">(PDF)</span></label>
+                    {{ form.latest_12_months_banked_statement }}
+                    {% if form.latest_12_months_banked_statement.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.latest_12_months_banked_statement.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="grid-item">
+                    <label for="id_business_office_photo" class="required">Business Office Photo:<span class="text-secondary">(Image)</span></label>
+                    {{ form.business_office_photo }}
+                    {% if form.business_office_photo.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.business_office_photo.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="grid-item">
+                    <label for="id_latest_3_yrs_itr_1" class="required">Latest 3 Years ITR 1:<span class="text-secondary">(PDF)</span></label>
+                    {{ form.latest_3_yrs_itr_1 }}
+                    {% if form.latest_3_yrs_itr_1.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.latest_3_yrs_itr_1.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="grid-item">
+                    <label for="id_latest_3_yrs_itr_2" class="required">Latest 3 Years ITR 2:<span class="text-secondary">(PDF)</span></label>
+                    {{ form.latest_3_yrs_itr_2 }}
+                    {% if form.latest_3_yrs_itr_2.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.latest_3_yrs_itr_2.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="grid-item">
+                    <label for="id_latest_3_yrs_itr_3" class="required">Latest 3 Years ITR 3:<span class="text-secondary">(PDF)</span></label>
+                    {{ form.latest_3_yrs_itr_3 }}
+                    {% if form.latest_3_yrs_itr_3.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.latest_3_yrs_itr_3.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="grid-item">
+                    <label for="id_current_address_proof" class="required">Current Address Proof:<span class="text-secondary">(Image)</span></label>
+                    {{ form.current_address_proof }}
+                    {% if form.current_address_proof.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.current_address_proof.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="field-group">
+            <h2><center>Co-Applicant Documents</center></h2>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="id_co_adhar_card_front" class="required">Co-Applicant Aadhar Card Front:<span class="text-secondary">(Image)</span></label>
+                    {{ form.co_adhar_card_front }}
+                    {% if form.co_adhar_card_front.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.co_adhar_card_front.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="grid-item">
+                    <label for="id_co_adhar_card_back" class="required">Co-Applicant Aadhar Card Back:<span class="text-secondary">(Image)</span></label>
+                    {{ form.co_adhar_card_back }}
+                    {% if form.co_adhar_card_back.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.co_adhar_card_back.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="grid-item">
+                    <label for="id_co_pan_card" class="required">Co-Applicant PAN Card:<span class="text-secondary">(Image)</span></label>
+                    {{ form.co_pan_card }}
+                    {% if form.co_pan_card.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.co_pan_card.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="grid-item">
+                    <label for="id_co_selfie_photo" class="required">Co-Applicant Selfie Photo:<span class="text-secondary">(Image)</span></label>
+                    {{ form.co_selfie_photo }}
+                    {% if form.co_selfie_photo.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.co_selfie_photo.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login</title>
+    <style>
+    button{
+        padding:10px;
+        background-color: #0a8088;
+        color: white;
+        border:none;
+        border-radius: 5px;
+        margin-top:20px;
+        padding:15px;
+    }
+    h1{
+        background-color: #0a8088;
+        color:black;
+        text-align: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    table{
+        padding: 30px 30px 30px 30px;
+        background-color: black;
+        color:white;
+        
+    }
+</style>
+</head>
+<body>
+    <script>
+        window.addEventListener('beforeunload', function(event) {
+            // Perform actions before the page is unloaded
+        });
+    </script>
+    <h1>Employee Login Page</h1>
+    <center>
+   
+        <form action="{% url 'employee_login' %}" method="POST">
+            
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            
+    
+    </table>
+    </form>
+   </center>
+   
+
+    
+</body>
+</html>

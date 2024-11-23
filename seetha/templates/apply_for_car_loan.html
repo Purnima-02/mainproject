@@ -1,0 +1,489 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Loan Form</title>
+
+    <!--custom css-->
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script> 
+    <style>
+    /* .usedcar, .newcar,.job-field,.business-field {
+          display: none;
+        } */
+      .asteriskField {
+       color:red;
+       font-weight: bold;
+    }
+
+    </style>
+    
+  </head>  
+    
+
+  <body>
+    <div class="container mt-5">
+        <h2 class="text-center">Car Loan Application Form</h2>
+        <form method="post" id="form">
+            {% csrf_token %}
+            <div class="row">
+                <!-- Personal Details -->
+                <div class="col-lg-4 col-6" id="first_name">{{ form.first_name|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6" id="last_name">{{ form.last_name|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.gender|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.date_of_birth|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.mobile_number|as_crispy_field }}
+                <div id="number-error1"></div></div>
+
+
+                <!-- Car Details -->
+                <div class="col-lg-4 col-6" id="car_loan_type">{{ form.car_loan_type|as_crispy_field }}</div>
+
+                <!-- Used Car Fields -->
+                <div class="col-lg-4 col-6 usedcar">{{ form.car_vehicle_no|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 usedcar">{{ form.car_company_name|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 usedcar">{{ form.variant|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 usedcar">{{ form.model_year|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 usedcar">{{ form.existing_loan|as_crispy_field }} 
+                    {% if form.existing_loan.errors %}<div class="invalid-feedback">
+                        {% for error in form.existing_loan.errors %}<p>{{ error }}</p>
+                        {% endfor %}</div>
+                    {% endif %}
+                    
+                </div>
+                <div class="col-lg-4 col-6 usedcar" id="existing_loan_bank_name" style="display:none;">
+                    <label for="id_existing_loan_bank_name">Bank/NBFC Name </label>
+                    {{ form.existing_loan_bank_name }}
+                    {% if form.existing_loan_bank_name.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.existing_loan_bank_name.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-lg-4 col-6 usedcar" id="existing_loan_amount_in_rs" style="display:none;">
+                    <label for="id_existing_loan_amount_in_rs">EXISTING LOAN AMOUNT IN RS</label>
+                    {{ form.existing_loan_amount_in_rs }}
+                    {% if form.existing_loan_amount_in_rs.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.existing_loan_amount_in_rs.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- New Car Fields -->
+                <div class="col-lg-4 col-6 newcar">{{ form.car_purchase_value_in_RS|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 newcar">{{ form.quotation_value_on_ex_showroom|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 newcar">{{ form.downpayment_amount|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 newcar">{{ form.showroom_quotation|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 newcar">{{ form.varient|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 newcar">{{ form.car_model_year|as_crispy_field }}</div>
+                
+                <!-- Common Fields -->
+                <div class="col-lg-4 col-6" id="pan_card_number">{{ form.pan_card_number|as_crispy_field }}<p id="pan-error"></p></div>
+                <div class="col-lg-4 col-6" id="aadhar_card_number">{{ form.aadhar_card_number|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.marital_status|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6" id="email_id">{{ form.email_id|as_crispy_field }} </div>
+                <div class="col-lg-4 col-6">{{ form.current_address|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6" id="current_address_pincode">{{ form.current_address_pincode|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.aadhar_address|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6" id="aadhar_pincode">{{ form.aadhar_pincode|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6" id="aadhar_address_type">{{ form.aadhar_address_type|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6" id="current_address_type">{{ form.current_address_type|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.running_emis_amount_per_month|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.required_loan|as_crispy_field }}</div>
+                <!-- Income Source -->
+                <div class="col-lg-4 col-6" id="income_source">{{ form.income_source|as_crispy_field }}</div>
+
+                <!-- Job Fields -->
+                <div class="job-field col-lg-4 col-6">{{ form.net_salary_per_month|as_crispy_field }}</div>
+                <div class="job-field col-lg-4 col-6">{{ form.company_name|as_crispy_field }}</div>
+                <div class="job-field col-lg-4 col-6">{{ form.company_type|as_crispy_field }}</div>
+                <div class="job-field col-lg-4 col-6">{{ form.job_designation|as_crispy_field }}</div>
+                <div class="job-field col-lg-4 col-6">{{ form.job_joining_date|as_crispy_field }}</div>
+                <div class="job-field col-lg-4 col-6">{{ form.job_location|as_crispy_field }}</div>
+                <div class="job-field col-lg-4 col-6">{{ form.total_job_experience_in_months|as_crispy_field }}</div>
+                <div class="job-field col-lg-4 col-6">{{ form.office_address|as_crispy_field }}</div> <!-- Office Address Field -->
+                <div class="col-lg-4 col-6">{{ form.work_email|as_crispy_field }}</div>
+                <!-- Business Fields -->
+                <div class="business-field col-lg-4 col-6">{{ form.business_name|as_crispy_field }}</div>
+                <div class="business-field col-lg-4 col-6">{{ form.business_type|as_crispy_field }}</div>
+                <div class="business-field col-lg-4 col-6">{{ form.net_income_per_month|as_crispy_field }}</div>
+                <div class="business-field col-lg-4 col-6">{{ form.business_establishment_date|as_crispy_field }}</div>
+                <div class="business-field col-lg-4 col-6">{{ form.gst_certificate|as_crispy_field }}</div>
+                <div class="business-field col-lg-4 col-6" id="gst_number1">{{ form.gst_number|as_crispy_field }}</div>
+                <div class="business-field col-lg-4 col-6">{{ form.mother_name|as_crispy_field }}</div>
+                <div class="business-field col-lg-4 col-6">{{ form.father_name|as_crispy_field }}</div>
+                <div class="business-field col-lg-4 col-6">{{ form.nature_of_business|as_crispy_field }}</div>
+                <div class="business-field col-lg-4 col-6">{{ form.turnover_in_lakhs_per_year|as_crispy_field }}</div>
+                <div class="business-field col-lg-4 col-6">{{ form.business_address_pincode|as_crispy_field }}</div>
+                <div class="business-field col-lg-4 col-6">{{ form.business_address|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6" id="ref1_person_name">{{ form.ref1_person_name|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.ref_1_person_mobile_number|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.ref2_person_name|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.ref_2_person_mobile_number|as_crispy_field }}<div id="number-error3"></div></div>
+                
+                <div class="col-lg-4 col-6">{{ form.remarks|as_crispy_field }}</div>
+        
+            <center>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            </center>
+        </form>
+    </div>
+
+    <script>
+        if(localStorage.getItem('mobile1')){
+            document.getElementById('id_mobile_number').value=localStorage.getItem('mobile1');
+            document.getElementById('id_mobile_number').readOnly=true;
+        }
+        const form = document.getElementById('form');
+        form.addEventListener('submit', function () {
+            localStorage.removeItem('mobile1');
+        });
+    </script>
+
+    <script>
+        console.log("success");
+
+        // Car Loan Type Selection
+        document.querySelector('#id_car_loan_type').addEventListener('change', function() {
+            if (this.value === "NEW") {
+                document.querySelectorAll('.usedcar').forEach(item => item.style.display = "none");
+                document.querySelectorAll('.newcar').forEach(item => item.style.display = "block");
+
+                document.getElementById('id_car_vehicle_no').required = false;
+                document.getElementById('id_car_company_name').required = false;
+                document.getElementById('id_variant').required = false;
+                document.getElementById('id_model_year').required = false;
+                document.getElementById('id_car_purchase_value_in_RS').required = true;
+                document.getElementById('id_quotation_value_on_ex_showroom').required = true;
+                document.getElementById('id_downpayment_amount').required = true;
+                document.getElementById('id_showroom_quotation').required = true;
+                document.getElementById('id_varient').required = true;
+                document.getElementById('id_car_model_year').required = true;
+            } else {
+                document.querySelectorAll('.usedcar').forEach(item => item.style.display = "block");
+                document.querySelectorAll('.newcar').forEach(item => item.style.display = "none");
+
+                document.getElementById('id_car_vehicle_no').required = true;
+                document.getElementById('id_car_company_name').required = true;
+                document.getElementById('id_variant').required = true;
+                document.getElementById('id_model_year').required = true;
+
+                document.getElementById('id_car_purchase_value_in_RS').required = false;
+                
+                document.getElementById('id_quotation_value_on_ex_showroom').required = false;
+                document.getElementById('id_downpayment_amount').required = false;
+                document.getElementById('id_showroom_quotation').required = false;
+                document.getElementById('id_varient').required = false;
+                document.getElementById('id_car_model_year').required = false;
+            }
+        });
+
+        // Income Source Selection
+        document.querySelector('#id_income_source').addEventListener('change', function() {
+            if (this.value === "Job") {
+                document.querySelectorAll('.job-field').forEach(item => item.style.display = "block");
+                document.querySelectorAll('.business-field').forEach(item => item.style.display = "none");
+
+                document.querySelectorAll('.job-field input, .job-field select').forEach(item => item.required = true);
+                document.querySelectorAll('.business-field input, .business-field select').forEach(item => item.required = false);
+
+                // Make office_address required if Job is selected
+                document.getElementById('id_office_address').required = false;
+                document.getElementById('id_remarks').required = false;
+    
+                
+            } else {
+                document.querySelectorAll('.job-field').forEach(item => item.style.display = "none");
+                document.querySelectorAll('.business-field').forEach(item => item.style.display = "block");
+
+                document.querySelectorAll('.job-field input, .job-field select').forEach(item => item.required = false);
+                document.querySelectorAll('.business-field input, .business-field select').forEach(item => item.required = true);
+
+                // Make office_address not required if Business is selected
+                document.getElementById('id_business_address').required = false;
+                document.getElementById('id_remarks').required = false;
+                
+                
+            }
+        });
+
+        // Initially hide fields based on selection
+        document.getElementById('id_car_loan_type').dispatchEvent(new Event('change'));
+        document.getElementById('id_income_source').dispatchEvent(new Event('change'));
+    </script>
+
+<script>
+    const GstCertificateField = document.querySelector('#id_gst_certificate');
+    const toggleGstNumberField = () => {
+        console.log('abc')
+        if (GstCertificateField.value === 'yes') {
+            console.log("jiii");
+            document.getElementById('gst_number1').style.display = "block";
+            document.getElementById('id_gst_number').required = true;
+            //console.log(document.getElementById('id_gst_number').hasAttribute('required'));
+        } else {
+            document.getElementById('gst_number1').style.display = "none";
+            document.getElementById('id_gst_number').required = false;
+            //console.log(document.getElementById('id_gst_number').hasAttribute('required'));
+        
+        }
+    };
+    GstCertificateField.addEventListener('change', toggleGstNumberField);
+</script>
+
+   
+
+<!----- Validations-->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('#id_first_name,#id_last_name,#id_father_name,#id_mother_name,#id_ref1_person_name,#id_ref2_person_name,#id_company_name,#id_job_designation,#id_remarks').forEach((s) => {
+    console.log('firstname');
+    s.addEventListener('input', function (e) {
+        var value = e.target.value;
+        e.target.value = value.replace(/[^A-Za-z]/g, '');
+    });
+});
+
+});
+</script>
+
+
+  <script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+    //const GstCertificateField = document.querySelector('#id_gst_certificate');
+   
+    const maxnumberlength10 = document.querySelectorAll('#id_mobile_number, #id_net_income_per_month,#id_running_emis_amount_per_month,#id_turnover_in_lakhs_per_year,#id_ref_1_person_mobile_number,#id_ref_2_person_mobile_number,#id_required_loan_amount');
+    const panField = document.getElementById('id_pan_card_number');
+    const panError = document.getElementById('pan-error');
+    const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+
+    console.log('im hi');
+     
+    
+    
+
+    const panCardValidation = () => {
+        if (panPattern.test(panField.value)) {
+            panError.innerText = '';
+        } else {
+            panError.innerText = 'Invalid PAN card number';
+            panError.style.color = 'red';
+        }
+    };
+
+    panField.addEventListener('change', panCardValidation);
+    
+    
+    maxnumberlength10.forEach((element) => {
+        element.addEventListener('input', (e) => {
+            const maxLength = 10;
+            const input = e.target;
+            console.log(e.target.id);
+            if (input.value.length > maxLength) {
+                input.value = input.value.slice(0, maxLength);
+            }
+        });
+    });
+
+    // Add the Aadhar length validation correctly
+    document.querySelectorAll('#id_aadhar_card_number').forEach((element) => {
+        element.addEventListener('input', (e) => {
+            const maxLength = 12;
+            const input = e.target;
+            if (input.value.length > maxLength) {
+                input.value = input.value.slice(0, maxLength);
+            }
+        });
+    });
+
+    // Initial check
+    toggleGstNumberField();
+
+
+    document.getElementById('id_date_of_birth').addEventListener('change',(e)=>{
+        const datevalue=e.target.value;
+        const dateparts=datevalue.split('-');
+        const year=dateparts[0];
+  
+        if(year.length > 4 ){
+          dateparts[0]=year.slice(0,4);
+          e.target.value=dateparts.join('-');
+          
+        }
+        console.log("hi");
+        const currentYear=new Date().getFullYear();
+        if(year > currentYear){
+          dateparts[0]=currentYear;
+          e.target.value=dateparts.join('-');
+         
+  
+        }
+        console.log( e.target.value);
+  
+      });
+
+});
+
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const existingLoanAmountInRs = document.getElementById('existing_loan_amount_in_rs');
+        const existingLoan = document.getElementById('existing_loan_bank_name');
+        const existingLoanDoc = document.getElementById('id_existing_loan');  // Checkbox/Radio button
+
+        // Function to toggle the visibility of fields based on the checkbox/radio button state
+        function toggleExistingField() {
+            if (existingLoanDoc && existingLoanDoc.checked) {
+                existingLoan.style.display = 'block';
+                existingLoanAmountInRs.style.display = 'block';
+            } else {
+                existingLoan.style.display = 'none';
+                existingLoanAmountInRs.style.display = 'none';
+            }
+        }
+
+        // Initial visibility check
+        if (existingLoanDoc && existingLoan && existingLoanAmountInRs) {
+            toggleExistingField();  // Run on page load to set initial state
+            existingLoanDoc.addEventListener('change', toggleExistingField);  // Add event listener to toggle on change
+        } else {
+            console.error("One or more elements were not found in the DOM.");
+        }
+    });
+</script>
+
+<!-- #chat gpt -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to add asterisk (*) to required fields, excluding office_address and business_address unless required
+        function addAsteriskToRequiredFields() {
+            // Select all relevant field labels
+            const requiredFields = document.querySelectorAll('.usedcar label, .newcar label, .business-field label, .job-field label');
+    
+            // Remove existing asterisks to avoid duplicates
+            requiredFields.forEach(label => {
+                const asterisk = label.querySelector('.asteriskField');
+                if (asterisk) {
+                    asterisk.remove();
+                }
+            });
+    
+            // Add the asterisk for fields marked as required
+            requiredFields.forEach(label => {
+                const inputId = label.getAttribute('for');
+                const inputElement = document.querySelector(`#${inputId}`);
+    
+                // Ensure input exists and is required
+                if (inputElement && inputElement.hasAttribute('required')) {
+                    const fieldId = inputElement.getAttribute('id');
+                    const incomeSource = document.querySelector('#id_income_source').value;
+    
+                    // Skip office_address and business_address unless explicitly required
+                    if (
+                        (fieldId !== 'id_office_address' && fieldId !== 'id_business_address') || 
+                        (incomeSource === 'Job' && fieldId === 'id_office_address') || 
+                        (incomeSource === 'Business' && fieldId === 'id_business_address')
+                    ) {
+                        label.innerHTML += ' <span class="asteriskField" style="color: red;">*</span>';
+                    }
+                }
+            });
+        }
+    
+        // Trigger asterisk addition based on car loan type selection
+        document.querySelector('#id_car_loan_type').addEventListener('change', function() {
+            if (this.value === "NEW") {
+                document.querySelectorAll('.usedcar').forEach(item => item.style.display = "none");
+                document.querySelectorAll('.newcar').forEach(item => item.style.display = "block");
+            } else {
+                document.querySelectorAll('.usedcar').forEach(item => item.style.display = "block");
+                document.querySelectorAll('.newcar').forEach(item => item.style.display = "none");
+            }
+            addAsteriskToRequiredFields(); // Call asterisk function when fields are shown/hidden
+        });
+    
+        // Trigger asterisk addition based on income source selection
+        document.querySelector('#id_income_source').addEventListener('change', function() {
+            if (this.value === "Job") {
+                document.querySelectorAll('.job-field').forEach(item => item.style.display = "block");
+                document.querySelectorAll('.business-field').forEach(item => item.style.display = "none");
+            } else {
+                document.querySelectorAll('.job-field').forEach(item => item.style.display = "none");
+                document.querySelectorAll('.business-field').forEach(item => item.style.display = "block");
+            }
+            addAsteriskToRequiredFields(); // Call asterisk function when fields are shown/hidden
+        });
+    
+        // Initial trigger to apply correct display and asterisks
+        document.getElementById('id_car_loan_type').dispatchEvent(new Event('change'));
+        document.getElementById('id_income_source').dispatchEvent(new Event('change'));
+    });
+    </script>
+
+<script>
+    if(localStorage.getItem('mobile1')){
+        console.log(localStorage.getItem('pan1')+"pan")
+        console.log(localStorage.getItem('mobile1')+"mobile")
+        document.getElementById('id_mobile_number').value=localStorage.getItem('mobile1');
+        document.getElementById('id_pan_card_number').value=localStorage.getItem('pan1');
+        document.getElementById('id_mobile_number').readOnly=true;
+        document.getElementById('id_pan_card_number').readOnly=true;
+    }
+    const seetha= document.getElementById('form');
+        seetha.addEventListener('submit', function () {
+        localStorage.removeItem('mobile1');
+        localStorage.removeItem('pan1');
+    });
+    </script>
+    
+
+<script>
+    function validateEmailID() {
+        var emailInput = document.getElementById("email_id").value;
+        var emailError = document.getElementById("emailError");
+        var emailPattern = /^[a-zA-Z]/; // Regular expression to check if email starts with an alphabet
+    
+        if (!emailPattern.test(emailInput)) {
+            emailError.style.display = "inline";
+            return false; // Prevent form submission
+        } else {
+            emailError.style.display = "none";
+            return true; // Allow form submission
+        }
+    }
+</script>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="{% static 'js/form.js' %}"></script>
+    <title>LoanAgainstProperty Application Form</title>
+    <script>
+        function toggleFields() {
+            const incomeSource = document.getElementById('id_income_source').value;
+            const jobFields = document.getElementById('job-fields');
+            const businessFields = document.getElementById('business-fields');
+    
+            if (incomeSource === 'JOB') {
+                jobFields.style.display = 'block';
+                businessFields.style.display = 'none';
+                document.getElementById('id_business_name').required=false;
+                document.getElementById('id_business_type').required=false;
+                document.getElementById('id_business_establishment_date').required=false;
+                document.getElementById('id_net_income_per_month').required=false;
+                document.getElementById('id_gst_certificate').required=false;
+                document.getElementById('id_turnover_in_lakhs_per_year').required=false;
+                document.getElementById('id_nature_of_business').required=false;
+                // job fields 
+                document.getElementById('id_net_salary_per_month').required=true;
+                document.getElementById('id_company_name').required=true;
+                document.getElementById('id_job_joining_date').required=true;
+                document.getElementById('id_job_location').required=true;
+                document.getElementById('id_total_job_experience').required=true;
+                console.log("bbb")
+                console.log(document.getElementById('id_business_name').hasAttribute('required'));
+
+            } else {
+                jobFields.style.display = 'none';
+                businessFields.style.display = 'block';
+                document.getElementById('id_business_name').required=true;
+                document.getElementById('id_business_type').required=true;
+                document.getElementById('id_business_establishment_date').required=true;
+                document.getElementById('id_net_income_per_month').required=true;
+                document.getElementById('id_gst_certificate').required=true;
+                document.getElementById('id_turnover_in_lakhs_per_year').required=true;
+                document.getElementById('id_nature_of_business').required=true;
+                document.getElementById('id_net_salary_per_month').required=false;
+                document.getElementById('id_company_name').required=false;
+                document.getElementById('id_job_joining_date').required=false;
+                document.getElementById('id_job_location').required=false;
+                document.getElementById('id_total_job_experience').required=false;
+                console.log("aaaa")
+                console.log(document.getElementById('id_business_name').hasAttribute('required'));
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleFields(); // Initial state setup
+            document.getElementById('id_income_source').addEventListener('change', toggleFields); // Add onchange event
+            // Add onchange event for GST certificate
+            // Set initial requirement state for GST number
+        });
+    </script>
+    <style>
+        .form-section {
+            margin-top: 20px;
+        }
+        .form-section h4 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+        .invalid-feedback {
+            display: block;
+            color: red;
+        }
+        .as{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5 text-center">LoanAgainstProperty Application Form</h1>
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="form-section">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_loan_type">Loan Type<span class="as">*</span></label>
+                        {{ form.loan_type }}
+                        {% if form.loan_type.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.loan_type.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_first_name">First Name<span class="as">*</span></label>
+                        {{ form.first_name }}
+                        {% if form.first_name.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.first_name.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_last_name">Last Name<span class="as">*</span></label>
+                        {{ form.last_name }}
+                        {% if form.last_name.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.last_name.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_gender">Gender<span class="as">*</span></label>
+                        {{ form.gender }}
+                        {% if form.gender.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.gender.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_date_of_birth">Date of Birth<span class="as">*</span></label>
+                        {{ form.date_of_birth }}
+                        {% if form.date_of_birth.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.date_of_birth.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_mobile_number">Mobile Number (from Basic Details)</label>
+                        <input type="text" id="id_mobile_number" class="form-control" value="{{ mobile_number }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_current_address_type">Current Address Type<span class="as">*</span></label>
+                        {{ form.current_address_type }}
+                        {% if form.current_address_type.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.current_address_type.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>                    
+                    <div class="form-group">
+                        <label for="id_current_address">Current Address<span class="as">*</span></label>
+                        {{ form.current_address }}
+                        {% if form.current_address.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.current_address.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="id_current_address_pincode">Current Address Pincode<span class="as">*</span></label>
+                        {{ form.current_address_pincode }}
+                        {% if form.current_address_pincode.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.current_address_pincode.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_aadhar_card_number">Aadhar Card Number<span class="as">*</span></label>
+                        {{ form.aadhar_card_number }}
+                        {% if form.aadhar_card_number.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.aadhar_card_number.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_pan_card_number">Pan Number (from Basic Details)</label>
+                        <input type="text" id="id_pan_card_number" class="form-control" value="{{ pan_number }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_marital_status">Marital Status<span class="as">*</span></label>
+                        {{ form.marital_status }}
+                        {% if form.marital_status.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.marital_status.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_email_id">Email ID</label>
+                        {{ form.email_id }}
+                        {% if form.email_id.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.email_id.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id_aadhar_address_type">aadhar Address Type<span class="as">*</span></label>
+                        {{ form.aadhar_address_type }}
+                        {% if form.aadhar_address_type.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.aadhar_address_type.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_aadhar_pincode">Aadhar Pincode<span class="as">*</span></label>
+                        {{ form.aadhar_pincode }}
+                        {% if form.aadhar_pincode.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.aadhar_pincode.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_aadhar_address">Aadhar Address<span class="as">*</span></label>
+                        {{ form.aadhar_address }}
+                        {% if form.aadhar_address.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.aadhar_address.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_income_source">Income Source<span class="as">*</span></label>
+                        {{ form.income_source }}
+                        {% if form.income_source.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.income_source.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_remarks">Remarks</label>
+                        {{ form.remarks }}
+                        {% if form.remarks.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.remarks.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <div id="job-fields">
+                <h4>Job Details</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="id_net_salary_per_month">Net Salary per Month<span class="as">*</span></label>
+                            {{ form.net_salary_per_month }}
+                            {% if form.net_salary_per_month.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.net_salary_per_month.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_company_name">Company Name<span class="as">*</span></label>
+                            {{ form.company_name }}
+                            {% if form.company_name.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.company_name.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_company_type">Company Type<span class="as">*</span></label>
+                            {{ form.company_type }}
+                            {% if form.company_type.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.company_type.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="id_job_joining_date">Job Joining Date<span class="as">*</span></label>
+                            {{ form.job_joining_date }}
+                            {% if form.job_joining_date.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.job_joining_date.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_job_location">Job Location<span class="as">*</span></label>
+                            {{ form.job_location }}
+                            {% if form.job_location.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.job_location.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_total_job_experience">Total Job Experience in months<span class="as">*</span></label>
+                            {{ form.total_job_experience }}
+                            {% if form.total_job_experience.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.total_job_experience.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="business-fields" style="display:none;">
+                <h4>Business Details</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="id_net_income_per_month">Net Income per Month<span class="as">*</span></label>
+                            {{ form.net_income_per_month }}
+                            {% if form.net_income_per_month.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.net_income_per_month.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_business_name">Business Name<span class="as">*</span></label>
+                            {{ form.business_name }}
+                            {% if form.business_name.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.business_name.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_business_type">Business Type<span class="as">*</span></label>
+                            {{ form.business_type }}
+                            {% if form.business_type.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.business_type.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_business_establishment_date">Business Establishment Date<span class="as">*</span></label>
+                            {{ form.business_establishment_date }}
+                            {% if form.business_establishment_date.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.business_establishment_date.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" style="margin-left: 24px;">
+                            {{ form.gst_certificate }}
+                            <label for="id_gst_certificate">GST Certificate?</label>
+                            {% if form.gst_certificate.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.gst_certificate.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group" id="gst-number-field" style="display: none;">
+                            <label for="id_gst_number">GST Number<i class="text-danger">*</i> </label>
+                            {{ form.gst_number }}
+                            {% if form.gst_number.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.gst_number.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_turnover_in_lakhs_per_year">Turnover in Lakhs per Year<span class="as">*</span></label>
+                            {{ form.turnover_in_lakhs_per_year }}
+                            {% if form.turnover_in_lakhs_per_year.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.turnover_in_lakhs_per_year.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_nature_of_business">Nature of Business<span class="as">*</span></label>
+                            {{ form.nature_of_business }}
+                            {% if form.nature_of_business.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.nature_of_business.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_property_value">Property Value (in Rs.)<span class="as">*</span></label>
+                        {{ form.property_value }}
+                        {% if form.property_value.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.property_value.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_required_loan_amount">Required Loan Amount (in Rs.)<span class="as">*</span></label>
+                        {{ form.required_loan_amount }}
+                        {% if form.required_loan_amount.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.required_loan_amount.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                   
+                    <div class="form-group">
+                        {{ form.existing_loan }}
+                        <label for="id_existing_loan">Existing Loan</label>
+                        {% if form.existing_loan.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.existing_loan.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group" id="existing_loan_details" style="display:none;">
+                        <label for="id_existing_loan_details">If yes, Bank/NBFC Name<i class="text-danger">*</i> </label>
+                        {{ form.existing_loan_details }}
+                        {% if form.existing_loan_details.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.existing_loan_details.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group" id="existing_loan_amount" style="display:none;">
+                        <label for="id_existing_loan_amount">Existing loan amount in Rs<i class="text-danger">*</i> </label>
+                        {{ form.existing_loan_amount }}
+                        {% if form.existing_loan_amount.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.existing_loan_amount.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_ref1_name">Reference 1 Name</label>
+                        {{ form.ref1_name }}
+                        {% if form.ref1_name.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.ref1_name.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_ref1_mobile">Reference 1 Mobile Number</label>
+                        {{ form.ref1_mobile }}
+                        {% if form.ref1_mobile.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.ref1_mobile.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_ref2_name">Reference 2 Name</label>
+                        {{ form.ref2_name }}
+                        {% if form.ref2_name.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.ref2_name.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_ref2_mobile">Reference 2 Mobile Number</label>
+                        {{ form.ref2_mobile }}
+                        {% if form.ref2_mobile.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.ref2_mobile.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h4>Co-Applicant Details</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_co_applicant_first_name">Co-Applicant First Name<i class="text-danger">*</i> </label>
+                        {{ form.co_applicant_first_name }}
+                        {% if form.co_applicant_first_name.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.co_applicant_first_name.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_co_applicant_last_name">Co-Applicant Last Name<i class="text-danger">*</i> </label>
+                        {{ form.co_applicant_last_name }}
+                        {% if form.co_applicant_last_name.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.co_applicant_last_name.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_co_applicant_gender">Co-Applicant Gender<i class="text-danger">*</i> </label>
+                        {{ form.co_applicant_gender }}
+                        {% if form.co_applicant_gender.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.co_applicant_gender.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_co_applicant_age">Co-Applicant Age<i class="text-danger">*</i> </label>
+                        {{ form.co_applicant_age }}
+                        {% if form.co_applicant_age.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.co_applicant_age.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_co_applicant_relationship">Co-Applicant Relationship<i class="text-danger">*</i> </label>
+                        {{ form.co_applicant_relationship }}
+                        {% if form.co_applicant_relationship.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.co_applicant_relationship.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_co_applicant_mobile_number">Co-Applicant Mobile Number<i class="text-danger">*</i> </label>
+                        {{ form.co_applicant_mobile_number }}
+                        {% if form.co_applicant_mobile_number.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.co_applicant_mobile_number.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_co_applicant_email_id">Co-Applicant Email ID</label>
+                        {{ form.co_applicant_email_id }}
+                        {% if form.co_applicant_email_id.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.co_applicant_email_id.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_co_applicant_occupation">Co-Applicant Occupation<i class="text-danger">*</i> </label>
+                        {{ form.co_applicant_occupation }}
+                        {% if form.co_applicant_occupation.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.co_applicant_occupation.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_co_applicant_net_income_per_month">Co-Applicant Net Income per Month<i class="text-danger">*</i> </label>
+                        {{ form.co_applicant_net_income_per_month }}
+                        {% if form.co_applicant_net_income_per_month.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.co_applicant_net_income_per_month.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const gstNumberField = document.getElementById('gst-number-field');
+        const gstCertificateCheckbox = document.getElementById('id_gst_certificate');
+
+        function toggleGstNumberField() {
+            if (gstCertificateCheckbox.checked) {
+                gstNumberField.style.display = 'block';
+                gstNumberField.setAttribute('required', 'required'); // Optionally make it required
+            } else {
+                gstNumberField.style.display = 'none';
+                gstNumberField.removeAttribute('required');
+            }
+        }
+        // Initial state setup
+        toggleGstNumberField();
+        // Add change event listener to the checkbox
+        gstCertificateCheckbox.addEventListener('change', toggleGstNumberField);
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        const existingloanamount=document.getElementById('existing_loan_amount');
+
+        const existingloan=document.getElementById('existing_loan_details');
+        const existingloandoc=document.getElementById('id_existing_loan');
+
+        function toggleexistingfield(){
+            if(existingloandoc.checked){
+                existingloan.style.display='block';
+                existingloanamount.style.display='block';
+            }
+            else{
+                existingloan.style.display='none';
+                existingloanamount.style.display='none';
+            }
+        }
+        toggleexistingfield()
+        existingloandoc.addEventListener('change',toggleexistingfield)
+    })
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function clearErrorMessages(field) {
+            var parent = field.closest('.form-group');
+            if (parent) {
+                var errorFeedback = parent.querySelector('.invalid-feedback');
+                if (errorFeedback) {
+                    errorFeedback.innerHTML = '';
+                }
+            }
+        }
+    
+        var fields = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
+        fields.forEach(function(field) {
+            field.addEventListener('input', function() {
+                clearErrorMessages(this);
+            });
+   });
+});
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var aadharCardField = document.getElementById('id_aadhar_card_number');
+        if (aadharCardField) {
+            aadharCardField.addEventListener('input', function() {
+                this.value = this.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+            });
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var aadharCardField = document.getElementById('id_mobile_number');
+        if (aadharCardField) {
+            aadharCardField.addEventListener('input', function() {
+                this.value = this.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+            });
+        }
+    });
+
+    document.querySelectorAll('#id_business_name,#id_business_type,#id_co_applicant_first_name,#id_co_applicant_last_name,#id_ref1_name,#id_ref2_name,#id_first_name,#id_last_name,#id_company_name,#id_company_type').forEach((item)=>{
+item.addEventListener('input', function (e) {
+    var value = e.target.value;
+    e.target.value = value.replace(/[^A-Za-z]/g, '');
+  });
+
+});
+    window.addEventListener('message', function(event) {
+     
+        if (event.data === 'Apply custom styles') {
+            document.body.style.backgroundColor = 'white';
+            var style = document.createElement('style');
+            style.innerHTML = `
+               body::-webkit-scrollbar{
+               display:none;
+               }
+            `;
+            document.head.appendChild(style);
+        
+       }
+    }); 
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Car Loan View Documents</title>
+
+    <style>
+        .row1 .col-4 {
+            margin-top: 100px;
+        }
+        .row1 label {
+            height: 70px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">View CarLoan Documents</h1>
+        <div class="row row1">
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="fw-bolder">CAR RC FRONT :</label>
+                {% if form.car_rc_front.value %}
+                    <img src="{{ form.car_rc_front.value.url }}" alt="image" class="img-fluid w-100 h-100 mt-3">
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="fw-bolder">CAR RC BACK :</label>
+                {% if form.car_rc_back.value %}
+                    <img src="{{ form.car_rc_back.value.url }}" alt="image" class="img-fluid w-100 h-100 mt-3">
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="fw-bolder">AADHAR CARD FRONT :</label>
+                {% if form.aadhar_card_front.value %}
+                    <img src="{{ form.aadhar_card_front.value.url }}" alt="image" class="img-fluid w-100 h-100 mt-3">
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="fw-bolder">AADHAR CARD BACK :</label>
+                {% if form.aadhar_card_back.value %}
+                    <img src="{{ form.aadhar_card_back.value.url }}" alt="image" class="img-fluid w-100 h-100 mt-3">
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="fw-bolder">PAN CARD :</label>
+                {% if form.pan_card.value %}
+                    <img src="{{ form.pan_card.value.url }}" alt="image" class="img-fluid w-100 h-100 mt-3">
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">PAY SLIP 1:</label>
+                {% if form.payslip1.value %}
+                    <a href="{{ form.payslip1.value.url }}" target="_blank" class="fw-bold text-decoration-none"><span class="fw-bold text-capitalize text-primary">Click here to View the document : View</span></a>
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">PAY SLIP 2:</label>
+                {% if form.payslip2.value %}
+                    <a href="{{ form.payslip2.value.url }}" target="_blank" class="fw-bold text-decoration-none"><span class="fw-bold text-capitalize text-primary">Click here to View the document : View</span></a>
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">PAY SLIP 3:</label>
+                {% if form.payslip3.value %}
+                    <a href="{{ form.payslip3.value.url }}" target="_blank" class="fw-bold text-decoration-none"><span class="fw-bold text-capitalize text-primary">Click here to View the document : View</span></a>
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="fw-bolder">EMPLOYEE ID CARD</label>
+                {% if form.employee_id_card.value %}
+                    <img src="{{ form.employee_id_card.value.url }}" alt="image" class="img-fluid w-100 h-100 mt-3">
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">BANK STATEMENT</label>
+                {% if form.bank_statement.value %}
+                    <a href="{{ form.bank_statement.value.url }}" target="_blank" class="fw-bold text-decoration-none"><span class="fw-bold text-capitalize text-primary">Click here to View the document : View</span></a>
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">CUSTOMER PHOTO :</label>
+                {% if form.customer_photo.value %}
+                    <img src="{{ form.customer_photo.value.url }}" alt="image" class="img-fluid w-100 h-100">
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">BUSINESS OFFICE PHOTO :</label>
+                {% if form.business_office_photo.value %}
+                    <img src="{{ form.business_office_photo.value.url }}" alt="image" class="img-fluid w-100 h-100">
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">BUSINESS PROOF 1:</label>
+                {% if form.business_proof_1.value %}
+                    <a href="{{ form.business_proof_1.value.url }}" target="_blank" class="fw-bold text-decoration-none"><span class="fw-bold text-capitalize text-primary">Click here to View the document : View</span></a>
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">BUSINESS PROOF 2:</label>
+                {% if form.business_proof_2.value %}
+                    <a href="{{ form.business_proof_2.value.url }}" target="_blank" class="fw-bold text-decoration-none"><span class="fw-bold text-capitalize text-primary">Click here to View the document : View</span></a>
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">EXISTING LOAN STATEMENT</label>
+                {% if form.existing_loan_statement.value %}
+                    <a href="{{ form.existing_loan_statement.value.url }}" target="_blank" class="fw-bold text-decoration-none"><span class="fw-bold text-capitalize text-primary">Click here to View the document : View</span></a>
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">Latest 12 Months Bank Statement:</label>
+                {% if form.latest_12_months_bank_statement.value %}
+                    <a href="{{ form.latest_12_months_bank_statement.value.url }}" target="_blank" class="fw-bold text-decoration-none"><span class="fw-bold text-capitalize text-primary">Click here to View the document : View</span></a>
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">Latest 3 Years ITR 1:</label>
+                {% if form.latest_3_yrs_itr_1.value %}
+                    <a href="{{ form.latest_3_yrs_itr_1.value.url }}" target="_blank" class="fw-bold text-decoration-none"><span class="fw-bold text-capitalize text-primary">Click here to View the document : View</span></a>
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">Latest 3 Years ITR 2:</label>
+                {% if form.latest_3_yrs_itr_2.value %}
+                   <a href="{{ form.latest_3_yrs_itr_2.value.url }}" target="_blank" class="fw-bold text-decoration-none"><span class="fw-bold text-capitalize text-primary">Click here to View the document : View</span></a>
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">Latest 3 Years ITR 3:</label>
+                {% if form.latest_3_yrs_itr_3.value %}
+                    <a href="{{ form.latest_3_yrs_itr_3.value.url }}" target="_blank" class="fw-bold text-decoration-none"><span class="fw-bold text-capitalize text-primary">Click here to View the document : View</span></a>
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">Current Address Proof:</label>
+                {% if form.current_address_proof.value %}
+                    <a href="{{ form.current_address_proof.value.url }}" target="_blank" class="fw-bold text-decoration-none"><span class="fw-bold text-capitalize text-primary">Click here to View the document : View</span></a>
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">Other Documents 1</label>
+                {% if form.other_document_1.value %}
+                    <a href="{{ form.other_document_1.value.url }}" target="_blank" class="fw-bold text-decoration-none"><span class="fw-bold text-capitalize text-primary">Click here to View the document : View</span></a>
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+
+            <div class="col-4" style="height: 300px;">
+                <label for="" class="mb-3 fw-bolder">Other Documents 2</label>
+                {% if form.other_document_2.value %}
+                    <a href="{{ form.other_document_2.value.url }}" target="_blank" class="fw-bold text-decoration-none"><span class="fw-bold text-capitalize text-primary">Click here to View the document : View</span></a>
+                {% else %}
+                    <p>No file uploaded.</p>
+                {% endif %}
+            </div>
+
+
+            <!-- Handle other document fields similarly -->
+        </div><!--row-->
+    </div>
+
+   
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

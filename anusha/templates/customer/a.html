@@ -1,0 +1,360 @@
+
+<title>Document Upload</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    .form-section {
+        margin-top: 20px;
+    }
+    .form-section h4 {
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 5px;
+    }
+    .invalid-feedback {
+        display: block;
+        color: red;
+    }
+</style>
+</head>
+
+<body>
+    
+<div class="container mt-5">
+    <h2 class="text-center">Upload Documents</h2>
+    {% if random_number %}
+        <p><strong>Application ID:</strong> {{ random_number }}</p>
+    {% endif %}
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+
+            <div class="form-group">
+                <label for="id_adhar_card_front">Adharcard front</label>
+                {{ form.adhar_card_front }}
+                {% if form.adhar_card_front.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.adhar_card_front.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+                
+                <div class="form-group">
+                    <label for="id_adhar_card_back">Adharcard back</label>
+                    {{ form.adhar_card_back }}
+                    {% if form.adhar_card_back.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.adhar_card_back.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_pan_card">Pan Card</label>
+                    {{ form.pan_card }}
+                    {% if form.pan_card.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.pan_card.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_customer_photo">Customer photo</label>
+                    {{ form.customer_photo }}
+                    {% if form.customer_photo.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.customer_photo.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_property_photo1">property photo1</label>
+                    {{ form.property_photo1 }}
+                    {% if form.property_photo1.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.property_photo1.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_property_photo2">property photo2</label>
+                    {{ form.property_photo2 }}
+                    {% if form.property_photo2.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.property_photo2.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_property_photo4">property photo3</label>
+                    {{ form.property_photo3 }}
+                    {% if form.property_photo3.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.property_photo3.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_property_photo4">property photo4</label>
+                    {{ form.property_photo4 }}
+                    {% if form.property_photo4.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.property_photo4.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% if incomesource == 'JOB' %}
+                <div class="form-group">
+                    <label for="id_pay_slips">Pay Slips</label>
+                    {{ form.pay_slips }}
+                    {% if form.pay_slips.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.pay_slips.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                    
+                    <div class="form-group">
+                        <label for="id_bank_statement">Bank statement</label>
+                        {{ form.bank_statement }}
+                        {% if form.bank_statement.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.bank_statement.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_employee_id_card">Employee Id card</label>
+                        {{ form.employee_id_card }}
+                        {% if form.employee_id_card.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.employee_id_card.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% elif incomesource == 'BUSINESS' %}
+                <div class="form-group">
+                    <label for="id_business_proof1">business proof1</label>
+                    {{ form.business_proof1 }}
+                    {% if form.business_proof1.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.business_proof1.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                    <div class="form-group">
+                        <label for="id_business_proof2">business proof2</label>
+                        {{ form.business_proof2 }}
+                        {% if form.business_proof2.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.business_proof2.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id_bank_statement_12m">Bank statement 12m</label>
+                        {{ form.bank_statement_12m }}
+                        {% if form.bank_statement_12m.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.bank_statement_12m.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id_business_office_photo">business_office_photo</label>
+                        {{ form.business_office_photo }}
+                        {% if form.business_office_photo.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.business_office_photo.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_itr1">ITR1</label>
+                        {{ form.itr1 }}
+                        {% if form.itr1.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.itr1.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_itr2">ITR2</label>
+                        {{ form.itr2 }}
+                        {% if form.itr2.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.itr2.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="id_itr3">ITR3</label>
+                        {{ form.itr3 }}
+                        {% if form.itr3.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.itr3.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    
+
+                {% if loan_type == 'LAPBT' %}
+                <h3>LAP Specific Documents</h3>
+                <div class="form-group">
+                    <label for="id_existing_loan_statement">existing loan statement</label>
+                    {{ form.existing_loan_statement }}
+                    {% if form.existing_loan_statement.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.existing_loan_statement.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                    <div class="form-group">
+                        <label for="id_other_document1">Other Document1</label>
+                        {{ form.other_document1 }}
+                        {% if form.other_document1.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.other_document1.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_other_document2">Other Document2</label>
+                        {{ form.other_document2 }}
+                        {% if form.other_document2.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.other_document2.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_other_document3">Other Document3</label>
+                        {{ form.other_document3 }}
+                        {% if form.other_document3.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.other_document3.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_other_document4">Other Document4</label>
+                        {{ form.other_document4 }}
+                        {% if form.other_document4.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.other_document4.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+            <div class="col-md-6">
+                <h3>Co-Applicant Documents</h3>
+                <div class="form-group">
+                    <label for="id_co_applicant_adhar_card_front">Aadhar Front</label>
+                    {{ form.co_applicant_adhar_card_front}}
+                    {% if form.co_applicant_adhar_card_front.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.co_applicant_adhar_card_front.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_co_applicant_adhar_card_back">AAdhar Back</label>
+                    {{ form.co_applicant_adhar_card_back }}
+                    {% if form.co_applicant_adhar_card_back.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.co_applicant_adhar_card_back.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_co_applicant_pan_card">Co Applicant Pan Card</label>
+                    {{ form.co_applicant_pan_card }}
+                    {% if form.co_applicant_pan_card.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.co_applicant_pan_card.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_co_applicant_selfie_photo">Co Applicant Selfie Photo</label>
+                    {{ form.co_applicant_selfie_photo }}
+                    {% if form.co_applicant_selfie_photo.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.co_applicant_selfie_photo.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+

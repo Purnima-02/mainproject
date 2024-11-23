@@ -1,0 +1,25 @@
+<!-- employee_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+</head>
+<body>
+
+<h1>Employee Details</h1>
+
+{% if count > 0 %}
+    <p><strong>Name:</strong> {{ employee.name }}</p>
+    <p><strong>EmpRef Code:</strong> {{ employee.empref_code }}</p>
+    <p><strong>Position:</strong> {{ employee.position }}</p>
+    <p><strong>Department:</strong> {{ employee.department }}</p>
+    <p><strong>Hire Date:</strong> {{ employee.hire_date }}</p>
+    <p><strong>Number of employees with this reference code:</strong> {{ count }}</p>
+{% else %}
+    <p>No employees found with this reference code.</p>
+{% endif %}
+
+</body>
+</html>

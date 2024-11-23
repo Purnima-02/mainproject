@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Educational Loan Form</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+    <!-- Crispy Forms CSS -->
+    {% load crispy_forms_tags %}
+
+    <style>
+        #salaried-fields label::after,
+        #self-employed-fields label::after {
+            content: '*';
+            color: red;
+        }
+        .asteriskField{
+    color:red;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Update Educational Loan Application</h1>
+        <form method="post" id="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-4 col-6">{{ form.student_name|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.mail_id|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.mobile_number|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.country|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.course|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.university_name|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.score_card|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.GRE_score|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.IELTS_score|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.TOEFL_score|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.Duolingo_score|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.PTE_score|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.student_work_experience|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.cibil_score|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.required_loan_amount|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.backlogs|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.residence_location|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.permanent_location|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.co_applicant_type|as_crispy_field }}</div>
+            </div>
+
+            <div id="salaried-fields" style="display:none;">
+                <div class="row">
+                    <div class="col-lg-4 col-6">{{ form.co_applicant_parent_name|as_crispy_field }}</div>
+                    <div class="col-lg-4 col-6">{{ form.co_applicant_company_name|as_crispy_field }}</div>
+                    <div class="col-lg-4 col-6">{{ form.co_applicant_salaried_designation|as_crispy_field }}</div>
+                    <div class="col-lg-4 col-6">{{ form.co_applicant_salaried_net_pay|as_crispy_field }}</div>
+                    <div class="col-lg-4 col-6">{{ form.co_applicant_salaried_emis|as_crispy_field }}</div>
+                    <div class="col-lg-4 col-6">{{ form.co_applicant_salaried_cibil_score|as_crispy_field }}</div>
+                </div>
+            </div>
+
+            <div id="self-employed-fields" style="display:none;">
+                <div class="row">
+                    <div class="col-lg-4 col-6">{{ form.co_applicant_self_employed_business_name|as_crispy_field }}
+                    </div>
+                    <div class="col-lg-4 col-6">{{ form.co_applicant_self_employed_itr_mandatory|as_crispy_field }}
+                    </div>
+                    <div class="col-lg-4 col-6">{{ form.co_pplicant_self_employed_itr_amount|as_crispy_field }}</div>
+                    <div class="col-lg-4 col-6">{{ form.co_applicant_self_employed_business_licence|as_crispy_field }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+
+                <div class="col-lg-4 col-6">{{ form.current_adress_type|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.aadhar_adress_type|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.own_house|as_crispy_field }}</div>
+
+
+                <div class="col-lg-4 col-6">{{ form.property_location|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.co_applicant_property_details|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.property_type|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.property_market_value|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.property_govt_value|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.property_local_government_body|as_crispy_field }}</div>
+
+                <div class="col-lg-4 col-6">{{ form.ref1name|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.ref1mobilenumber|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.ref2name|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.ref2mobilenumber|as_crispy_field }}</div>
+                
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="{% static 'EducationalLoan/js/Edumain.js' %?v=2}"></script>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.4/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

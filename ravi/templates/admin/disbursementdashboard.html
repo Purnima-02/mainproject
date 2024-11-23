@@ -1,0 +1,448 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+  {% block Extrascripts %}{% endblock %}
+
+  <title></title>
+
+  <style>
+    body {
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --offcanvas-width: 270px;
+    }
+
+    .offcanvas {
+      max-width: var(--offcanvas-width);
+      background-color: black;
+      color: white;
+      box-sizing: border-box;
+    }
+
+    .main-section{
+      height: 100vh;
+      z-index:1111;
+     /* margin-top:0px; */
+      color: black;
+      
+      background-color: white;
+      position: relative;
+      transition: .5s linear;
+      
+    }
+    nav .navbar-nav .item3{
+        display: none;
+      }
+
+    @media (min-width:769px) {
+      .main-section{
+        margin-left: calc(var(--offcanvas-width) - 1px);
+      }
+
+      .offcanvas{
+        transform: none;
+        visibility: visible;
+      }
+
+     
+    }
+
+    @media (max-width:768px) {
+
+      nav .navbar-brand label{
+        display: none;
+      }
+
+      .main-section{
+        margin-left: 0px !important;
+
+      }
+
+      nav .navbar-nav .item3{
+        display: block;
+      }
+
+    nav img{
+      width: 100px !important;
+    }
+
+    .offcanvas{
+      z-index:1112 !important;
+    }
+      
+    }
+
+    nav .navbar-nav .item1{
+      font-size: 20px;
+    }
+    nav .navbar-nav .item2{
+      font-size: 50px;
+    }
+    nav .navbar-nav{
+      padding:0 5px;
+    
+      /* background-color: blue; */
+      display: flex;
+      align-items: center;
+   
+      /* justify-content: space-around; */
+     justify-content: space-between;
+      flex-direction: row;
+    }
+    nav .navbar-nav li{
+      margin-right: 20px;
+    }
+
+    
+
+    .main-navbar {
+      
+      background: black;
+      max-height: 300px;
+      /* width: 100vw; */
+      color: white;
+    }
+
+    .my-active{
+      margin-left:80px;
+      z-index:1111;
+
+    }
+
+    nav .navbar-brand label i{
+      /* display: inline-block; */
+      color:white !important;
+      cursor: pointer;
+    }
+
+   
+
+
+   
+    
+
+    
+
+    .offcanvas-body .navbar-nav li .icon{
+
+      font-size: 30px;
+      color: rgb(193, 184, 184);
+    }
+    .offcanvas-body .navbar-nav li .content{
+      font-size: 18px;
+      color: rgb(193, 184, 184);
+      text-decoration: none;
+    }
+    .offcanvas-body .navbar-nav li:hover .list-item{
+            color: white !important;
+        }
+
+        .offcanvas-body .navbar-nav .item .right-icon{
+          transition: .3s linear;
+          color: rgb(193, 184, 184);
+        }
+
+        .offcanvas-body .navbar-nav li a[aria-expanded="true"] .right-icon{
+
+          transform: rotate(90deg);
+        }
+
+        .offcanvas-body .navbar-nav li .sub-list-item:hover{
+            color: white !important;
+        }
+
+      
+       
+
+        
+        .offcanvas-body::-webkit-scrollbar{
+          display: none;
+        }
+
+       
+
+
+
+  
+
+  </style>
+</head>
+
+<body>
+
+  <!-- sidebar -->
+  <div class="offcanvas  offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+    id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title fs-5" id="offcanvasExampleLabel">Employee DASHBOARD</h5>
+      <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+    </div>
+    <br>
+
+    <hr class="dropdown-divider">
+    <div class="offcanvas-body">
+      <div>
+
+        <ul class="navbar-nav mt-5">
+
+         <li class="mb-4 item">
+
+          <span class="px-3 icon list-item">
+            <i class="bi bi-speedometer2"></i>
+          </span>
+          <a href="#dashboard" class="content list-item">DashBoard</a>
+          <hr class="dropdown-divider">
+
+
+          <li class="item2 item mt-3 loans" style="color:white;"> <!--Dropdown list-->
+            <a href="#" class="nav-link d-flex align-items-center mains" style="font-size: 16px;" data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1">
+              <span class="px-3 icon list-item">
+                <i class=""></i>
+              </span>
+              <a href="{% url 'pldisbursement_summary' %}" style="text-decoration: none;"><span class="content list-item">view disbursement details</span></a>
+              <span class="right-icon ms-auto list-item">
+                <i class=""></i>
+              </span>
+            </a>
+            
+        
+          <li class="item3 item  w-100" style="color:white;"> <!--Dropdown list-->
+            <a class="nav-link d-flex align-items-center" style="font-size: 16px;" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+              <span class="px-3 icon list-item">
+                <i class=""></i>
+              </span>
+              <span class="content list-item"></span>
+              <span class="">
+                <i class=""></i>
+              </span>
+            </a>
+            <div class="collapse mt-4 ms-3" id="collapseExample2">
+              <div class="">
+                <ul class="navbar-nav">
+                  <li class="">
+                    <span class="px-2 icon sub-list-item">
+                      <i class=""></i>
+                    </span>
+                    <a href="#" class="content sub-list-item">Add New Loan</a>
+                  </li>
+                  <li class="">
+                    <span class="px-2 icon sub-list-item">
+                      <i class=""></i>
+                    </span>
+                    <a href="All-Loan" class="content sub-list-item">All Loan</a>
+                  </li>
+                  <li class="">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-credit-card"></i>
+                    </span>
+                    <a href="Approved-Loan" class="content sub-list-item">Approved Loan</a>
+                  </li>
+                  <li class="">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-credit-card"></i>
+                    </span>
+                    <a href="Disbursed-Loan" class="content sub-list-item">Disbursed Loan</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li><!--Dropdown list-->
+ 
+
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+
+  <style>
+
+    .main::-webkit-scrollbar{
+        display: none;
+      }
+  </style>
+
+  <!--Main section-->
+  <main class="main-section">
+
+    <nav class="main-navbar navbar navbar-dark">
+
+      <div class="navbar-brand">
+        <img src= "{% static 'images/removelogo.png' %}" alt="Logo" width="200" height="100">
+      <input type="checkbox" name="" id="my-check" style="display: none;">
+      <label for="my-check">
+        <i class="fas fa-bars"></i>
+      </label>
+      </div>
+    
+
+      <ul class="navbar-nav">
+
+        <!-- <li class="item1 me-md-5">
+          <label>Welcome,fyuiu@gmail.com</label>
+        </li> -->
+        <li class="item2">
+          <i class="bi bi-person-fill"></i>
+        </li>
+        <li class="item3">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+        aria-controls="offcanvasExample">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      </li>
+      </ul>
+
+
+    </nav>
+
+    
+
+
+
+    <div class="container-fluid">
+
+    <div class="">
+
+    <div class="row">
+    
+    
+      
+  
+      
+
+
+      {% block content1 %}
+      
+      <!-- <h1>Im im Fisrt bloack content........</h1> -->
+      
+      
+      {% endblock %}
+
+
+     
+
+        <!-- {% block content2 %}{% endblock %} -->
+
+      
+
+
+
+
+    </div>
+    
+    </div>
+    
+    </div>
+
+
+
+
+
+  </main>
+
+  <script>
+
+    console.log("ji");
+    function toggleOffcanvas() {
+      var width = window.innerWidth;
+
+     // document.getElementById("p1").textContent=width;
+      // document.write(width)
+      console.log('Current width:', width);
+
+      if (width > 768) {
+        document.querySelector('.offcanvas').classList.add('show');
+      } else {
+        document.querySelector('.offcanvas').classList.remove('show');
+      }
+
+      if(width>=768 && width<=896){
+        document.querySelector('.main-section').classList.add('my-active')
+      }
+      else{
+
+         document.querySelector('.main-section').classList.remove('my-active')
+      }
+    }
+
+    // Initial check
+    toggleOffcanvas();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', toggleOffcanvas);
+    document.querySelector('#my-check').addEventListener('input',function(){
+
+      if(this.checked){
+        document.querySelector('.main-section').classList.add('my-active')
+      }
+      else{
+        document.querySelector('.main-section').classList.remove('my-active')
+
+      }
+
+     
+    });
+
+    var a=window.location.pathname;
+      console.log(a);
+      const res=a.split('/').pop();
+      console.log(res);
+
+      const itemslist=document.querySelectorAll('.offcanvas .offcanvas-body .navbar-nav .item .collapse .navbar-nav li a');
+
+      itemslist.forEach((item)=>{
+
+        console.log(item.getAttribute('href'));
+
+        if(item.getAttribute('href')===res){
+          console.log("sucess..")
+          // document.querySelector('.loans .main').style.backgroundColor="red";
+           item.style.color="white";
+        }
+      });
+
+  </script>
+
+
+
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+
+</body>
+
+</html>

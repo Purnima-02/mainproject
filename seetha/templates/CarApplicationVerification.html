@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Car Application Verification</title>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+        <div class="container mt-5">
+   
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <div class="row"><!--Row-->
+
+                <div class="col-12 col-lg-6 mb-3"><!--column-->
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label for="" class="form-label text-center d-block fw-bold">1. Personal Detail Verification</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="personal_detail_verification" id="id_personal_detail_verification_approved" value="Approved">
+                                <label class="form-check-label text-success fw-normal" for="id_personal_detail_verification_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="personal_detail_verification" id="id_personal_detail_verification_rejected" value="Rejected"> 
+                                <label class="form-check-label text-danger fw-normal" for="id_personal_detail_verification_rejected">Rejected</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div><!--column-->
+
+                 <!-- Documents Upload Verification -->
+                 <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">2. Documents Upload Verification</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="documents_upload_verification" id="id_documents_upload_verification_approved" value="Approved">
+                                <label class="form-check-label text-success fw-normal" for="id_documents_upload_verification_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="documents_upload_verification" id="id_documents_upload_verification_rejected" value="Rejected">
+                                <label class="form-check-label text-danger fw-normal" for="id_documents_upload_verification_rejected">Rejected</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                 <!-- Documents Verification -->
+                 <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">3. Documents Verification</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="documents_verification" id="id_documents_verification_approved" value="Approved">
+                                <label class="form-check-label text-success fw-normal" for="id_documents_verification_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="documents_verification" id="id_documents_verification_rejected" value="Rejected">
+                                <label class="form-check-label text-danger fw-normal" for="id_documents_verification_rejected">Rejected</label>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+
+                <!-- Eligibility Check Verification -->
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">4. Eligibility Check Verification</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="eligibility_check_verification" id="id_eligibility_check_verification_approved" value="Approved">
+                                <label class="form-check-label text-success fw-normal" for="id_eligibility_check_verification_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="eligibility_check_verification" id="id_eligibility_check_verification_rejected" value="Rejected">
+                                <label class="form-check-label text-danger fw-normal" for="id_eligibility_check_verification_rejected">Rejected</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bank Login Verification -->
+                <div class="col-12 col-lg-6  mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold ">5. Bank Login Verification</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="bank_login_verification" id="id_bank_login_verification_approved" value="Approved">
+                                <label class="form-check-label text-success fw-normal" for="id_bank_login_verification_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="bank_login_verification" id="id_bank_login_verification_rejected" value="Rejected">
+                                <label class="form-check-label text-danger fw-normal" for="id_bank_login_verification_rejected">Rejected</label>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+
+                <!--- Valuation--->
+                <div class="col-12 col-lg-6  mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold ">6. Valuation</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="valuation" id="id_valuation_completed" value="Approved">
+                                <label class="form-check-label text-success fw-normal" for="id_valuation_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="valuation" id="id_valuation_rejected" value="Rejected">
+                                <label class="form-check-label text-danger fw-normal" for="id_valuation_rejected">Rejected</label>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!--- Credit Manager Inspection/pd--->
+                <div class="col-12 col-lg-6  mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold ">7. CREDIT MANAGER INSPECTION / PD</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="credit_manager_inspection" id="id_credit_manager_inspection_completed" value="Approved">
+                                <label class="form-check-label text-success fw-normal" for="id_credit_manager_inspection_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="credit_manager_inspection" id="id_credit_manager_inspection_rejected" value="Rejected">
+                                <label class="form-check-label text-danger fw-normal" for="id_credit_manager_inspection_rejected">Rejected</label>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+
+                <!-- KYC and Document Verification -->
+                <div class="col-12 col-lg-6  mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">8. KYC and Document Verification</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="kyc_and_documents_verification" id="id_kyc_and_documents_verification_approved" value="Approved">
+                                <label class="form-check-label text-success fw-normal" for="id_kyc_and_documents_verification_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="kyc_and_documents_verification" id="id_kyc_and_documents_verification_rejected" value="Rejected">
+                                <label class="form-check-label text-danger fw-normal" for="id_kyc_and_documents_verification_rejected">Rejected</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- E-NACH Verification -->
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">9. E-NACH Verification</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="enach_verification" id="id_enach_verification_approved" value="Approved">
+                                <label class="form-check-label text-success fw-normal" for="id_enach_verification_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="enach_verification" id="id_enach_verification_rejected" value="Rejected">
+                                <label class="form-check-label text-danger fw-normal" for="id_enach_verification_rejected">Rejected</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disbursment verification -->
+                <div class="col-12 col-lg-6  mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">10. Disbursment verification </label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="disbursment_verification" id="id_disbursment_verification_approved" value="Approved">
+                                <label class="form-check-label text-success fw-normal" for="id_disbursment_verification_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="disbursment_verification" id="id_disbursment_verification_rejected" value="Rejected">
+                                <label class="form-check-label text-danger fw-normal" for="id_disbursment_verification_rejected">Rejected</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+            
+
+                <!-- POST DOCUMENTATION ( REGISTRATION) -->
+                <div class="col-12 col-lg-6  mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">11. POST DOCUMENTATION ( REGISTRATION)</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="post_documentation" id="id_post_documentation_approved" value="Approved">
+                                <label class="form-check-label text-success fw-normal" for="id_post_documentation_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="post_documentation" id="id_post_documentation_rejected" value="Rejected">
+                                <label class="form-check-label text-danger fw-normal" for="id_post_documentation_rejected">Rejected</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--- RC CARD SUBMISSION -->
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label for="" class="form-label text-center d-block fw-bold">12. RC CARD SUBMISSION</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="rc_card_submission" id="id_rc_card_submission_approved" value="Approved">
+                                <label class="form-check-label text-success fw-normal" for="id_rc_card_submission_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="rc_card_submission" id="id_rc_card_submission_rejected" value="Rejected"> 
+                                <label class="form-check-label text-danger fw-normal" for="id_rc_card_submission_rejected">Rejected</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                 <!--APPLICATION SUCCESSFULL -->
+                 <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">13. APPLICATION SUCCESSFULL</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="verification_status" id="id_application_successfull" value="Approved" 
+                                {{% if form.enach_verification.value == "Completed" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_application_successfull">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="application_successfull" id="id_application_successfull" value="Rejected"
+                                {{% if form.enach_verification.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_application_successfull">Rejected</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <button type="submit" class="btn btn-primary mt-5">Submit</button>
+            </div><!--Row-->
+
+        </form>
+        </div>
+        </div>
+   
+<br><br>
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const allRadioButtons = document.querySelectorAll('.form-check-input');
+        
+                function updateRadioButtons() {
+                    let startDisabling = false;
+                    allRadioButtons.forEach((radio) => {
+                        if (startDisabling) {
+                            radio.disabled = true;
+                        } else {
+                            radio.disabled = false;
+                        }
+                        if (radio.checked && radio.value === 'Rejected') {
+                            startDisabling = true;
+                            
+                        }
+                       
+                    });
+                }
+        
+                allRadioButtons.forEach((radio) => {
+                    radio.addEventListener('input', function() {
+                        updateRadioButtons();
+                    });
+                });
+        
+               
+                updateRadioButtons();
+            });
+        </script>
+        
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+   
+  </body>
+</html>
+

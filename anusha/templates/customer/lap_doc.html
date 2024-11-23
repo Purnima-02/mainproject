@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>lap Applicant Documents List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">LoanAgainstProperty Applicant Documents</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Applicant Profile</th>
+                    <th>Document Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for document in applicant_documents %}
+                <tr>
+                    <td>{{ document.id }}</td>
+                    <td>{{ document.personal_details }}</td>
+                    <td>{{ document.document_type }}</td>
+                    <td>
+                        <a href="{% url 'update_doc' document.id %}" class="btn btn-primary">Update</a>&nbsp;&nbsp;
+                        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Back</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

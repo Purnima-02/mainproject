@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal loan sales login Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            background-position: center;
+            
+        }
+        header {
+            background-color: #0a8088;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .container {
+            color: white;
+            max-width:500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #0a8088; /* Semi-transparent background */
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 12px 8px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            text-align: center;
+          
+        }
+        .row {
+            display: flex;
+            align-items: center;
+            width: 90%;
+            margin-bottom: 15px;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        .row label {
+            margin-right: 5px;
+            margin-left: 5px;
+            width: 30%;
+        }
+        .row input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+          
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color:blue;
+            color: black;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100px;
+        }
+        button:hover {
+            background-color:darkred;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color:#ffff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>WELCOME TO SLNFINSERV</h1>
+    </header>
+    <div class="container">
+        <h2 >CUSTOMER SUPPORT PERSON LOGIN</h2>
+        <form onsubmit="return handleLogin(event)">
+            <div class="row">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="row">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+
+
+           
+
+
+
+
+
+
+
+            <button>SUBMIT</button>
+        </form>
+    </div>
+    <script>
+       function handleLogin(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const validUsername = 'employee';
+    const validPassword = 'employee@123';
+
+    if (username === validUsername && password === validPassword) {
+        window.location.href ="{% url 'new_dashbord' %}"; // Redirect to customer page
+    } else {
+        alert('Invalid username or password');
+    }
+}
+    </script>
+</body>
+</html>

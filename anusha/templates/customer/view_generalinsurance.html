@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>view generalInsurance List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
+                responsive: true
+            });
+        });
+    </script>
+</head>
+<body>    
+    <div class="container mt-5">
+        <style>
+            .back-button {
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+            }
+            .back-button:hover {
+                color: #007bff; /* Change color on hover */
+            }
+        </style>
+        
+        <a href="javascript:void(0);" onclick="window.history.back();" class="back-button">← Back</a>
+  
+        <h2 class="text-center">View General Insurance</h2>
+        <table id="example" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <!-- <th>Applicant ID</th> -->
+                    <th>Insurance Name</th>
+                    <th>person Name</th>
+                    <th>Mobile Number</th>
+                    <th>Email Id</th>
+                    <th>Description</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for profile in general %}
+                <tr>
+                    <td>{{ profile.id }}</td>
+                    <!-- <td>{{ profile.random_number }}</td> -->
+                    <td>{{ profile.insurance_name }}</td>
+                    <td>{{ profile.name }}</td>
+                    <td>{{ profile.mobile_number }}</td>
+                    <td>{{ profile.email_id }}</td>
+                    <td>{{ profile.messgae}}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        &nbsp;&nbsp;
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

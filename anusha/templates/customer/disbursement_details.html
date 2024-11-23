@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAP Disbursement Details Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f6f7; 
+            margin: 0;
+            padding: 0;
+        }
+        .form-container {
+            max-width: 700px; 
+            margin: 30px auto; 
+            background-color: #ffffff; 
+            padding: 20px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+            text-align: center;
+        }
+        .form-container h1 {
+            color: #333; 
+            font-size: 24px; 
+            margin-bottom: 15px; 
+        }
+        .form-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .form-group {
+            flex: 1 1 calc(50% - 16px); /* Two columns with a small gap */
+            margin-bottom: 12px;
+            text-align: left;
+        }
+        .form-group label {
+            font-weight: bold; 
+            color: #666;
+            display: block; 
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; 
+            padding: 8px; 
+            font-size: 14px; 
+            border: 1px solid #ddd; 
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #6c63ff;
+            outline: none;
+        }
+        .form-group .invalid-feedback {
+            color: #e63946; 
+            font-size: 12px; 
+            margin-top: 4px; 
+        }
+        button {
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border: none; 
+            border-radius: 8px; 
+            background-color: #6c63ff; 
+            color: white; 
+            cursor: pointer; 
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #4f46e5; 
+        }
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .form-group {
+                flex: 1 1 100%; /* Stacks the fields on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <style>
+        .back-button {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin-top: 1px;
+            margin-right: 90%;
+
+        }
+        .back-button:hover {
+            color: #007bff; /* Change color on hover */
+        }
+    </style>
+    
+    <div class="form-container">
+        <a href="javascript:void(0);" onclick="window.history.back();" class="back-button">← Back</a>
+
+        <h1>LAP Disbursement Details</h1>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="form-content">
+                {% for field in details_form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in field.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

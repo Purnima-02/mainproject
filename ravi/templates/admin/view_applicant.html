@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Personal Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .fixed-size-img {
+            width: 150px; 
+            height: 150px; 
+            object-fit: cover; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">View Home loan Document</h2>
+        <form method="post" action="{% url 'update_applicant_document' applicant_document.id %}">
+            {% csrf_token %}
+            
+        
+            <div class="form-group">
+                <label for="adhar_card_front">Aadhar Card Front</label>
+                <div>
+                    {% if applicant_document.adhar_card_front %}
+                        <img src="{{ applicant_document.adhar_card_front.url }}" alt="Aadhar Card Front" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="adhar_card_back">Aadhar Card Back</label>
+                <div>
+                    {% if applicant_document.adhar_card_back %}
+                        <img src="{{ applicant_document.adhar_card_back.url }}" alt="Aadhar Card Back" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pan_card">PAN Card</label>
+                <div>
+                    {% if applicant_document.pan_card %}
+                        <img src="{{ applicant_document.pan_card.url }}" alt="PAN Card" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customer_photo">Customer Photo</label>
+                <div>
+                    {% if applicant_document.customer_photo %}
+                        <img src="{{ applicant_document.customer_photo.url }}" alt="Customer Photo" class="img-fluid fixed-size-img">
+                   
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="home_plot_photo_1">Home Plot Photo 1</label>
+                <div>
+                    {% if applicant_document.home_plot_photo_1 %}
+                        <img src="{{ applicant_document.home_plot_photo_1.url }}" alt="Home Plot Photo 1" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="home_plot_photo_2">Home Plot Photo 2</label>
+                <div>
+                    {% if applicant_document.home_plot_photo_2 %}
+                        <img src="{{ applicant_document.home_plot_photo_2.url }}" alt="Home Plot Photo 2" class="img-fluid fixed-size-img">
+                   
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="home_plot_photo_3">Home Plot Photo 3</label>
+                <div>
+                    {% if applicant_document.home_plot_photo_3 %}
+                        <img src="{{ applicant_document.home_plot_photo_3.url }}" alt="Home Plot Photo 3" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="home_plot_photo_4">Home Plot Photo 4</label>
+                <div>
+                    {% if applicant_document.home_plot_photo_4 %}
+                        <img src="{{ applicant_document.home_plot_photo_4.url }}" alt="Home Plot Photo 4" class="img-fluid fixed-size-img">
+                   
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="latest_3_months_banked_statement">Latest 3 Months Banked Statement</label>
+                <div>
+                    {% if applicant_document.latest_3_months_banked_statement %}
+                    <a href="{{ applicant_document.latest_3_months_banked_statement.url }}" target="_blank">view pdf</a>
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="latest_3_months_payslips_1">Latest 3 Months Pay Slips 1</label>
+                <div>
+                    {% if applicant_document.latest_3_months_payslips_1 %}
+                    <a href="{{ applicant_document.latest_3_months_payslips_1.url }}" target="_blank">View Pdf</a>
+                   
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="latest_3_months_payslips_2">Latest 3 Months Pay Slips 2</label>
+                <div>
+                    {% if applicant_document.latest_3_months_payslips_2 %}
+                    <a href="{{ applicant_document.latest_3_months_payslips_2.url }}" target="_blank">View Pdf</a>
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="latest_3_months_payslips_3">Latest 3 Months Pay Slips 3</label>
+                <div>
+                    {% if applicant_document.latest_3_months_payslips_3 %}
+                    <a href="{{ applicant_document.latest_3_months_payslips_3.url }}" target="_blank">View pdf</a>
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="employee_id_card">Employee ID Card</label>
+                <div>
+                    {% if applicant_document.employee_id_card %}
+                        <img src="{{ applicant_document.employee_id_card.url }}" alt="Employee ID Card" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>  
+            </div>
+
+            <div class="form-group">
+                <label for="business_proof_1">Business Proof 1</label>
+                <div>
+                    {% if applicant_document.business_proof_1 %}
+                        <img src="{{ applicant_document.business_proof_1.url }}" alt="Business Proof 1" class="img-fluid fixed-size-img">
+                   
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="business_proof_2">Business Proof 2</label>
+                <div>
+                    {% if applicant_document.business_proof_2 %}
+                        <img src="{{ applicant_document.business_proof_2.url }}" alt="Business Proof 2" class="img-fluid fixed-size-img">
+                
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="latest_12_months_banked_statement">Latest 12 Months Banked Statement</label>
+                <div>
+                    {% if applicant_document.latest_12_months_banked_statement %}
+                    <a href="{{ applicant_document.latest_12_months_banked_statement.url }}" target="_blank">View Pdf</a>
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="business_office_photo">Business Office Photo</label>
+                <div>
+                    {% if applicant_document.business_office_photo %}
+                        <img src="{{ applicant_document.business_office_photo.url }}" alt="Business Office Photo" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="latest_3_yrs_itr_1">Latest 3 Yrs ITR 1</label>
+                <div>
+                    {% if applicant_document.latest_3_yrs_itr_1 %}
+                    <a href="{{ applicant_document.latest_3_yrs_itr_1.url }}" target="_blank">View Pdf</a>
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="latest_3_yrs_itr_2">Latest 3 Yrs ITR 2</label>
+                <div>
+                    {% if applicant_document.latest_3_yrs_itr_2 %}
+                    <a href="{{ applicant_document.latest_3_yrs_itr_2.url }}" target="_blank">View Pdf</a>
+                   
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="latest_3_yrs_itr_3">Latest 3 Yrs ITR 3</label>
+                <div>
+                    {% if applicant_document.latest_3_yrs_itr_3 %}
+                    <a href="{{ applicant_document.latest_3_yrs_itr_3.url }}" target="_blank">View Pdf</a>
+                   
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="current_address_proof">Current Address Proof</label>
+                <div>
+                    {% if applicant_document.current_address_proof %}
+                        <img src="{{ applicant_document.current_address_proof.url }}" alt="Current Address Proof" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+
+            
+
+            
+            <div class="form-group">
+                <label for="existing_loan_statement">Existing Loan Statement</label>
+                <div>
+                    {% if applicant_document.existing_loan_statement %}
+                        <a href="{{ applicant_document.existing_loan_statement.url }}" target="_blank">View Existing Loan Statement</a>
+                   
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="other_documents_1">Other Documents 1</label>
+                <div>
+                    {% if applicant_document.other_documents_1 %}
+                        <a href="{{ applicant_document.other_documents_1.url }}" target="_blank">View pdf</a>
+                   
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="other_documents_2">Other Documents 2</label>
+                <div>
+                    {% if applicant_document.other_documents_2 %}
+                        <a href="{{ applicant_document.other_documents_2.url }}" target="_blank">View pdf</a>
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="other_documents_3">Other Documents 3</label>
+                <div>
+                    {% if applicant_document.other_documents_3 %}
+                        <a href="{{ applicant_document.other_documents_3.url }}" target="_blank">View pdf</a>
+                   
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="other_documents_4">Other Documents 4</label>
+                <div>
+                    {% if applicant_document.other_documents_4 %}
+                        <a href="{{ applicant_document.other_documents_4.url }}" target="_blank">View pdf </a>
+                        </a>
+                    
+                    {% endif %}
+                </div>
+            </div>
+
+         
+            <h3>Co-Applicant Details</h3>
+            <div class="form-group">
+                <label for="co_adhar_card_front">Co-Applicant Aadhar Card Front</label>
+                <div>
+                    {% if applicant_document.co_adhar_card_front %}
+                        <img src="{{ applicant_document.co_adhar_card_front.url }}" alt="Co-Applicant Aadhar Card Front" class="img-fluid fixed-size-img">
+                   
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="co_adhar_card_back">Co-Applicant Aadhar Card Back</label>
+                <div>
+                    {% if applicant_document.co_adhar_card_back %}
+                        <img src="{{ applicant_document.co_adhar_card_back.url }}" alt="Co-Applicant Aadhar Card Back" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="co_pan_card">Co-Applicant PAN Card</label>
+                <div>
+                    {% if applicant_document.co_pan_card %}
+                        <img src="{{ applicant_document.co_pan_card.url }}" alt="Co-Applicant PAN Card" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="co_selfie_photo">Co-Applicant Selfie Photo</label>
+                <div>
+                    {% if applicant_document.co_selfie_photo %}
+                        <img src="{{ applicant_document.co_selfie_photo.url }}" alt="Co-Applicant Selfie Photo" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+            
+
+            <a href="{% url 'update_applicant_document' applicant_document.id %}" class="btn btn-primary">Edit</a>
+        </form>
+    </div>
+</body>
+</html>

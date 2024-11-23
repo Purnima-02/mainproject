@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Details List</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#personalDetailsTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
+                responsive: true
+            });
+
+            // Custom search functionality
+            $('#searchInput').on('keyup', function() {
+                var value = $(this).val().toLowerCase();
+                $('#personalDetailsTable tbody tr').filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+
+
+</head>
+<body>
+   
+    <h2 class="text-center" >Credit Card Details List</h2> 
+    <div class="container mt-5">
+        <style>
+            .back-button {
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+            }
+            .back-button:hover {
+                color: #007bff; /* Change color on hover */
+            }
+        </style>
+        
+        <a href="javascript:void(0);" onclick="window.history.back();" class="back-button">← Back</a>
+        <div class="row mb-3">
+            <div class="col-md-6">
+             
+            </div>
+           
+        </div>
+
+        <table id="personalDetailsTable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>S.NO</th>
+                    <th>Application ID</th>
+                    <th>Full Name</th>
+                    <th>Cibil Score</th>
+                    <th>Phone Number</th>
+                    <th>Franchise Code</th>
+                    <th>DSA Code</th>
+                    <th>Sales Code</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for detail in profile_with_cibil %}
+                <tr>
+                    <td>{{detail.profile.id}}</td>
+                    <td>{{detail.profile.basicdetailform.application_id}}</td>
+
+                    <td>{{ detail.profile.first_name }}{{ detail.profile.last_name}}</td>
+                    <td>
+                        {% if detail.cibil_score %}
+                            {{ detail.cibil_score }}
+                        {% else %}
+                            Not Available
+                        {% endif %}
+                    </td>
+                    <td>{{ detail.profile.mobile_number }}</td>
+                    <td>{{ entry.profile.franrefCode}}</td>
+                    <td>{{ entry.profile.dsaref_code}}</td>
+
+                    <td>{{ entry.profile.empref_code}}</td>
+
+                    <td>
+                        <a href="{% url 'update_credit_detail' detail.profile.id %}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'view_credit_appli' detail.profile.id %}" class="btn btn-secondary">View</a>
+                        <a href="{% url 'view_documents' %}" class="btn btn-info">Doc View</a>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+.asteriskField{
+    color:red;
+}
+#div_id_gst_number label::after{
+    content: '*';
+    color: red;
+}

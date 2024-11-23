@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homeloan Customer Profiles</title>
+</head>
+<body>
+    <h1 class="text-center">HomeLoan Customer Profiles</h1>
+    
+    <!-- Display the customer profiles -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profile in profiles %}
+                <tr>
+                    <td>{{ profile.id }}</td>
+                    <td>{{ profile.first_name }} {{ profile.last_name }}</td>  <!-- Use the correct field names -->
+                    <td>{{ profile.mobile_number }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No profiles found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,124 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business Loan View</title>
+
+    <!--custom css-->
+
+    <link rel="stylesheet" href="{% static "apply_for_business_loan.css" %}">
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="{% static 'main.js' %}?v=2"></script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("View Business");
+            document.querySelectorAll('input,textarea').forEach(e => {
+                e.readOnly = true;
+              //  console.log(e.hasAttribute('readOnly'));
+            });
+
+            const a=document.getElementById('id_has_gst_certificate');
+            
+
+           
+        });
+    </script>
+
+
+
+    </script>
+    <style>
+        #div_id_gst_number label::after{
+    content: '*';
+    color: red;
+}
+    </style>
+</head>
+  <body>
+    <div class="container mt-5">
+      <h2 class="text-center">Business Loan View Application Form</h2>
+
+      <form method="post" id="form">
+        {% csrf_token %}
+        
+        <div class="row">
+            <div class="col-lg-4 col-6">{{ form.first_name|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.last_name|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.gender|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.date_of_birth|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6"> {{ form.mobile_number|as_crispy_field }} <div id="number-error1"></div></div>
+            <div class="col-lg-4 col-6">{{ form.pan_card_number|as_crispy_field  }}<p id="pan-error"></p></div>
+            <div class="col-lg-4 col-6">{{ form.aadhar_card_number|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.marital_status|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.email_id|as_crispy_field }}</div>
+
+            <div class="col-lg-4 col-6">{{ form.current_adress_type|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.current_address|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.current_address_pincode|as_crispy_field }}</div>
+
+            <div class="col-lg-4 col-6">{{ form.aadhar_adress_type|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.aadhar_address|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.aadhar_pincode|as_crispy_field }}</div>
+
+            <div class="col-lg-4 col-6">{{ form.total_job_experience|as_crispy_field }}</div>
+
+            <div class="col-lg-4 col-6">{{ form.running_emis_amount_per_month|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.net_income_per_month|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.business_name|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.business_type|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.business_establishment_date|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.has_gst_certificate|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6" id="gst_number_field">{{ form.gst_number|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.mother_name|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.father_name|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.nature_of_business|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.turnover_in_lakhs_per_year|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.business_address|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.business_address_pincode|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.required_loan_amount|as_crispy_field }}</div>
+           
+      
+            <div class="col-lg-4 col-6">{{ form.ref1name|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.ref1mobilenumber|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.ref2name|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.ref2mobilenumber|as_crispy_field }}</div>
+            
+            <div class="col-lg-4 col-6">{{ form.own_house|as_crispy_field }}</div>
+            <div class="col-lg-4 col-6">{{ form.remarks|as_crispy_field }}</div>
+        </div>
+        <!-- <div class="mt-3 text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div> -->
+      </form>
+    </div>
+
+    <br><br><br><br><br><br>
+
+    
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.4/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,643 @@
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/Common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Loan.css' %}">
+    <link rel="stylesheet" href="{% static 'css/credit.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Maven Pro', sans-serif !important;
+        }
+    </style>
+    <title>SLN Finserv Credit Cards</title>
+</head>
+<body>
+
+    <div class="navbar-section">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static "assets/img/mainlogo-removebg-preview.png" %}" alt="SLN-Logo" class="img-fluid w-100" style="height: 100px;"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link Aboutus" aria-current="page" href="{% url 'about' %}">About Us</a>
+                        </li>
+                        <li class="nav-item dropdown loan">
+                            <a class="nav-link dropdown-toggle loans" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Loans
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'personalloans' %}">Personal Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'bussinessloan' %}">Business Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'homeloan' %}">Home Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'lap' %}">Loan Against Property</a></li>
+
+      
+                                <li class="dropdown-submenu hover-dropdown">
+                                    <a class="dropdown-item" href="{% url 'carloan' %}">Car Loan</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'usedcar' %}">Used Car Loans</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'newcar' %}">New Car Loans</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'educationalloan' %}">Educational Loan</a></li>
+
+                                <li><a class="dropdown-item" href="{% url 'gold' %}">Gold Loan</a></li>
+
+                                <li class="nav-item" >
+                                    <a class="dropdown-item"  href="{% url 'otherbasicdetail' %}">Other Loan</a>
+                                </li>
+                                
+      
+                            </ul>
+                        </li>
+      
+                        <li class="nav-item">
+                            <a class="nav-link credit-cards" href="{% url 'creditpage' %}">Credit Cards</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle insurance" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Insurance
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'allinsurance'%}">All Insurances</a></li>
+                                <li><a class="dropdown-item" href="{% url 'lifeinsurance'%}">Life Insurance</a></li>
+                                <li><a class="dropdown-item" href="{% url 'generalinsurance'%}">General Insurance</a></li>
+                                <li><a class="dropdown-item" href="{% url 'healthinsurance'%}">Health Insurance</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contactus" href="{% url 'contact'%}">Contact Us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle partner" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Become a Partner
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'dsa' %}">DSA Partner</a></li>
+                                <li><a class="dropdown-item" href="{% url 'franchise' %}">Franchise Program</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle insurance" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                CheckStatus
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                {% if pl %}
+            {% for item in pl %}
+                <li>
+                    <a href="{% url 'view_personal_verify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                        PersonalLoan
+                    </a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No loans available.</li>
+        {% endif %}
+        {% if bus %}
+        {% for loan in bus %}
+           <li><a href="{% url 'buscustomer-profile' application_id=loan.id %}" class="dropdown-item" style="text-decoration: none;">
+               BusinessLoan</a></li>
+               {% endfor %}
+               {% else %}
+   <li>No loans available.</li>
+{% endif %}
+                                
+                                {% if edu %}
+                                {% for item in edu %}
+                                    <li>
+                                        <a href="{% url 'Educustomer-profile' application_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                                            educationalloan
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                <li>No loans available.</li>
+                            {% endif %}
+
+                                {% if hl %}
+            {% for item in hl %}
+                <li>
+                    <a href="{% url 'view_home_verify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                        Home Loan
+                    </a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No loans available.</li>
+        {% endif %}
+                                <!-- ================================== -->
+                                {% if cl %}
+                                {% for item in cl %}
+                                    <li>
+                                        <a href="{% url 'customerprofile' application_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                                            Car Loan
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                <li>No loans available.</li>
+                            {% endif %}
+                    
+                            {% if cc %}
+                            {% for item in cc %}
+                                <li>
+                                    <a href="{% url 'viewcustomerverify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                                        Creditcard
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <li>No loans available.</li>
+                        {% endif %}
+                    
+                                {% if loans %}
+                             {% for loan in loans %}
+                                <li><a href="{% url 'viewcustomerverify' instance_id=loan.id %}" class="dropdown-item" style="text-decoration: none;">
+                                    LoanAgainstProperty</a></li>
+                                    {% endfor %}
+                                    {% else %}
+                        <li>No loans available.</li>
+                    {% endif %}
+                            </ul>
+                        </li>    
+                        <li class="nav-item dropdown me-4">
+                            <a class="btn btn-danger dropdown-toggle loans" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {% if request.session.email %}
+                                    My Profile
+                                {% else %}
+                                    Sign In
+                                {% endif %}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                {% if request.session.email %}
+                                    <li><a class="dropdown-item" href="#">{{ request.session.email }}</a></li>
+                                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                                          {% else %}
+                                              <li><a class="dropdown-item" href="{% url 'generate-verify-otp' %}">Sign In</a></li>
+                                          {% endif %}
+                            </ul>
+                        </li>
+                                   
+                       
+                      </ul>
+                                    
+                                </ul>
+                            </li>
+              
+              
+              
+              
+              
+                                
+                            </ul>
+                </div>
+            </div>
+        </nav>
+      </div>
+      
+    
+    <!--Main NAvBAr-->
+  
+    <script>
+        $(document).ready(function() {
+            $('.dropdown-submenu.click-dropdown .dropdown-toggle').on('click', function(e) {
+                e.stopPropagation();
+                $(this).next('.dropdown-menu').toggle();
+            });
+        });
+    </script>
+    <!-- nav bar code  -->
+
+
+          <!--1st page-->
+          <!-- <div class="container"> -->
+      <header style="margin: 20px;">
+        <div class="header-content" style="background-color: rgb(36, 148, 168);;">
+          
+              <div class="text1">
+                        <h1> <b>Discover the leading credit card choices available through SLN.</b></h1>
+                        <p style="font-size: large;">Make every spending worthy by choosing the right credit card through SLN.</p>
+                    
+                        {% if request.session.CCafterurl %}
+                        <a href="{{ request.session.CCafterurl }}">
+                            <button class="btn btn-danger" style="padding: 10px 50px; margin-top: 50px;">
+                                <b>Apply</b>
+                            </button>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'credit' %}">
+                            <button class="btn btn-danger" style="padding: 10px 50px; margin-top: 50px;">
+                                <b>Apply</b>
+                            </button>
+                        </a>
+                    {% endif %}                    </div>
+                  </div>
+                 
+             
+          </header>
+        <!-- </div> -->
+
+        <style>
+
+            .customer-support{
+                position: fixed;
+                bottom:100px;
+                left: calc(100% - 140px);
+                z-index: 99999;
+            }
+            
+            iframe{
+                height: 400px;
+            }
+                </style>
+            
+                <div class="customer-support" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <img src="{% static 'Images/cust.png' %}" alt="" height="50" width="50">
+                </div>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog ">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel8">Customer Support</h5>
+                            <button type="button" class="btn-close ModelclosedButtn" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+            
+                       
+                            <div class="modal-body">
+            
+                                
+                
+                                <iframe src="http://3.208.103.10:8000/ticket_create/" frameborder="0" style="width: 100%;"></iframe>
+            
+                            </div>
+                            <!--Modal body-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger ModelclosedButtn" data-bs-dismiss="modal">Close</button>
+                               
+                            </div>
+                       
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+            
+                $('.customer-support').click(()=>{
+                    
+                    $('.customer-support').hide()
+            
+                })
+            
+                $('.ModelclosedButtn').click(()=>{
+                    $('.customer-support').show()
+            })
+            </script>
+            
+                    <!--1st page end-->
+
+          <!--paragraphs-->
+          <div class="para-container">
+            <h2><b>What is a Credit Card?</b></h2>
+            <p>A credit card is a financial instrument that has a pre-loaded balance that the cardholder can use to make transactions and pay for them later. The card issuer will let you pay off the balance fully, interest-free, for up to 50 days from the date of payment. To avoid any fines, the cardholder can pay the minimum amount due (which can be anywhere between 5% to 10% on the total amount owed). The balance, however, will be carried forward to the next month, and interest set by the credit card company will be levied.</p>
+            <h2><b>Different Types of Credit Cards in India</b></h2>
+            <p><b>Shopping Credit Cards -</b> Shopping credit cards are curated to reward cardholders for their shopping expenses. They offer ample rewards in the form of points or cashback, which can be redeemed for merchandise, travel, or other rewards.</p>
+            <p><b>Lifestyle Credit Cards -</b> LifeStyle credit cards fulfill your lifestyle wants and suit your various needs. Get reward points for every swipe you make. Avail for shopping discounts and cashback on retail spends.</p>
+            <p><b>Fuel Credit Cards -</b> A Fuel Credit card is being offered by banks to customers in a bid to provide them with maximum benefits while purchasing fuel. Having this card enables those who constantly buy fuel for various purposes to lower their expenditure on fuel. Apart from that, it enables the users of Fuel Credit cards to use it for other benefits with regard to lifestyle.</p>
+            <p><b>Rewards Credit Cards -</b> Rewards credit cards offer you some type of "reward"—typically cash back, points, or travel miles—for every dollar you spend, sometimes up to certain limits. Depending on the card, you can then use your rewards in a variety of ways.</p>
+            <p><b>Travel Credit Cards -</b> Travel credit card is a type of credit card that offers exciting offers and deals related to travel. Most features and benefits offered by travel credit cards provide you savings on travel. From air ticket bookings to reward points accumulation, everything comes with a perk when done through travel credit card.</p>
+          
+          </div>
+          <!--paragraphsend-->
+
+        <!--cards -->
+
+        <div class="types-cards">
+          <h3><b>Types of Cards</b></h3>
+        </div>
+
+        <section class="services">
+          
+          <div class="service-container">
+            
+              <div class="service-item">
+                  <img src="{% static 'Images/travel.jpeg' %}" alt="">					
+                  <p>Travel</p>
+              </div>
+              <div class="service-item">
+                  <img src="{% static 'Images/newshopping.webp' %}" alt="Easy Claim System">
+                  <p>Shopping</p>
+              </div>
+              <div class="service-item">
+                  <img src="{% static 'Images/fuel.jpeg' %}" alt="Easy Installments">
+                  <p>Fuel</p>
+              </div>
+              <div class="service-item">
+                  <img src="{% static 'Images/business.jpeg' %}" alt="Strongly Secured">
+                  <p>Business Credit Card</p>
+              </div>
+              <div class="service-item">
+                <img src="{% static 'Images/lifestyle.jpeg' %}" alt="Strongly Secured">
+                <p>Lifestyle</p>
+            </div>
+            <div class="service-item">
+              <img src="{% static 'Images/secured credit.jpeg' %}" alt="Strongly Secured">
+              <p>Secured Credit Card</p>
+          </div>
+          
+        </div>
+          </div>
+      </section>
+
+
+      <div class="creditcard-features">
+        <h3><b>Credit Card Features</b></h3>
+      </div>
+      <section class="card-feature">
+        <div class="feature-container">
+            <img src="{% static 'Images/credit limit.jpeg' %}" alt="">
+            <p>Credit Limit</p>
+        </div>
+        <div class="feature-container">
+            <img src="{% static 'Images/cashinhands.jpeg' %}" alt="">
+            <p>Cash Alternative</p>
+        </div>
+        <div class="feature-container">
+            <img src="{% static 'Images/files.webp' %}" alt="">
+            <p>Keep Records of <br> all Transactions</p>
+        </div>
+        <div class="feature-container">
+            <img src="{% static 'Images/gift.jpeg' %}" alt="">
+            <p>Cashback, <br>Rewards and <br>Other Offers</p>
+        </div>
+      </section>
+
+      
+<!--paragraph2-->
+<div class="para-container">
+  <h2><b>Features & Benefits of Credit Cards</b></h2>
+  <p>The credit card segment continues to grow universally as innovative contenders enter the space with fresh and advanced features. Get a look at the basic features.</p>
+  <p><b>Credit Limit:</b> Credit limit refers to the maximum amount you can use through your credit card at a given point of time. You are liable to be charged a fee on exceeding the given credit limit. Credit Limits may change from month to month based on purchase and payment habits.</p>
+  <p><b>Balance: </b>  The balance on your credit card represents the total amount you owe. This includes purchases, finance charges, and fees. You may check your balance online, or by calling customer service.</p>
+  <p> <b>APR:</b>  APR refers to the term Annual Percentage Rate, an interest rate applicable to the balance you carry forward past the grace period</p>
+  <p> <b>Grace Period:</b>  Grace Period refers to the period of time you are allowed to repay your balance in full before being charged a fee. Typically, balance transfers and cash advances do not have grace periods.</p>
+  <p> <b>Credit Card Fees:</b>  The most common fees include annual fees, finance charges, late fees, and over-the-limit fees. You may avoid certain fees based on how you use your card; for example by making credit card repayments on time.</p>
+</div>
+
+<div class="para-container">
+      <h2><b>Credit Card Eligibility</b></h2>
+      <p>Credit card eligibility refers to the criteria that an individual must meet in order to qualify for a credit card issued by a financial institution. These criteria can vary between different credit card issuers, but they generally include factors such as:</p>
+        <ol>
+          <li><b>Age :</b> Most credit card issuers require applicants to be a certain age, typically 18 or older. Some may have a higher age requirement.</li>
+          <li><b>Income :</b> Credit card issuers often have a minimum income requirement to ensure that applicants have the means to repay the credit card debt.</li>
+           <li><b>Credit Score : </b>A good credit score is important for credit card eligibility. A higher credit score indicates a history of responsible credit behavior and makes you more likely to be approved for a credit card with favorable terms.</li>
+           <li><b>Residential Status : </b>Depending on the issuer, you might need to provide proof of your current address or residency.</li>
+
+        </ol> 
+        <p>It's important to note that meeting these eligibility criteria does not guarantee approval for a credit card. The final decision rests with the credit card issuer based on their assessment of your application and creditworthiness. Additionally, different credit cards may have different eligibility criteria and features, so it's a good idea to carefully review the terms and conditions of the credit card you're interested in before applying.</p>
+</div>
+        <div class="para-container">
+          <h2><b>Documents Required to Apply for a Credit Card</b></h2>
+          <p>The documents needed to apply for a credit card can differ based on the issuing institution. However, the following are generally the frequently requested documents you would likely need to provide during the credit card application process:</p>
+          <ul>
+            <li><b>Identity Proof :</b> Need documents like your Aadhaar Card, PAN card, Driver's License, Passport, or Voter's ID to verify your identity.</li>
+            <li><b>Address Proof: </b> You'll need to submit documents such as an Electricity bill, Telephone bill, Aadhaar Card, or other valid proof of your residential address.</li>
+            <li><b>Annual ITR (Self-Employed):</b>  For those who are self-employed or have alternative income sources, providing your annual Income Tax Returns (ITR) might be necessary to demonstrate your financial status.</li>
+            <li><b>Latest Salary Slips: </b>  If you are a salaried individual, submitting your recent salary slips can help demonstrate your income and repayment capacity.</li>
+          </ul>
+        
+        </div>
+
+<!--paragraph2 end-->
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>
+    .accordion-button {
+        background-color: #e3dcc1; /* Background color of the accordion button */
+        color: #000; /* Text color of the accordion button */
+        border: none; /* Remove default border */
+        box-shadow: none; /* Remove box-shadow */
+    }
+
+    .accordion-button:not(.collapsed) {
+        background-color: #e3dcc1; /* Slightly different color for the expanded state */
+        color: #000; /* Text color when the button is expanded */
+    }
+
+    .accordion-button:focus {
+        box-shadow: none; /* Remove focus outline */
+    }
+
+    .accordion-body {
+        background-color: #e3dcc1; /* Background color of the accordion body */
+    }
+    .accordion-item{
+        background-color: #e3dcc1;
+          margin-bottom: 10px; 
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); 
+          border: none;
+
+    }
+</style>
+<!-- FAQ Section -->
+<div class="container my-5">
+    <h2>FAQs</h2>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="faq1Heading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq2">
+               <b style="font-weight: bold; font-size: 22px;"> What is a Credit Card? </b>           
+            </button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse" aria-labelledby="faq1Heading" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+                <p>A credit score is a 3-digit number (between 300 to 900) calculated by the credit bureau using the credit history of the individual. Banks and NBFCs (Non-Banking Financial Companies) have to share the credit history of their customers with all four credit Bureaus. The credit history of an individual consists of credit amounts, lender names, Loan and credit card limits, Loan EMI and credit card bill payment records, any default on a credit card account, personal details, etc.</p>
+               
+            </div>
+        </div>
+    </div>
+   
+        <br>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq2Heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                    <b style="font-weight: bold; font-size: 22px;">What is a Credit report? </b>               
+                </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faq2Heading" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    <p>Credit scores from two Credit Bureaus would be different. There are four RBI authorized Credit Information Companies(CIC) in India- CRIF High-mark, Experian, Equifax and Transunion (CIBIL). Each Bureau has its own proprietary mechanism to calculate your Credit Score.
+                        <br>Credit scores fetched from the same bureau but on different dates can also differ.</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq3Heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                    <b style="font-weight: bold; font-size: 22px;">How can you increase your credit score?</b>
+                </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faq3Heading" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+                Improving your credit score involves maintaining a good payment history, keeping credit card balances low, avoiding opening too many new accounts, and managing your credit responsibility.<br>
+                <b>You can build your credit score in 4 steps:</b> <br>
+                1. Use only 50% of your credit card limit a month <br>
+                2. Pay all your Loan-related dues on time <br>
+                3. Use credit cards regularly based on your requirement <br>
+                4. Make timely payments of your credit card bills or EMIs
+            </div>
+        </div>
+        </div>
+        <br>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq4Heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                    <b style="font-weight: bold; font-size: 22px;">How is credit score Calculated?</b>
+                </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" aria-labelledby="faq4Heading" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+               <p><b>Followings are the prominent factors you must consider to manage a good credit score:</b><br>
+                1. Repayments of credit card bills and Loan EMIs on time <br>
+                2. Utilization of credit card limits <br>
+                3. Duration of credit cards and Loan amounts <br>
+                4. Total number of credit cards and Loan amounts <br>
+                5. Balance between secured and unsecured Loans <br>
+                6. Settlement status of credit cards or Loan amounts
+               </p>
+            </div>
+        </div>
+        </div>
+        <br>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq5Heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                   <b style="font-weight: bold; font-size: 22px;"> What are the factors that affect your credit score?</b>
+                </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" aria-labelledby="faq5Heading" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+               <p><b>Below are the common factors that can affect your credit score</b> <br>
+                1. Payments history speaks a lot about how you've maintained your repayments. Delayed, late, or incomplete payments over your credit card and Loan can affect your credit score negatively.<br>
+                2. Credit utilization ratio is a ratio of credit that is being used. More than 40% credit use indicates increasing payback stress, which can negatively affect your score. <br>
+                3. Lenders consider having a variety of loans. Maintaining a balanced between loans and unsecured loans can have a positive on your credit score and vice-versa. <br>
+                4. Through the length of your credit history, the age of your credit is calculated. Having a long experience in managing credits represents a better score. <br>
+                5. Too many inquiries or credit accounts that you've created can indicate risk and can hurt your credit score. Such situations are also called hard inquiries that allow lenders to access your credit reports.
+               </p>
+            </div>
+        </div>
+        </div>
+        <br>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq6Heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                    <b style="font-weight: bold; font-size: 22px;">How often is your credit score and credit report updated?</b>
+                </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" aria-labelledby="faq6Heading" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+                <p>Your credit score and credit report are updated regularly, typically whenever new information is reported to the credit bureaus by your creditors. This can vary depending on the creditor, but it's common for them to report to the credit bureaus every month.<br>
+                <br>In general, your credit report will be updated as soon as new information is reported to the credit bureaus, which could be as frequently as daily or weekly. However, it's important to keep in mind that not all creditors report to all four major credit bureaus (CRIF-Highmark, Equifax, Experian, and TransUnion-CIBIL), so your credit report may not be identical across all three bureaus. <b></b>  
+                
+                 <br>Your credit score, on the other hand, is calculated using the information in your credit report at a specific point in time. So while your credit report may be updated frequently, your credit score will generally only change when a new credit report is pulled and your credit score is recalculated. This could happen, for example, when you apply for a new loan or credit card.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<!--FAQs end-->
+
+        <!--footer section-->
+        <footer>
+          <div class="footer-container">
+              <div class="footer-section">
+                  <img src="{% static 'Images/WhatsApp Image 2024-07-18 at 10.22.57_3e3bdf85.jpg' %}" alt="" class="logo">
+                  <p>&copy;2024 SLN Finserv &mdash; All Rights Reserved</p>
+                  <p>Toll-free Number &mdash; 1800-266-7576</p>
+              </div>
+              <div class="footer-section">
+                  <h3>LOANS</h3>
+                  <ul>
+                      <li><a href="#">Home Loan</a></li>
+                      <li><a href="#">Personal Loan</a></li>
+                      <li><a href="#">Business Loan</a></li>
+                      <li><a href="#">Car Loan</a></li>
+                      <li><a href="#">Car Refinance</a></li>
+                      <li><a href="#">Used Car Loan</a></li>
+                  </ul>
+              </div>
+              <div class="footer-section">
+                  <h3>KNOWLEDGE CENTER</h3>
+                  <ul>
+                      <li><a href="#">Blogs</a></li>
+                      <li><a href="#">Videos</a></li>
+                      <li><a href="#">Product Info</a></li>
+                  </ul>
+              </div>
+              <div class="footer-section">
+                  <h3>INSURANCE</h3>
+                  <ul>
+                    <li><a href="#">Life Insurance</a></li>
+                    <li><a href="#">Health Insurance</a></li>
+                    <li><a href="#">General Insurance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Grow With Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Data Storage Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href=""><i class="bi bi-whatsapp"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-youtube"></i></a>
+            <a href="#"><i class="bi bi-envelope-at-fill"></i></a>
+        </div>
+    </footer>
+
+
+
+<!--footer section end-->     
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>            
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
+    <script src="{% static 'js/common.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.dropdown-submenu.click-dropdown .dropdown-toggle').on('click', function(e) {
+                e.stopPropagation();
+                $(this).next('.dropdown-menu').toggle();
+            });
+        });
+    </script>
+</body>
+</html>

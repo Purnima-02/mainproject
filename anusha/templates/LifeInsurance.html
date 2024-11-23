@@ -1,0 +1,803 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <link href="stylesheet" href="{% static 'css/Insurence.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Loan.css'%}">
+    <link rel="stylesheet" href="{% static 'css/Common.css'%}">
+    <script src="{% static 'js/Common.js'%}"></script>
+
+    <!--JQuery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <!--seperate-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!--seperate-->
+
+    <style>
+        .faqcard.card {
+            background-color: #e3dcc1;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        .faqcard .card-header {
+            cursor: pointer;
+        }
+
+        .faqcard .card-header {
+            cursor: pointer;
+        }
+
+        .faqcard h5 {
+            font-weight: bold;
+        }
+    </style>
+
+
+
+    <!--         
+    <link rel="stylesheet" href="./css/common.css">
+    <script src="./common.js"></script> -->
+    <title>Life Insurance</title>
+</head>
+
+<body>
+
+    <div class="navbar-section">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static "assets/img/mainlogo-removebg-preview.png" %}" alt="SLN-Logo" class="img-fluid w-100"style="height: 100px;"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link Aboutus" aria-current="page" href="{% url 'about' %}">About Us</a>
+                        </li>
+
+                        <li class="nav-item dropdown loan">
+                            <a class="nav-link dropdown-toggle loans" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Loans
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'personalloans' %}">Personal Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'bussinessloan' %}">Business Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'homeloan' %}">Home Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'lap' %}">Loan Against Property</a></li>
+
+      
+                                <li class="dropdown-submenu hover-dropdown">
+                                    <a class="dropdown-item" href="{% url 'carloan' %}">Car Loan</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'usedcar' %}">Used Car Loans</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'newcar' %}">New Car Loans</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'educationalloan' %}">Educational Loan</a></li>
+
+                                <li><a class="dropdown-item" href="{% url 'gold' %}">Gold Loan</a></li>
+
+                                <li class="nav-item" >
+                                    <a class="dropdown-item"  href="{% url 'otherbasicdetail' %}">Other Loan</a>
+                                </li>
+                                
+      
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link credit-cards" href="{% url 'creditpage' %}">Credit Cards</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle insurance" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Insurance
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'allinsurance'%}">All Insurances</a></li>
+                                <li><a class="dropdown-item" href="{% url 'lifeinsurance'%}">Life Insurance</a></li>
+                                <li><a class="dropdown-item" href="{% url 'generalinsurance'%}">General Insurance</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'healthinsurance'%}">Health Insurance</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contactus" href="{% url 'contact'%}">Contact Us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle partner" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Become a Partner
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'dsa' %}">DSA Partner</a></li>
+                                <li><a class="dropdown-item" href="{% url 'franchise' %}">Franchise Program</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle insurance" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                CheckStatus
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                {% if pl %}
+                                {% for item in pl %}
+                                <li>
+                                    <a href="{% url 'view_personal_verify' instance_id=item.id %}" class="dropdown-item"
+                                        style="text-decoration: none;">
+                                        PersonalLoan
+                                    </a>
+                                </li>
+                                {% endfor %}
+                                {% else %}
+                                <li>No loans available.</li>
+                                {% endif %}
+                                {% if bus %}
+                                {% for loan in bus %}
+                                <li><a href="{% url 'buscustomer-profile' application_id=loan.id %}"
+                                        class="dropdown-item" style="text-decoration: none;">
+                                        BusinessLoan</a></li>
+                                {% endfor %}
+                                {% else %}
+                                <li>No loans available.</li>
+                                {% endif %}
+
+                                {% if edu %}
+                                {% for item in edu %}
+                                <li>
+                                    <a href="{% url 'Educustomer-profile' application_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+
+                                        educationalloan
+                                    </a>
+                                </li>
+                                {% endfor %}
+                                {% else %}
+                                <li>No loans available.</li>
+                                {% endif %}
+
+                                {% if hl %}
+                                {% for item in hl %}
+                                <li>
+                                    <a href="{% url 'view_home_verify' instance_id=item.id %}" class="dropdown-item"
+                                        style="text-decoration: none;">
+                                        Home Loan
+                                    </a>
+                                </li>
+                                {% endfor %}
+                                {% else %}
+                                <li>No loans available.</li>
+                                {% endif %}
+                                <!-- ================================== -->
+                                {% if cl %}
+                                {% for item in cl %}
+                                    <li>
+                                        <a href="{% url 'customerprofile' application_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                                            Car Loan
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                <li>No loans available.</li>
+                            {% endif %}
+                    
+                            {% if cc %}
+                            {% for item in cc %}
+                                <li>
+                                    <a href="{% url 'viewcustomerverify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                                        Creditcard
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <li>No loans available.</li>
+                        {% endif %}
+                    
+                                {% if loans %}
+                                {% for loan in loans %}
+                                <li><a href="{% url 'viewcustomerverify' instance_id=loan.id %}" class="dropdown-item"
+                                        style="text-decoration: none;">
+                                        LoanAgainstProperty</a></li>
+                                {% endfor %}
+                                {% else %}
+                                <li>No loans available.</li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                        <!-- Navigation bar -->
+                        <li class="nav-item dropdown me-4">
+                            <a class="btn btn-danger dropdown-toggle loans" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                {% if request.session.email %}
+                                My Profile
+                                {% else %}
+                                Sign In
+                                {% endif %}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                {% if request.session.email %}
+                                <li><a class="dropdown-item" href="#">{{ request.session.email }}</a></li>
+                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                                {% else %}
+                                <li><a class="dropdown-item" href="{% url 'generate-verify-otp' %}">Sign In</a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+
+                       
+                    </ul>
+
+                    </ul>
+                    </li>
+
+
+
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- nav bar code  -->
+
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-submenu.click-dropdown .dropdown-toggle').on('click', function (e) {
+                e.stopPropagation();
+                $(this).next('.dropdown-menu').toggle();
+            });
+        });
+    </script>
+
+<script>
+
+    document.querySelector('.mobile_number').addEventListener('input', (e) => {
+    
+    const maxLength = 10;
+    const input = e.target;
+    console.log(e.target.id);
+    if (input.value.length > maxLength) {
+        input.value = input.value.slice(0, maxLength);
+    }
+    if(input.value<0){
+        input.value='';
+    }
+    
+    
+    });
+                </script>
+
+<style>
+    .asterick{
+        color: red;
+    }
+</style>
+
+    <div class="container">
+        <div class="card p-4 mt-2" style=" background-color: rgb(36, 148, 168); color: white; border-radius: 10px">
+            <div class="card-body">
+                <h3 class="card-title">We provide the best value Life Insurance</h3>
+                <p class="card-text">
+                    Simple steps you can take to improve your financial well-being for
+                    the rest of your life.
+                </p>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="insurance_name" value="Life Insurance" />
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Your Name<span class="asterick">*</span></label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required/>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="phone" class="form-label">Phone<span class="asterick">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text">+91</span>
+                                <input type="number" class="form-control mobile_number" id="phone" name="mobile_number"
+                                        placeholder="Enter your phone number" maxlength="10" pattern="{0-9}" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-8 mb-3">
+                            <label for="email" class="form-label">Email<span class="asterick"></span></label>
+                            <input type="email" class="form-control" id="email" name="email_id"
+                                placeholder="Enter your email" />
+                        </div>
+    
+                        <div class=" col-md-6">
+                            <label for="state" class="form-label">State<span class="asterick">*</span></label>
+                            <select class="form-select" id="state" name="state" required>
+                                <option value="" selected disabled>Select State</option>
+                                <option value="andhra-pradesh">Andhra Pradesh</option>
+                                <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                                <option value="assam">Assam</option>
+                                <option value="bihar">Bihar</option>
+                                <option value="chhattisgarh">Chhattisgarh</option>
+                                <option value="goa">Goa</option>
+                                <option value="gujarat">Gujarat</option>
+                                <option value="haryana">Haryana</option>
+                                <option value="himachal-pradesh">Himachal Pradesh</option>
+                                <option value="jharkhand">Jharkhand</option>
+                                <option value="karnataka">Karnataka</option>
+                                <option value="kerala">Kerala</option>
+                                <option value="madhya-pradesh">Madhya Pradesh</option>
+                                <option value="maharashtra">Maharashtra</option>
+                                <option value="manipur">Manipur</option>
+                                <option value="meghalaya">Meghalaya</option>
+                                <option value="mizoram">Mizoram</option>
+                                <option value="nagaland">Nagaland</option>
+                                <option value="odisha">Odisha</option>
+                                <option value="punjab">Punjab</option>
+                                <option value="rajasthan">Rajasthan</option>
+                                <option value="sikkim">Sikkim</option>
+                                <option value="tamil-nadu">Tamil Nadu</option>
+                                <option value="telangana">Telangana</option>
+                                <option value="tripura">Tripura</option>
+                                <option value="uttar-pradesh">Uttar Pradesh</option>
+                                <option value="uttarakhand">Uttarakhand</option>
+                                <option value="west-bengal">West Bengal</option>
+                            </select>
+                        </div>
+    
+              <div class="col-md-6">
+    
+                <label for="city" class="form-label">City<span class="asterick">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter City name" name="city" id="city" required>
+              </div>
+    
+                    </div>
+                    <div class="mb-3">
+                        <label for="messgae" class="form-label">Message<span class="asterick">*</span></label>
+                        <textarea class="form-control" id="messgae" name="messgae" rows="3"
+                            placeholder="Enter your message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger w-100">
+                        Get Quote
+                    </button>
+
+                </form>
+            </div>
+                    
+        </div>
+
+
+        <div class="content content1">
+            <div class="row">
+                <div class="col-12">
+                    <p class="display-6 fw-bold mt-5 text-heading">
+                        Life Insurance Features
+                    </p>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <div class="card w-100 h-100">
+                        <img src="{% static 'Images/HealthInsuranceImages/money-bag.png' %}"
+                            class="card-img-top img-fluid " alt="..." style="width: 50px;" />
+                        <div class="card-body">
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up
+                                the bulk of the card's content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <div class="card w-100 h-100">
+                        <img src="{% static 'Images/HealthInsuranceImages/money-bag.png' %}"
+                            class="card-img-top img-fluid " alt="..." style="width: 50px;" />
+                        <div class="card-body">
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up
+                                the bulk of the card's content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <div class="card w-100 h-100">
+                        <img src="{% static 'Images/HealthInsuranceImages/money-bag.png' %}"
+                            class="card-img-top img-fluid " alt="..." style="width: 50px;" />
+                        <div class="card-body">
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up
+                                the bulk of the card's content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <div class="card w-100 h-100">
+                        <img src="{% static 'Images/HealthInsuranceImages/money-bag.png' %}"
+                            class="card-img-top img-fluid " alt="..." style="width: 50px;" />
+                        <div class="card-body">
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up
+                                the bulk of the card's content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--content1-->
+        <style>
+
+            .customer-support{
+                position: fixed;
+                bottom:100px;
+                left: calc(100% - 140px);
+                z-index: 99999;
+            }
+            
+            iframe{
+                height: 400px;
+            }
+                </style>
+            
+                <div class="customer-support" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <img src="{% static 'Images/cust.png' %}" alt="" height="50" width="50">
+                </div>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog ">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel8">Customer Support</h5>
+                            <button type="button" class="btn-close ModelclosedButtn" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+            
+                       
+                            <div class="modal-body">
+            
+                                
+                
+                                <iframe src="http://3.208.103.10:8000/ticket_create/" frameborder="0" style="width: 100%;"></iframe>
+            
+                            </div>
+                            <!--Modal body-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger ModelclosedButtn" data-bs-dismiss="modal">Close</button>
+                               
+                            </div>
+                       
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+            
+                $('.customer-support').click(()=>{
+                    
+                    $('.customer-support').hide()
+            
+                })
+            
+                $('.ModelclosedButtn').click(()=>{
+                    $('.customer-support').show()
+            })
+            </script>
+            
+
+        <div class="content content2">
+            <p class="display-6 fw-bold mt-5 text-heading">
+                What is Life Insurance?
+            </p>
+
+            <p>
+                Life insurance is a type of coverage that helps you manage the cost
+                of medical expenses and Lifecare services. When you have Life
+                insurance, the insurance company pays a part or the entire amount of
+                your medical bills, depending on the terms of the policy. This
+                financial protection ensures that you can access necessary medical
+                treatments without having to bear the full financial burden. Life
+                insurance plans can cover a range of Lifecare services, including
+                doctor visits, hospital stays, surgeries, medications, and preventive
+                care, depending on the specific plan you choose.
+            </p>
+        </div>
+
+        <div class="content content3">
+            <p class="display-6 fw-bold mt-5 text-heading">
+                Types of Life Insurance:-
+            </p>
+
+            <div class="sub-content">
+                <h5>A. Indemnity Plan</h5>
+                <p>
+                    An indemnity Life insurance plan, also known as a fee-for-service
+                    plan, gives you the freedom to choose your Lifecare providers and
+                    services. You pay for medical expenses upfront and then submit a
+                    claim to the insurance company for reimbursement based on the plan's
+                    coverage limits. This plan offers flexibility but requires managing
+                    paperwork and higher out-of-pocket costs.
+                </p>
+            </div>
+
+            <div class="sub-content">
+                <h5>B. Fixed Benefit Plan</h5>
+                <p>
+                    An indemnity Life insurance plan, also known as a fee-for-service
+                    plan, gives you the freedom to choose your Lifecare providers and
+                    services. You pay for medical expenses upfront and then submit a
+                    claim to the insurance company for reimbursement based on the plan's
+                    coverage limits. This plan offers flexibility but requires managing
+                    paperwork and higher out-of-pocket costs.
+                </p>
+            </div>
+        </div>
+
+        <div class="content content4">
+            <div class="row">
+                <div class="col-12">
+                    <p class="display-6 fw-bold mt-5 text-heading">Best Services</p>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <img src="{% static 'Images/HealthInsuranceImages/money-bag.png' %}" class="img-fluid" alt="..."
+                        style="width: 50px;" />
+
+                    <p class="card-text">
+                        Some quick example text to build on the card title and make up the
+                        bulk of the card's content.
+                    </p>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <img src="{% static 'Images/HealthInsuranceImages/money-bag.png' %}" class="img-fluid" alt="..."
+                        style="width: 50px;" />
+
+                    <p class="card-text">
+                        Some quick example text to build on the card title and make up the
+                        bulk of the card's content.
+                    </p>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <img src="{% static 'Images/HealthInsuranceImages/money-bag.png' %}" class="img-fluid" alt="..."
+                        style="width: 50px;" />
+
+                    <p class="card-text">
+                        Some quick example text to build on the card title and make up the
+                        bulk of the card's content.
+                    </p>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <img src="{% static 'Images/HealthInsuranceImages/money-bag.png' %}" class="img-fluid" alt="..."
+                        style="width: 50px;" />
+
+                    <p class="card-text">
+                        Some quick example text to build on the card title and make up the
+                        bulk of the card's content.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--content4-->
+
+
+        <div class="content content5">
+
+            <p class="display-6 fw-bold mt-5 text-heading">What does Life Insurance Covers?</p>
+
+            <p>Life insurance covers a range of medical expenses and Lifecare services, which can vary based on the
+                specific plan you choose. Generally, Life insurance can cover:</p>
+
+            <ul>
+                <li><strong>Hospitalization:</strong> Inpatient hospital stays, room charges, surgery costs.</li>
+
+                <li><strong>Outpatient Care:</strong> Doctor visits, diagnostics, consultations.</li>
+
+                <li><strong>Medications: </strong>Prescription drugs and medicines.</li>
+
+                <li><strong>Emergency Care: </strong>ER visits, urgent care, ambulance services.</li>
+
+                <li><strong>Preventive Care:</strong> Vaccinations, screenings, wellness check-ups.</li>
+
+                <li><strong>Specialist Services:</strong> Specialist consultations, therapies, treatments.</li>
+
+                <li><strong>Maternity Care:</strong> Prenatal, childbirth, postnatal care.</li>
+
+                <li><strong>Diagnostic Tests:</strong> Lab tests, X-rays, imaging.</li>
+
+                <li><strong>Mental Life: </strong>Therapy, counseling, psychiatric care.</li>
+            </ul>
+
+        </div><!--content5-->
+
+
+
+        <div class="content content6">
+
+            <p class="display-6 fw-bold mt-5 text-heading">Learn a few terms about Life Insurance</p>
+
+
+
+            <ul>
+                <li><strong>Hospitalization:</strong> Inpatient hospital stays, room charges, surgery costs.</li>
+
+                <li><strong>Outpatient Care:</strong> Doctor visits, diagnostics, consultations.</li>
+
+                <li><strong>Medications: </strong>Prescription drugs and medicines.</li>
+
+                <li><strong>Emergency Care: </strong>ER visits, urgent care, ambulance services.</li>
+
+                <li><strong>Preventive Care:</strong> Vaccinations, screenings, wellness check-ups.</li>
+
+                <li><strong>Specialist Services:</strong> Specialist consultations, therapies, treatments.</li>
+
+                <li><strong>Maternity Care:</strong> Prenatal, childbirth, postnatal care.</li>
+
+                <li><strong>Diagnostic Tests:</strong> Lab tests, X-rays, imaging.</li>
+
+                <li><strong>Mental Life: </strong>Therapy, counseling, psychiatric care.</li>
+            </ul>
+
+        </div><!--content5-->
+
+        <div class="faqs-section">
+            <p class="display-6 fw-bold mt-5 text-heading"> FAQs</p>
+
+            <div id="faqAccordion"><!--Accordian-->
+                <div class="card faqcard">
+                    <div class="card-header" id="faq1Heading" data-toggle="collapse" data-target="#faq1"
+                        aria-expanded="true" aria-controls="faq1">
+                        <h5 class="mb-0">
+                            What is a business loan?
+                        </h5>
+                    </div>
+                    <div id="faq1" class="collapse" aria-labelledby="faq1Heading" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            A business loan is a financial product designed to provide funds to businesses for various
+                            purposes such as expansion, working capital, or equipment purchase.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card faqcard">
+                    <div class="card-header" id="faq2Heading" data-toggle="collapse" data-target="#faq2"
+                        aria-expanded="true" aria-controls="faq2">
+                        <h5 class="mb-0">
+                            What are the eligibility criteria for a business loan?
+                        </h5>
+                    </div>
+                    <div id="faq2" class="collapse" aria-labelledby="faq2Heading" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            Eligibility criteria typically include factors such as the business's credit score,
+                            financial stability, years in operation, and revenue.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card faqcard">
+                    <div class="card-header" id="faq3Heading" data-toggle="collapse" data-target="#faq3"
+                        aria-expanded="true" aria-controls="faq3">
+                        <h5 class="mb-0">
+                            How can I apply for a business loan?
+                        </h5>
+                    </div>
+                    <div id="faq3" class="collapse" aria-labelledby="faq3Heading" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            You can apply for a business loan by submitting an application to a bank or financial
+                            institution, providing necessary documentation and meeting eligibility requirements.
+                        </div>
+                    </div>
+                </div>
+
+
+            </div><!--Accordian-->
+        </div>
+        </div>
+        <!--container-->
+
+
+        <!-- footer code Start -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <img src="{% static 'assets/img/mainlogo-removebg-preview.png' %}" alt="" class="logo">
+                    <p>&copy;2024 SLN Finserv &mdash; All Rights Reserved</p>
+                    <p>Toll-free Number &mdash; 1800-266-7576</p>
+                </div>
+                <div class="footer-section">
+                    <h3>LOANS</h3>
+                    <ul>
+                        <li><a href="#">Home Loan</a></li>
+                        <li><a href="#">Personal Loan</a></li>
+                        <li><a href="#">Business Loan</a></li>
+                        <li><a href="#">Car Loan</a></li>
+                        <li><a href="#">Car Refinance</a></li>
+                        <li><a href="#">Used Car Loan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>KNOWLEDGE CENTER</h3>
+                    <ul>
+                        <li><a href="#">Blogs</a></li>
+                        <li><a href="#">Videos</a></li>
+                        <li><a href="#">Product Info</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>INSURANCE</h3>
+                    <ul>
+                        <li><a href="#">Life Insurance</a></li>
+                        <li><a href="#">Life Insurance</a></li>
+                        <li><a href="#">General Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>COMPANY</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Grow With Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Data Storage Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="social-icons">
+                <a href=""><i class="bi bi-whatsapp"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-twitter"></i></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href=""><i class="bi bi-youtube"></i></a>
+                <a href=""><i class="bi bi-envelope-at-fill"></i></a>
+            </div>
+        </footer>
+        <!-- footer code End -->
+
+
+
+        <!-- Optional JavaScript; choose one of the two! -->
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="{% static 'js/Main.js' %}"></script>
+
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script> -->
+
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+        <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>

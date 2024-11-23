@@ -1,0 +1,190 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Loan View Form</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+    
+      .asteriskField {
+       color:red;
+       font-weight: bold;
+       /* margin-left: 1px; */
+    }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function toggleCarLoanFields(type) {
+                document.querySelectorAll('.newcar').forEach(e => e.style.display = type === 'NEW' ? 'block' : 'none');
+                document.querySelectorAll('.usedcar').forEach(e => e.style.display = type === 'USED' ? 'block' : 'none');
+            }
+
+            function toggleIncomeFields(source) {
+                document.querySelectorAll('.job-field').forEach(e => e.style.display = source === 'Job' ? 'block' : 'none');
+                document.querySelectorAll('.business-field').forEach(e => e.style.display = source === 'Business' ? 'block' : 'none');
+            }
+
+            function toggleExistingLoanFields() {
+                const existingLoanValue = document.querySelector('#id_existing_loan').value;
+                document.querySelector('#existing_loan_bank_name').style.display = existingLoanValue === 'Yes' ? 'block' : 'none';
+                document.querySelector('#existing_loan_amount_in_rs').style.display = existingLoanValue === 'Yes' ? 'block' : 'none';
+            }
+
+            function toggleGstCertificateFields() {
+                const GstCertificateValue = document.querySelector('#id_gst_certificate').value;
+                document.querySelector('#gst_number').style.display = GstCertificateValue === 'Yes' ? 'block' : 'none';
+            }
+
+            // Initialize field states
+            toggleCarLoanFields(document.querySelector('#id_car_loan_type').value);
+            toggleIncomeFields(document.querySelector('#id_income_source').value);
+            toggleExistingLoanFields();
+            toggleGstCertificateFields();
+
+            // Event listeners
+            document.querySelector('#id_existing_loan').addEventListener('change', toggleExistingLoanFields);
+            document.querySelector('#id_gst_certificate').addEventListener('change', toggleGstCertificateFields);
+        });
+    </script>
+    
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Car Loan Application ViewPage</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                <!-- Personal Details -->
+                <div class="col-lg-4 col-6">{{ form.first_name|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.last_name|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.gender|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.date_of_birth|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.mobile_number|as_crispy_field }}</div>
+
+                <!-- Car Loan Type -->
+                <div class="col-lg-4 col-6" id="car_loan_type">{{ form.car_loan_type|as_crispy_field }}</div>
+
+                <!-- Used Car Fields -->
+                <div class="col-lg-4 col-6 usedcar">{{ form.car_vehicle_no|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 usedcar">{{ form.car_company_name|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 usedcar">{{ form.variant|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 usedcar">{{ form.model_year|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 usedcar">{{ form.existing_loan|as_crispy_field }} 
+                    {% if form.existing_loan.errors %}<div class="invalid-feedback">
+                        {% for error in form.existing_loan.errors %}<p>{{ error }}</p>
+                        {% endfor %}</div>
+                    {% endif %}
+                    
+                </div>
+                <div class="col-lg-4 col-6 usedcar" id="existing_loan_bank_name" style="display:none;">
+                    <label for="id_existing_loan_bank_name">Bank/NBFC Name<i class="text-danger">*</i> </label>
+                    {{ form.existing_loan_bank_name }}
+                    {% if form.existing_loan_bank_name.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.existing_loan_bank_name.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-lg-4 col-6 usedcar" id="existing_loan_amount_in_rs" style="display:none;">
+                    <label for="id_existing_loan_amount_in_rs">EXISTING LOAN AMOUNT IN RS<i class="text-danger">*</i> </label>
+                    {{ form.existing_loan_amount_in_rs }}
+                    {% if form.existing_loan_amount_in_rs.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.existing_loan_amount_in_rs.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- New Car Fields -->
+                <div class="col-lg-4 col-6 newcar">{{ form.car_purchase_value_in_RS|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 newcar">{{ form.quotation_value_on_ex_showroom|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 newcar">{{ form.downpayment_amount|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 newcar">{{ form.showroom_quotation|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 newcar">{{ form.varient|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6 newcar">{{ form.car_model_year|as_crispy_field }}</div>
+
+                <!-- Common Fields -->
+                <div class="col-lg-4 col-6">{{ form.pan_card_number|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.aadhar_card_number|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.marital_status|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.email_id|as_crispy_field }} </div>
+                <div class="col-lg-4 col-6">{{ form.current_address|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.current_address_pincode|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.aadhar_address|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.aadhar_pincode|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.aadhar_address_type|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.current_address_type|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.running_emis_amount_per_month|as_crispy_field }}</div>
+                <div class="col-lg-4 col-6">{{ form.required_loan|as_crispy_field }}</div>
+                                               
+
+                <!-- Income Source -->
+                <div class="col-lg-4 col-6" id="income_source">{{ form.income_source|as_crispy_field }}</div>
+
+                <!-- Job Fields -->
+                  <div class="job-field col-lg-4 col-6">{{ form.net_salary_per_month|as_crispy_field }}</div>
+                  <div class="job-field col-lg-4 col-6">{{ form.company_name|as_crispy_field }}</div>
+                  <div class="job-field col-lg-4 col-6">{{ form.company_type|as_crispy_field }}</div>
+                  <div class="job-field col-lg-4 col-6">{{ form.job_designation|as_crispy_field }}</div>
+                  <div class="job-field col-lg-4 col-6">{{ form.job_joining_date|as_crispy_field }}</div>
+                  <div class="job-field col-lg-4 col-6">{{ form.job_location|as_crispy_field }}</div>
+                  <div class="job-field col-lg-4 col-6">{{ form.total_job_experience_in_months|as_crispy_field }}</div>
+                  <div class="job-field col-lg-4 col-6">{{ form.office_address|as_crispy_field }}</div> <!-- Office Address Field -->
+                  <div class="col-lg-4 col-6">{{ form.work_email|as_crispy_field }}</div>
+
+                <!-- Business Fields -->
+                  <div class="business-field col-lg-4 col-6">{{ form.business_name|as_crispy_field }}</div>
+                  <div class="business-field col-lg-4 col-6">{{ form.business_type|as_crispy_field }}</div>
+                  <div class="business-field col-lg-4 col-6">{{ form.net_income_per_month|as_crispy_field }}</div>
+                  <div class="business-field col-lg-4 col-6">{{ form.business_establishment_date|as_crispy_field }}</div>                 
+                  <div class="business-field col-lg-4 col-6">{{ form.gst_certificate|as_crispy_field }}</div>
+                  <div class="business-field col-lg-4 col-6" id="gst_number" style="display:none;">{{ form.gst_number|as_crispy_field }}</div>
+                  <div class="business-field col-lg-4 col-6">{{ form.mother_name|as_crispy_field }}</div>
+                  <div class="business-field col-lg-4 col-6">{{ form.father_name|as_crispy_field }}</div>
+                  <div class="business-field col-lg-4 col-6">{{ form.nature_of_business|as_crispy_field }}</div>
+                  <div class="business-field col-lg-4 col-6">{{ form.turnover_in_lakhs_per_year|as_crispy_field }}</div>
+                  <div class="business-field col-lg-4 col-6">{{ form.business_address_pincode|as_crispy_field }}</div>
+                  <div class="business-field col-lg-4 col-6">{{ form.business_address|as_crispy_field }}</div>
+                  <div class="business-field col-lg-4 col-6">{{ form.ref1_person_name|as_crispy_field }}</div>
+                  <div class="business-field col-lg-4 col-6">{{ form.ref_1_person_mobile_number|as_crispy_field }}</div>
+                  <div class="business-field col-lg-4 col-6">{{ form.ref2_person_name|as_crispy_field }}</div>
+                  <div class="business-field col-lg-4 col-6">{{ form.ref_2_person_mobile_number|as_crispy_field }}<div id="number-error3"></div></div>
+                  <div class="col-lg-4 col-6">{{ form.dsaref_code|as_crispy_field }}</div>
+                  <div class="col-lg-4 col-6">{{ form.franrefCode|as_crispy_field }}</div>
+                  <div class="col-lg-4 col-6">{{ form.empref_code|as_crispy_field }}</div>
+                  <div class="col-lg-4 col-6">{{ form.remarks|as_crispy_field }}</div>
+                
+                 </div>
+            </div>          
+
+        </form>
+    </div>
+
+    
+    
+
+</body>
+</html>

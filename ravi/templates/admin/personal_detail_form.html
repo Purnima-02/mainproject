@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Detail Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; 
+            margin: 0;
+            padding: 0;
+        }
+        .form-container {
+            max-width: 800px; 
+            margin: 20px auto; 
+            background-color: #fff; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px; 
+        }
+        .form-container h1 {
+            grid-column: 1 / -1; 
+            text-align: center;
+            margin-bottom: 20px; 
+        }
+        .form-group {
+            background-color: #f9f9f9; 
+            padding: 15px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+        }
+        .form-group label {
+            font-weight: bold; 
+        }
+        .form-group label.required::after {
+            content: '*';
+            color: red;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; 
+            padding: 10px; 
+            font-size: 14px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            box-sizing: border-box; 
+        }
+        .form-group .invalid-feedback {
+            color: red; 
+            font-size: 12px; 
+            margin-top: 5px; 
+        }
+        .form-container button {
+            grid-column: 1 / -1; 
+            width: auto; 
+            padding: 10px; 
+            font-size: 16px; 
+            border: none; 
+            border-radius: 4px; 
+            background-color: #007BFF;
+            color: white; 
+            cursor: pointer; 
+        }
+        .form-container button:hover {
+            background-color: #0056b3; 
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-container {
+                grid-template-columns: 1fr; 
+                gap: 10px; 
+            }
+            .form-container h1 {
+                font-size: 1.5em; 
+            }
+            .form-group {
+                padding: 10px; 
+            }
+            .form-group input, .form-group select, .form-group textarea {
+                font-size: 16px; 
+                padding: 8px; 
+            }
+            .form-container button {
+                font-size: 18px; 
+                padding: 12px; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-container {
+                margin: 10px; 
+                padding: 15px; 
+            }
+            .form-container h1 {
+                font-size: 1.2em; 
+            }
+            .form-group input, .form-group select, .form-group textarea {
+                font-size: 18px; 
+                padding: 12px; 
+            }
+            .form-container button {
+                font-size: 20px; 
+                padding: 14px; 
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var firstNameField = document.getElementById('id_first_name');
+          firstNameField.addEventListener('input', function() {
+              var value = this.value;
+              this.value = value.replace(/[^a-zA-Z]/g, '');  
+                });
+            });
+        document.addEventListener('DOMContentLoaded', function() {
+          var firstNameField = document.getElementById('id_last_name');
+          firstNameField.addEventListener('input', function() {
+              var value = this.value;
+              this.value = value.replace(/[^a-zA-Z]/g, '');  
+                });
+            });
+        document.addEventListener('DOMContentLoaded', function() {
+          var firstNameField = document.getElementById('id_father_name');
+          firstNameField.addEventListener('input', function() {
+              var value = this.value;
+              this.value = value.replace(/[^a-zA-Z]/g, '');  
+                });
+            });
+        document.addEventListener('DOMContentLoaded', function() {
+          var firstNameField = document.getElementById('id_company_name');
+          firstNameField.addEventListener('input', function() {
+              var value = this.value;
+              this.value = value.replace(/[^a-zA-Z]/g, '');  
+                });
+            });
+            document.addEventListener('DOMContentLoaded', function() {
+          var firstNameField = document.getElementById('id_ref1_name');
+          firstNameField.addEventListener('input', function() {
+              var value = this.value;
+              this.value = value.replace(/[^a-zA-Z]/g, '');  
+                });
+            });
+            document.addEventListener('DOMContentLoaded', function() {
+          var firstNameField = document.getElementById('id_ref2_name');
+          firstNameField.addEventListener('input', function() {
+              var value = this.value;
+              this.value = value.replace(/[^a-zA-Z]/g, '');  
+                });
+            });
+            document.addEventListener('DOMContentLoaded', function() {
+           var numberField = document.getElementById('id_mobile_number'); 
+           numberField.addEventListener('input', function() {
+            var value = this.value;
+           this.value = value.replace(/[^0-9]/g, '');
+         });
+              });
+             
+              document.addEventListener('DOMContentLoaded', function() {
+    var alphanumericField = document.getElementById('id_pan_card_number'); 
+    alphanumericField.addEventListener('input', function() {
+        var value = this.value.toUpperCase(); 
+        this.value = value.replace(/[^A-Z0-9]/g, ''); 
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+           var numberField = document.getElementById('id_aadhar_card_number'); 
+           numberField.addEventListener('input', function() {
+            var value = this.value;
+           this.value = value.replace(/[^0-9]/g, '');
+         });
+              });
+
+document.addEventListener('DOMContentLoaded', function() {
+           var numberField = document.getElementById('id_current_address_pincode'); 
+           numberField.addEventListener('input', function() {
+            var value = this.value;
+           this.value = value.replace(/[^0-9]/g, '');
+         });
+              });
+              document.addEventListener('DOMContentLoaded', function() {
+           var numberField = document.getElementById('id_aadhar_pincode'); 
+           numberField.addEventListener('input', function() {
+            var value = this.value;
+           this.value = value.replace(/[^0-9]/g, '');
+         });
+              });
+              document.addEventListener('DOMContentLoaded', function() {
+           var numberField = document.getElementById('id_running_emis'); 
+           numberField.addEventListener('input', function() {
+            var value = this.value;
+           this.value = value.replace(/[^0-9]/g, '');
+         });
+              });
+
+              document.addEventListener('DOMContentLoaded', function() {
+           var numberField = document.getElementById('id_net_salary'); 
+           numberField.addEventListener('input', function() {
+            var value = this.value;
+           this.value = value.replace(/[^0-9]/g, '');
+         });
+              });
+        
+              document.addEventListener('DOMContentLoaded', function() {
+           var numberField = document.getElementById('id_total_job_experience'); 
+           numberField.addEventListener('input', function() {
+            var value = this.value;
+           this.value = value.replace(/[^0-9]/g, '');
+         });
+              });
+              document.addEventListener('DOMContentLoaded', function() {
+           var numberField = document.getElementById('id_office_address_pincode'); 
+           numberField.addEventListener('input', function() {
+            var value = this.value;
+           this.value = value.replace(/[^0-9]/g, '');
+         });
+              });
+    
+            document.addEventListener('DOMContentLoaded', function() {
+           var numberField = document.getElementById('id_required_loan_amount'); 
+           numberField.addEventListener('input', function() {
+            var value = this.value;
+           this.value = value.replace(/[^0-9]/g, '');
+         });
+              });
+        document.addEventListener('DOMContentLoaded', function() {
+           var numberField = document.getElementById('id_ref1_mobile'); 
+           numberField.addEventListener('input', function() {
+            var value = this.value;
+           this.value = value.replace(/[^0-9]/g, '');
+         });
+              });
+              document.addEventListener('DOMContentLoaded', function() {
+           var numberField = document.getElementById('id_ref2_mobile'); 
+           numberField.addEventListener('input', function() {
+            var value = this.value;
+           this.value = value.replace(/[^0-9]/g, '');
+         });
+              });
+    
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        function clearErrorMessages(field) {
+            var parent = field.closest('.form-group');
+            if (parent) {
+                var errorFeedback = parent.querySelector('.invalid-feedback');
+                if (errorFeedback) {
+                    errorFeedback.innerHTML = '';
+                }
+            }
+        }
+    
+        var fields = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
+        fields.forEach(function(field) {
+            field.addEventListener('input', function() {
+                clearErrorMessages(this);
+            });
+        });
+    });
+    
+</script>
+    
+</head>
+<body>
+    <h1><center>Personal Detail Form</center></h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="form-container">
+            {% for field in form %}
+                <div class="form-group">
+                    {% if field.field.required %}
+                        <label class="required">{{ field.label_tag }}</label>
+                    {% else %}
+                        <label>{{ field.label_tag }}</label>
+                    {% endif %}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in field.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <script>
+        window.addEventListener('message', function(event) {
+         
+            if (event.data === 'Apply custom styles') {
+                document.body.style.backgroundColor = 'white';
+        
+        
+                var style = document.createElement('style');
+                style.innerHTML = `
+                   body::-webkit-scrollbar{
+                   display:none;
+                   }
+                `;
+                document.head.appendChild(style);
+            
+           }
+        });
+    </script>
+</body>
+</html>
+
+</html>

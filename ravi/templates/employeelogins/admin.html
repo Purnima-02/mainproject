@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <title>Employee login Panel</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #0a8088;
+      overflow-x: hidden;
+      transition: 0.3s ease;
+      padding-top: 10px;
+      margin-top: 95px;
+    }
+
+    .sidenav.open {
+      width: 250px;
+    }
+
+    .sidenav a,
+    .dropdown-btn {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 15px;
+      color: white;
+      display: block;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .sidenav a:hover,
+    .dropdown-btn:hover {
+      color: #f1f1f1;
+    }
+
+    .main {
+      margin-left: 250px;
+      font-size: 20px;
+      padding: 0px 10px;
+    }
+
+    .active {
+      background-color: #0a8088;
+      color: white;
+    }
+
+    .dropdown-container {
+      display: none;
+      background-color: #0a8088;
+      padding-left: 8px;
+    }
+
+    .fa-caret-down {
+      float: right;
+      padding-right: 8px;
+      padding-top: 7px;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 100px;
+      left: 0;
+      z-index: 999;
+      background: #0a8088;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+      padding: 5px 10px;
+    }
+
+    .toggle-btn.open {
+      left: 210px;
+    }
+
+    @media (max-width: 768px) {
+      .sidenav {
+        width: 0;
+        position: absolute;
+      }
+      .toggle-btn {
+        left: 0;
+      }
+    }
+    .navbar {
+    background-color: #0a8088 !important;
+}
+
+  </style>
+</head>
+
+<body>
+  <button class="toggle-btn" onclick="toggleSidebar()">&#9776;</button>
+
+  <nav class="navbar bg-dark border-bottom border-body" style="background-color: #0a8088;" data-bs-theme="dark">
+
+    <div class="container">
+      <h5 class="navbar-brand">Employee Login</h5>
+      <div class="navbar-nav">
+        <button class="dropdown-btn">My Profile</button>
+        <div class="dropdown-container">
+          <h6 style="color: #f1f1f1;">UserName :{{user.get_username}}</h6>
+          <h6 style="color:#f1f1f1;"> Email Id :{{ user.email }}</h6>
+          <a href="" style="text-decoration: none;"><h6 style="color:#f1f1f1;">Change Password</h6></a>
+        </div>
+        <a class="nav-link" href="" onclick="return confirm('Are you sure you want to logout')" style="margin-left: 20px;">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidenav" id="sidebar">
+    <br>
+    <button class="dropdown-btn">LOANS
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="{% url 'employee_login' %}">Personal loans</a>
+      <a href="{% url 'homelogin' %}">Home loans</a>
+      <a href="{% url 'customer_profile_list' %}">Business loans</a>
+      <a href="{% url 'customer_profile_list' %}">Educational loans</a>
+      <a href="{% url 'customer_profile_list' %}">Cars loans</a>
+      <a href="{% url 'customer_profile_list' %}">Other loans</a>
+    </div>
+
+    <button class="dropdown-btn">SALES LOANS
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="{% url 'customer_profile' %}">Personal loans</a>
+      <a href="{% url 'customer_profile' %}">Home loans</a>
+      <a href="{% url 'customer_profile_list' %}">Business loans</a>
+      <a href="{% url 'customer_profile_list' %}">Educational loans</a>
+      <a href="{% url 'customer_profile_list' %}">Cars loans</a>
+      <a href="{% url 'customer_profile_list' %}">Other loans</a>
+    </div>
+
+    <button class="dropdown-btn">Add here
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="">Add  here</a>
+      <a href="">Add here</a>
+    </div>
+
+    <button class="dropdown-btn">Add here
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="">Add hereo</a>
+      <a href="">Add here</a>
+    </div>
+    <button class="dropdown-btn">Add here
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="">Add here</a>
+      <a href="">Add here</a>
+    </div>
+    <button class="dropdown-btn">Add here
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="">Add here</a>
+      <a href="">Add here</a>
+    </div>
+
+
+  </div>
+
+  <div class="container my-3">
+    {% block content %}{% endblock %}
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      var sidebar = document.getElementById("sidebar");
+      var toggleBtn = document.querySelector(".toggle-btn");
+      
+      sidebar.classList.toggle("open");
+      
+      if (sidebar.classList.contains("open")) {
+        toggleBtn.classList.add("open");
+      } else {
+        toggleBtn.classList.remove("open");
+      }
+    }
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.1/umd/popper.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.10/summernote-bs4.js'></script>
+  <script src="./script.js"></script>
+
+  <script>
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

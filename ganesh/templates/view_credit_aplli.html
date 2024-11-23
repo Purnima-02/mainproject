@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Credit A pplication Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>View Credit Application Details</h2>
+        <form method="post" action="{% url 'view_credit_appli' personal_detail.id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ personal_detail.first_name }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ personal_detail.last_name }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <input type="text" class="form-control" id="gender" name="gender" value="{{ personal_detail.gender }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="father_name">Father's Name</label>
+                <input type="text" class="form-control" id="father_name" name="father_name" value="{{ personal_detail.father_name }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="date_of_birth">Date of Birth</label>
+                <input type="text" class="form-control" id="date_of_birth" name="date_of_birth" value="{{ personal_detail.date_of_birth }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="mobile_number">Mobile Number</label>
+                <input type="text" class="form-control" id="mobile_number" name="mobile_number" value="{{ personal_detail.mobile_number }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="pan_card_number">PAN Card Number</label>
+                <input type="text" class="form-control" id="pan_card_number" name="pan_card_number" value="{{ personal_detail.pan_card_number }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="aadhar_card_number">Aadhar Card Number</label>
+                <input type="text" class="form-control" id="aadhar_card_number" name="aadhar_card_number" value="{{ personal_detail.aadhar_card_number }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="marital_status">Marital Status</label>
+                <input type="text" class="form-control" id="marital_status" name="marital_status" value="{{ personal_detail.marital_status }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ personal_detail.email }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="current_address">Current Address</label>
+                <textarea class="form-control" id="current_address" name="current_address" rows="3" readonly>{{ personal_detail.current_address }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="current_address_pincode">Current Address Pincode</label>
+                <input type="text" class="form-control" id="current_address_pincode" name="current_address_pincode" value="{{ personal_detail.current_address_pincode }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="aadhar_address">Aadhar Address</label>
+                <textarea class="form-control" id="aadhar_address" name="aadhar_address" rows="3" readonly>{{ personal_detail.aadhar_address }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="aadhar_pincode">Aadhar Pincode</label>
+                <input type="text" class="form-control" id="aadhar_pincode" name="aadhar_pincode" value="{{ personal_detail.aadhar_pincode }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="running_emis">Running EMIs</label>
+                <input type="text" class="form-control" id="running_emis" name="running_emis" value="{{ personal_detail.running_emis }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="net_salary">Net Salary</label>
+                <input type="text" class="form-control" id="net_salary" name="net_salary" value="{{ personal_detail.net_salary }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="company_name">Company Name</label>
+                <input type="text" class="form-control" id="company_name" name="company_name" value="{{ personal_detail.company_name }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="company_type">Company Type</label>
+                <input type="text" class="form-control" id="company_type" name="company_type" value="{{ personal_detail.company_type }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="job_joining_date">Job Joining Date</label>
+                <input type="text" class="form-control" id="job_joining_date" name="job_joining_date" value="{{ personal_detail.job_joining_date }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="job_location">Job Location</label>
+                <input type="text" class="form-control" id="job_location" name="job_location" value="{{ personal_detail.job_location }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="total_job_experience">Total Job Experience</label>
+                <input type="text" class="form-control" id="total_job_experience" name="total_job_experience" value="{{ personal_detail.total_job_experience }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="work_email">Work Email</label>
+                <input type="email" class="form-control" id="work_email" name="work_email" value="{{ personal_detail.work_email }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="office_address">Office Address</label>
+                <textarea class="form-control" id="office_address" name="office_address" rows="3" readonly>{{ personal_detail.office_address }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="office_address_pincode">Office Address Pincode</label>
+                <input type="text" class="form-control" id="office_address_pincode" name="office_address_pincode" value="{{ personal_detail.office_address_pincode }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="required_loan_amount">Required Loan Amount</label>
+                <input type="text" class="form-control" id="required_loan_amount" name="required_loan_amount" value="{{ personal_detail.required_loan_amount }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="ref1_name">Reference 1 Name</label>
+                <input type="text" class="form-control" id="ref1_name" name="ref1_name" value="{{ personal_detail.ref1_name }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="ref1_mobile">Reference 1 Mobile</label>
+                <input type="text" class="form-control" id="ref1_mobile" name="ref1_mobile" value="{{ personal_detail.ref1_mobile }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="ref2_name">Reference 2 Name</label>
+                <input type="text" class="form-control" id="ref2_name" name="ref2_name" value="{{ personal_detail.ref2_name }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="ref2_mobile">Reference 2 Mobile</label>
+                <input type="text" class="form-control" id="ref2_mobile" name="ref2_mobile" value="{{ personal_detail.ref2_mobile }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="own_house">Own House</label>
+                <input type="text" class="form-control" id="own_house" name="own_house" value="{{ personal_detail.own_house|yesno:"Yes,No" }}" readonly>
+            </div>
+            <a href="{% url 'update_credit_detail' personal_detail.id %}" class="btn btn-primary">Edit</a>
+    
+
+        </form>
+    </div>
+</body>
+</html>

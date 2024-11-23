@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Details List</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#personalDetailsTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
+                autoWidth: true,
+                responsive: true,
+            });
+
+            // Custom search functionality
+            $('#searchInput').on('keyup', function() {
+                var value = $(this).val().toLowerCase();
+                $('#personalDetailsTable tbody tr').filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+
+   
+</head>
+<body>
+   
+    <h2><center>Personal Details List</center></h2>
+    <div class="container mt-5">
+        <style>
+            table.dataTable {
+    table-layout: auto !important;
+    width: 100% !important;
+}
+
+            .back-button {
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+                margin-top: 1px;
+
+            }
+            .back-button:hover {
+                color: #007bff; /* Change color on hover */
+            }
+        </style>
+        
+        <a href="javascript:void(0);" onclick="window.history.back();" class="back-button">← Back</a>
+        <div class="row mb-3">
+            <div class="col-md-6">
+               
+            </div>
+           
+        </div>
+
+        <table id="personalDetailsTable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Applicant ID</th>
+                    <th>Full Name</th>
+                    <th>Phone Number</th>
+                    <th>Cibil Status</th>
+                    <th>Franchise Code</th>
+                    <th>DSA Code</th>
+                    <th>Sales Code</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for detail in profile_with_cibil %}
+                <tr>
+                    <td>{{ detail.profile.id }}</td>
+                    <td>{{ detail.profile.basicdetailform.application_id }}</td>
+                    <td>{{ detail.profile.first_name }} {{ detail.profile.last_name }}</td>
+                    <td>{{ detail.profile.mobile_number }}</td>
+                    <td>
+                        {% if detail.cibil_score %}
+                            {{ detail.cibil_score }}
+                        {% else %}
+                            Not Available
+                        {% endif %}
+                    </td>
+                    <td>{{ detail.profile.franrefCode}}</td>
+                    <td>{{ detail.profile.dsaref_code}}</td>
+
+                    <td>{{ detail.profile.empref_code}}</td>
+                     
+                    <td>
+                        <div class="d-flex justify-content-start">
+                            <a href="{% url 'update_personal_detail' detail.profile.id %}" class="btn btn-primary mx-1">Update</a>
+                            <a href="{% url 'view_personal_detail' detail.profile.id %}" class="btn btn-secondary mx-1">View</a>
+                            <a href="{% url 'view_documents' detail.profile.application_id %}" class="btn btn-info mx-1">Doc View</a>
+                            <a href="{% url 'personal_verification_add_or_update' detail.profile.id %}" class="btn btn-danger mx-1">View Status</a>
+                        </div>
+                    </td>
+                    
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

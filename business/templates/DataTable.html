@@ -1,0 +1,167 @@
+
+ 
+<h1 class="text-center">BusinessLoan view List </h1>
+
+    
+     
+        <!-- <h1 class="mb-4">Business Loans</h1> -->
+        <div class="table-responsive">
+            <table class="table" id="myTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>SNO</th>
+                        <th>Application Id</th>
+                        <th>Full Name</th>
+                     <th>Cibil Score</th>
+                        <th>Business Name</th>
+                        <th>Mobile Number</th>
+                        <th>Email ID</th>
+                        <th>DSA Code</th>
+                         <th>Franchise Code</th>
+                         <th>Sales Code</th>
+                        <th>Current Stage</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for loan,items,cibil in objects %}
+                    <tr>
+                        <td class="col-1">{{ forloop.counter0|add:start_index }}</td>
+                        <td>{{ loan.application_id }}</td>
+                        <!-- <td>{{loan.basicdetailform.id}}</td> -->
+                        <td>{{ loan.first_name }}  {{ loan.last_name }}</td>
+                       <td>{{ cibil.cibil_score}}</td>
+                        <td>{{ loan.business_name }}</td>
+                        
+                        <td>{{ loan.mobile_number }}</td>
+                        <td>{{ loan.email_id }}</td>
+                        <td>{{ loan.dsaref_code }}</td>
+                    <td>{{ loan.franrefCode }}</td>
+                    <td>{{ loan.empref_code }}</td>
+                        {% if items %}
+                            
+                        <td><b>{{items}}</b></td>
+                        {% else  %}
+                        <td>No verification</td>
+                            
+                        {% endif %}
+                        <td class="d-flex gap-2">
+                            <a href="{% url 'business-loan-view' loan.id %}" class="btn btn-primary">View</a>
+                            <a href="{% url 'business-loan-update' loan.application_id %}" class="btn btn-warning ">Update</a>
+
+                            {% if loan.BussinessLoandocuments %}
+                        
+                            <a href="{% url 'update-documents' loan.application_id %}" class="btn btn-warning">Update Documents</a>
+                            <a href="{% url 'documents-view' loan.application_id %}" class="btn btn-success ">View Documents</a>
+                            
+                            {% else  %}
+
+                            <a href="{% url 'upload-documents' %}?id={{ loan.application_id }}" class="btn btn-success ">Upload Documents</a>
+
+                            {% endif %}
+                           
+                                
+
+                            {% if loan.applicationverification %}
+                          
+                            <a href="{% url 'busupdate-verification' loan.application_id %}" class="btn btn-success ">Update Verification</a>
+                            {% else  %}
+                            <a href="{% url 'BusapplicationFlow' loan.application_id %}" class="btn btn-success ">Verification</a>
+
+                            {% endif %}
+                            
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="2">No records found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <p class="fw-bold pagesnumber">Showing Pages {{objects.number}} of {{objects.paginator.num_pages}} </p>
+
+    
+    <!-- Pagination links -->
+    <div class="pagination row">
+    <div class="col-12 d-flex justify-content-center">
+    <span class="step-links d-flex ms-5">
+        {% if objects.has_previous %}
+        <p href="?page=1" class="page-link fw-bold bg-success text-white text-capitalize me-2 number rounded-3"> first</p>
+        <p href="?page={{ objects.previous_page_number }}"  class="page-link number">previous</p>
+        {% endif %}
+    
+    
+        
+        {% if objects.number >= objects.paginator.num_pages|add:'-2' and objects.paginator.num_pages|add:'-2' != 1 and objects.paginator.num_pages >= 3 %}
+        <span class="nav-link fw-bold">...</span>
+        {% endif %}
+    
+        
+    
+       
+    
+        {% for num in objects.paginator.page_range %}
+    
+        {% if objects.number == objects.paginator.num_pages and num >=  objects.number|add:'-2' %}
+            
+        <p href="?page={{ num }}" class="nav-link number {{num}} ms-1 rounded-3">{{ num }}</p>
+    
+       {% elif num >= objects.number and num <= objects.number|add:'2' and objects.number|add:'2' <= objects.paginator.num_pages   %}
+       <p href="?page={{ num }}" class="nav-link number {{num}} ms-1 rounded-3" >{{ num }}</p>
+            {% if num ==  objects.number|add:'2' and num != objects.paginator.num_pages %}
+            <span class="nav-link fw-bold">...</span>
+                
+            {% endif %}
+       {% elif objects.number|add:'2' > objects.paginator.num_pages and num >= objects.number|add:'-1' and num <= objects.paginator.num_pages %}
+       <p href="?page={{ num }}" class="nav-link number {{num}} ms-1 rounded-3">{{ num }}</p>
+    
+       {% endif %}
+    {% endfor %}
+    
+    
+    
+    
+    
+        <!-- <p>{{objects.paginator.num_pages}}</p> -->
+    
+       
+    
+        {% if objects.has_next %}
+        <p href="?page={{ objects.next_page_number }}"  class="page-link number">next</p>
+        <p href="?page={{ objects.paginator.num_pages }}"  class="page-link number bg-danger text-white fw-bold text-capitalize ms-2 rounded-3">last</p>
+    {% endif %} 
+    </span>
+    </div>
+    </div>
+    
+    
+    <script id="">
+    
+    console.log("Url search..")
+        var currentPage={{objects.number}};
+    
+        document.querySelectorAll('.number').forEach((page)=>{
+        
+          
+         var pages= page.classList[2];
+         if(pages==currentPage){
+          // console.log(pages+"Current PAge........");
+           getFref=page.getAttribute('href');
+           console.log(getFref);
+           // console.log(`http://127.0.0.1:8001/dsa/approved${getFref}`);
+          
+           console.log("fetched");
+          page.classList.add('page-active');
+         }else{
+          page.classList.remove('page-active')
+         }
+       });
+    </script>
+    
+    
+    
+    

@@ -1,0 +1,759 @@
+{% extends 'new_dashboard.html' %}
+
+{% block content1 %}
+    <style>
+        .inside-card {
+            position: relative;
+            transition: transform 0.3s ease-in-out;
+        }
+        .inside-card:hover {
+            transform: translateY(-3px);
+            cursor: pointer;
+        }
+        .card-custom {
+            border-radius: 15px;
+            overflow: hidden;
+            background-color: #f7f7f7;
+            height: 110px;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            font-family: 'Arial', sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        h1 span {
+            color: white;
+            text-shadow: -1px 0 orange, 1px 0 orange, 0 -1px orange, 0 1px orange;
+        }
+    </style>
+
+    <div class="container mt-4">
+        <h1 style="text-align: center;"><b>TOTAL SLNFINSERV LOANS APPLY COUNT</b></h1>
+        <!-- LOANS APPLIED COUNT -->
+        <h1>
+            <!-- <span>LOANS</span> <span style="color: blue;">APPLIED</span> <span style="color: green;">COUNT</span> -->
+        </h1>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Total Applications Card -->
+            <div class="col">
+                <div class="card card-custom shadow-lg">
+                    <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #378ae8 0%, #378ae8 100%);">
+                        <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Total Applications</p>
+                        <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ total_loans_count }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Loan Applications Card -->
+            <div class="col">
+                <div class="card card-custom shadow-lg">
+                    <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #6a11cb 0%, #6a11cb 100%);">
+                        <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Business Loan Applications</p>
+                        <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ business_loans_count }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personal Loan Applications Card -->
+            <div class="col">
+                <div class="card card-custom shadow-lg">
+                    <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #be2791 0%, #be2791 100%);">
+                        <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Personal Loan Applications</p>
+                        <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ personal_loans_count }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Loan Applications Card -->
+            <div class="col">
+                <div class="card card-custom shadow-lg">
+                    <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #a6d81d 0%, #a6d81d 100%);">
+                        <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Education Loan Applications</p>
+                        <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ educational_loans_count }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAP Applications Card -->
+            <div class="col">
+                <div class="card card-custom shadow-lg">
+                    <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #fc2549 0%, #fc2549 100%);">
+                        <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">LAP Applications</p>
+                        <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ lap_loans_count }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home Loan Applications Card -->
+            <div class="col">
+                <div class="card card-custom shadow-lg">
+                    <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #515150 0%, #515150 100%);">
+                        <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Home Loan Applications</p>
+                        <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ home_loans_count }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Car Loan Applications Card -->
+            <div class="col">
+                <div class="card card-custom shadow-lg">
+                    <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #0decce 0%, #0decce 100%);">
+                        <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Car Loan Applications</p>
+                        <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ car_loans_count }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gold Loan Applications Card -->
+            <div class="col">
+                <div class="card card-custom shadow-lg">
+                    <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, gold 0%, gold 100%);">
+                        <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Gold Loan Applications</p>
+                        <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ gold_loan_count }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Loan Applications Card -->
+            <div class="col">
+                <div class="card card-custom shadow-lg">
+                    <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, black 0%, black 100%);">
+                        <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Other Loan Applications</p>
+                        <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ other_loans_count }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CREDIT APPLIED COUNT -->
+        <h1>
+            <span>CREDIT</span> <span style="color: white;">APPLIED</span> <span style="color: white;">COUNT</span>
+        </h1>
+
+        <div class="row row-cols-1 row-cols-md-1 g-12">
+            <!-- Credit Card Applications Card -->
+            <div class="col">
+                <div class="card card-custom shadow-lg">
+                    <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #35766d 0%, #35766d 100%);">
+                        <p class="title fw-bold" style="font-size: 1.0rem; color: white;">Credit Card Applications</p>
+                        <p class="fw-bold" style="font-size: 1.5rem; color: #110202;">{{ credit_card_count }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <h1 style="text-align: center; margin-top: 50px;" >TOTAL SLNFINSERV INSURANCE APPLY COUNT</h1>
+    <!-- INSURANCE APPLIED COUNT -->
+    <h1>
+      <span>INSURANCE</span> <span style="color: white;">APPLIED</span> <span style="color: white;">COUNT</span>
+  </h1>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- Total Insurances Card -->
+      <div class="col">
+          <div class="card card-custom shadow-lg">
+              <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #378ae8 0%, #19d4f9 100%);">
+                  <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Total Insurances</p>
+                  <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{  total_insu_count }}</p>
+              </div>
+          </div>
+      </div>
+      <div class="col">
+          <div class="card card-custom shadow-lg">
+              <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #4267e8 0%, #d41da2 100%);">
+                  <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">ALL Insurance</p>
+                  <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ all_insu_count }}</p>
+              </div>
+          </div>
+      </div>
+
+      <!-- General Insurance Card -->
+      <div class="col">
+          <div class="card card-custom shadow-lg">
+              <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #4267e8 0%, #d41da2 100%);">
+                  <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">General Insurance</p>
+                  <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ gen_insu_count }}</p>
+              </div>
+          </div>
+      </div>
+
+      <!-- Health Insurance Card -->
+      <div class="col">
+          <div class="card card-custom shadow-lg">
+              <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #0dfd9b 0%, #1f91da 100%);">
+                  <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Health Insurance</p>
+                  <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ helth_insu_count }}</p>
+              </div>
+          </div>
+      </div>
+
+      <!-- Life Insurance Card -->
+      <div class="col">
+          <div class="card card-custom shadow-lg">
+              <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #0d0d91 0%, #ed125d 100%);">
+                  <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Life Insurance</p>
+                  <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ life_insu_count }}</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+   
+
+
+<h1 style="color: skyblue;margin-top: 50px;">===================================================================================================</h1>
+
+
+<div class="container mt-4">
+  <h1 style="text-align: center;margin-top: 50px;"><b> TOTAL DSA LOANS APPLY COUNT</b></h1> 
+    <!-- LOANS APPLIED COUNT -->
+    <h1>
+        <span>LOANS</span> <span style="color: white;">APPLIED</span> <span style="color:white;">COUNT</span>
+    </h1>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Total Applications Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #378ae8 0%, #378ae8 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Total Applications</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{  total_ref_loans_count }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Loan Applications Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #6a11cb 0%, #6a11cb 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Business Loan Applications</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ business_ref_count }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Personal Loan Applications Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #be2791 0%, #be2791 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Personal Loan Applications</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ personal_ref_count }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education Loan Applications Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #a6d81d 0%, #a6d81d 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Education Loan Applications</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ educational_ref_count }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LAP Applications Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #fc2549 0%, #fc2549 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">LAP Applications</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ lap_loans_ref_count }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Home Loan Applications Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #515150 0%, #515150 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Home Loan Applications</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ home_loans_ref_count }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Car Loan Applications Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #0decce 0%, #0decce 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Car Loan Applications</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ car_ref_count }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gold Loan Applications Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, gold 0%, gold 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Gold Loan Applications</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ gold_ref_count }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Loan Applications Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, black 0%, black 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Other Loan Applications</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ other_ref_count }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CREDIT APPLIED COUNT -->
+    <h1>
+        <span>CREDIT</span> <span style="color: white;">APPLIED</span> <span style="color: white;">COUNT</span>
+    </h1>
+
+    <div class="row row-cols-1 row-cols-md-1 g-12">
+        <!-- Credit Card Applications Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #35766d 0%, #35766d 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: white;">Credit Card Applications</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #110202;">{{ credit_ref_count }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <h1 style="text-align: center;margin-top: 50px;">DSA INSURANCE APPLY COUNT</h1>
+    <!-- INSURANCE APPLIED COUNT -->
+    <h1>
+      <span>INSURANCE</span> <span style="color: white;">APPLIED</span> <span style="color: white;">COUNT</span>
+  </h1>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- Total Insurances Card -->
+      <div class="col">
+          <div class="card card-custom shadow-lg">
+              <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #378ae8 0%, #19d4f9 100%);">
+                  <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Total Insurances</p>
+                  <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ total_ref_insurances_count }}</p>
+              </div>
+          </div>
+      </div>
+      <div class="col">
+          <div class="card card-custom shadow-lg">
+              <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #4267e8 0%, #d41da2 100%);">
+                  <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">ALL Insurance</p>
+                  <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ all_insu_ref_count }}</p>
+              </div>
+          </div>
+      </div>
+
+      <!-- General Insurance Card -->
+      <div class="col">
+          <div class="card card-custom shadow-lg">
+              <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #4267e8 0%, #d41da2 100%);">
+                  <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">General Insurance</p>
+                  <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ gen_insu_ref_count }}</p>
+              </div>
+          </div>
+      </div>
+
+      <!-- Health Insurance Card -->
+      <div class="col">
+          <div class="card card-custom shadow-lg">
+              <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #0dfd9b 0%, #1f91da 100%);">
+                  <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Health Insurance</p>
+                  <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ helth_insu_ref_count }}</p>
+              </div>
+          </div>
+      </div>
+
+      <!-- Life Insurance Card -->
+      <div class="col">
+          <div class="card card-custom shadow-lg">
+              <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #0d0d91 0%, #ed125d 100%);">
+                  <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Life Insurance</p>
+                  <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ life_insu_ref_count }}</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+<h1 style="color: skyblue;margin-top: 50px;">===================================================================================================</h1>
+
+
+
+
+
+
+
+<div class="container mt-4">
+    <h1 style="text-align: center;margin-top: 50px;"><b> TOTAL FRANCHISE LOANS APPLY COUNT</b></h1> 
+      <!-- LOANS APPLIED COUNT -->
+      <h1>
+          <span>LOANS</span> <span style="color: white;">APPLIED</span> <span style="color: white;">COUNT</span>
+      </h1>
+  
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+          <!-- Total Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #378ae8 0%, #378ae8 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Total Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{  total_fref_loans_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Business Loan Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #6a11cb 0%, #6a11cb 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Business Loan Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ business_fref_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Personal Loan Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #be2791 0%, #be2791 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Personal Loan Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ personal_fref_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Education Loan Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #a6d81d 0%, #a6d81d 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Education Loan Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ educational_fref_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- LAP Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #fc2549 0%, #fc2549 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">LAP Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ lap_loans_fref_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Home Loan Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #515150 0%, #515150 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Home Loan Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ home_loans_fref_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Car Loan Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #0decce 0%, #0decce 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Car Loan Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ car_fref_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Gold Loan Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, gold 0%, gold 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Gold Loan Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ gold_fref_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Other Loan Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, black 0%, black 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Other Loan Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ other_fref_count }}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+      <!-- CREDIT APPLIED COUNT -->
+      <h1>
+          <span>CREDIT</span> <span style="color: white;">APPLIED</span> <span style="color: white;">COUNT</span>
+      </h1>
+  
+      <div class="row row-cols-1 row-cols-md-1 g-12">
+          <!-- Credit Card Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #35766d 0%, #35766d 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: white;">Credit Card Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #110202;">{{ credit_fref_count }}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+  
+      <h1 style="text-align: center;margin-top: 50px;">FRANCHISE INSURANCE APPLY COUNT</h1>
+      <!-- INSURANCE APPLIED COUNT -->
+      <h1>
+        <span>INSURANCE</span> <span style="color: white;">APPLIED</span> <span style="color: white;">COUNT</span>
+    </h1>
+  
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Total Insurances Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #378ae8 0%, #19d4f9 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Total Insurances</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ total_fref_insurances_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #4267e8 0%, #d41da2 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">ALL Insurance</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ all_insu_fref_count }}</p>
+                </div>
+            </div>
+        </div>
+  
+        <!-- General Insurance Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #4267e8 0%, #d41da2 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">General Insurance</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ gen_insu_fref_count }}</p>
+                </div>
+            </div>
+        </div>
+  
+        <!-- Health Insurance Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #0dfd9b 0%, #1f91da 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Health Insurance</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ helth_insu_fref_count }}</p>
+                </div>
+            </div>
+        </div>
+  
+        <!-- Life Insurance Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #0d0d91 0%, #ed125d 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Life Insurance</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ life_insu_fref_count }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+  <h1 style="color: skyblue;margin-top: 50px;">===================================================================================================</h1>
+
+
+
+
+
+
+  <div class="container mt-4"></div>
+    <h1 style="text-align: center;margin-top: 50px;"><b> TOTAL SALES LOANS APPLY COUNT</b></h1> 
+      <!-- LOANS APPLIED COUNT -->
+      <h1>
+          <span>LOANS</span> <span style="color: white;">APPLIED</span> <span style="color: white;">COUNT</span>
+      </h1>
+  
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+          <!-- Total Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #378ae8 0%, #378ae8 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Total Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{  total_sref_loans_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Business Loan Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #6a11cb 0%, #6a11cb 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Business Loan Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ business_sref_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Personal Loan Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #be2791 0%, #be2791 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Personal Loan Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ personal_sref_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Education Loan Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #a6d81d 0%, #a6d81d 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Education Loan Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ educational_sref_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- LAP Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #fc2549 0%, #fc2549 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">LAP Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ lap_loans_sref_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Home Loan Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #515150 0%, #515150 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Home Loan Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ home_loans_sref_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Car Loan Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #0decce 0%, #0decce 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Car Loan Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ car_sref_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Gold Loan Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, gold 0%, gold 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Gold Loan Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ gold_sref_count }}</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Other Loan Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, black 0%, black 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Other Loan Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ other_sref_count }}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+      <!-- CREDIT APPLIED COUNT -->
+      <h1>
+          <span>CREDIT</span> <span style="color: white;">APPLIED</span> <span style="color: white;">COUNT</span>
+      </h1>
+  
+      <div class="row row-cols-1 row-cols-md-1 g-12">
+          <!-- Credit Card Applications Card -->
+          <div class="col">
+              <div class="card card-custom shadow-lg">
+                  <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #35766d 0%, #35766d 100%);">
+                      <p class="title fw-bold" style="font-size: 1.0rem; color: white;">Credit Card Applications</p>
+                      <p class="fw-bold" style="font-size: 1.5rem; color: #110202;">{{ credit_sref_count }}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+  
+      <h1 style="text-align: center;margin-top: 50px;">SALES INSURANCE APPLY COUNT</h1>
+      <!-- INSURANCE APPLIED COUNT -->
+      <h1>
+        <span>INSURANCE</span> <span style="color: white;">APPLIED</span> <span style="color: white;">COUNT</span>
+    </h1>
+  
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Total Insurances Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #378ae8 0%, #19d4f9 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Total Insurances</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ total_sref_insurances_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #4267e8 0%, #d41da2 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">ALL Insurance</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ all_insu_sref_count }}</p>
+                </div>
+            </div>
+        </div>
+  
+        <!-- General Insurance Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #4267e8 0%, #d41da2 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">General Insurance</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ gen_insu_sref_count }}</p>
+                </div>
+            </div>
+        </div>
+  
+        <!-- Health Insurance Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #0dfd9b 0%, #1f91da 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Health Insurance</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ helth_insu_sref_count }}</p>
+                </div>
+            </div>
+        </div>
+  
+        <!-- Life Insurance Card -->
+        <div class="col">
+            <div class="card card-custom shadow-lg">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column text-dark" style="background: linear-gradient(135deg, #0d0d91 0%, #ed125d 100%);">
+                    <p class="title fw-bold" style="font-size: 1.0rem; color: #fff;">Life Insurance</p>
+                    <p class="fw-bold" style="font-size: 1.5rem; color: #fff;">{{ life_insu_sref_count }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    {% endblock %}
+
+
+    
+

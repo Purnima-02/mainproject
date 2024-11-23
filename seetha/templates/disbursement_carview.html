@@ -1,0 +1,113 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disbursement Summary</title>
+    <!-- Bootstrap CSS -->
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
+                responsive: true
+            });
+        });
+    </script>
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <style>
+        .back-button {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin-top: 1px;
+            margin-right: 90%;
+
+        }
+        .back-button:hover {
+            color: #007bff; /* Change color on hover */
+        }
+    </style>
+    
+        <a href="javascript:void(0);" onclick="window.history.back();" class="back-button">← Back</a>
+    <div class="container">
+        <h1 class="text-center mb-4">CarLoan Disbursement Summary</h1>
+
+        <!-- Table -->
+        <div class="table-container">
+            <table id="example" class="table table-bordered table-striped table-responsive">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Customer Application Id</th>
+                        <th>Customer Fullname</th>
+                        <th>Disbursement date</th>
+                        <th>Location</th>
+                        <th>Bank LoginId</th>
+                        <th>Bank/Nbfc name</th>
+                        <!-- Add more headers as needed -->
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for details in details_list %}
+                        <tr>
+                            <td>{{details.verification.application_id }}</td>
+                            <td>{{ details.verification.first_name}} {{ details.verification.last_name}}</td>
+                            
+                            <td>{{ details.disbursement_date|date:'d-m-y' }}</td>
+                            <td>{{ details.location }}</td>
+                            <td>{{ details.bank_loginid }}</td>
+                            <td>{{ details.bank_nbfc_name }}</td>
+                            <!-- Add more fields as needed -->
+                            <td>
+                                <a href="{% url 'disbursement_cardetails' verification_id=details.verification.application_id %}" class="btn btn-info btn-sm">View and update</a>
+
+                                <!-- Optionally add an Update button if needed -->
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center">No records found.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

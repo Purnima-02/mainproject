@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!--  meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Update Verification</title>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+        <div class="container mt-5">
+   
+        <form action="" method="post">
+            {% csrf_token %}
+
+            
+            <div class="row"><!--Row-->
+
+                <div class="col-12 col-lg-6 mb-3"><!--column-->
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label for="" class="form-label text-center d-block fw-bold">1.Personal Details </label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="personal_detail_verifaction" id="id_personal_detail_verifaction_approved" value="Approved" 
+                                 {{% if form.personal_detail_verifaction.value == "Approved" %}
+                                 checked
+                                {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_personal_detail_verifaction_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="personal_detail_verifaction" id="id_personal_detail_verifaction_rejected" value="Rejected" 
+                                {{% if form.personal_detail_verifaction.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_personal_detail_verifaction_rejected">Rejected</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div><!--column-->
+
+                 <!-- Documents Upload Verification -->
+                 <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">2.Documents Upload</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="documents_upload_verification" id="id_documents_upload_verification_approved" value="Approved" 
+                                {{% if form.documents_upload_verification.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_documents_upload_verification_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="documents_upload_verification" id="id_documents_upload_verification_rejected" value="Rejected" 
+                                {{% if form.documents_upload_verification.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_documents_upload_verification_rejected">Rejected</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Documents Verification -->
+                 <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">3.kyc and documents verification</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="kyc_and_document_verification" id="id_kyc_and_document_verification_approved" value="Approved" 
+                                {{% if form.kyc_and_document_verification.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_kyc_and_document_verification_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="kyc_and_document_verification" id="id_kyc_and_document_verification_rejected" value="Rejected" 
+                                {{% if form.kyc_and_document_verification.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_kyc_and_document_verification_rejected">Rejected</label>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6  mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold ">4.field officer visit inspection</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="field_officer_visit_inspection" id="id_field_officer_visit_inspection_approved" value="Approved" 
+                                {{% if form.field_officer_visit_inspection.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_field_officer_visit_inspection_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="field_officer_visit_inspection" id="id_field_officer_visit_inspection_rejected" value="Rejected" 
+                                {{% if form.field_officer_visit_inspection.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_field_officer_visit_inspection_rejected">Rejected</label>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+
+                <!-- Eligibility Check Verification -->
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">5.Eligibility Check</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="eligibility_check_verification" id="id_eligibility_check_verification_approved" value="Approved" 
+                                {{% if form.eligibility_check_verification.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_eligibility_check_verification_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="eligibility_check_verification" id="id_eligibility_check_verification_rejected" value="Rejected" 
+                                {{% if form.eligibility_check_verification.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_eligibility_check_verification_rejected">Rejected</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bank Login Verification -->
+                
+                <!-- KYC and Document Verification -->
+                <div class="col-12 col-lg-6  mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">6.Application fee paid</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="Application_fee_paid" id="id_Application_fee_paid_approved" value="Approved" 
+                                {{% if form.Application_fee_paid.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_Application_fee_paid_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="Application_fee_paid" id="id_Application_fee_paid_rejected" value="Rejected" 
+                                {{% if form.Application_fee_paid.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_Application_fee_paid_rejected">Rejected</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-NACH Verification -->
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">7.TELE Verification</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="tele_verification" id="id_tele_verification_approved" value="Approved" 
+                                {{% if form.tele_verification.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_tele_verification_approved">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="tele_verification" id="id_tele_verification_rejected" value="Rejected" 
+                                {{% if form.tele_verification.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_tele_verification_rejected">Rejected</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Field verification -->
+                 <div class="col-12 col-lg-6  mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">8.bank login fee paid</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="bank_login_fee_paid" id="id_bank_login_fee_paid" value="Approved" 
+                                {{% if form.bank_login_fee_paid.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_bank_login_fee_paid">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="bank_login_fee_paid" id="id_bank_login_fee_paid" value="Rejected" 
+                                {{% if form.bank_login_fee_paid.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_bank_login_fee_paid">Rejected</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Field verification -->
+                 <div class="col-12 col-lg-6  mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">9.bank login done </label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="bank_login_done" id="id_bank_login_done" value="Approved" 
+                                {{% if form.bank_login_done.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_bank_login_done">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input verify fs-5" type="radio" name="bank_login_done" id="id_bank_login_done" value="Rejected" 
+                                {{% if form.bank_login_done.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_bank_login_done">Rejected</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Verfication Status -->
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">10.credit manager visit</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="credit_manager_visit" id="id_credit_manager_visit" value="Approved" 
+                                {{% if form.credit_manager_visit.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_credit_manager_visit">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="credit_manager_visit" id="id_credit_manager_visit" value="Rejected" 
+                                {{% if form.credit_manager_visit.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_credit_manager_visit">Rejected</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">11.Loan Approved/Rejected</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="approved_rejected" id="id_approved_rejected" value="Approved" 
+                                {{% if form.approved_rejected.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_approved_rejected">Approved</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="approved_rejected" id="id_approved_rejected" value="Rejected" 
+                                {{% if form.approved_rejected.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_approved_rejected">Rejected</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">12.bank/nbfc soft loan sanctioned</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="bank_or_nbfc_soft_loan_sanctioned" id="id_bank_or_nbfc_soft_loan_sanctioned" value="Approved" 
+                                {{% if form.bank_or_nbfc_soft_loan_sanctioned.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_bank_or_nbfc_soft_loan_sanctioned">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="bank_or_nbfc_soft_loan_sanctioned" id="id_bank_or_nbfc_soft_loan_sanctioned" value="Rejected" 
+                                {{% if form.bank_or_nbfc_soft_loan_sanctioned.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_bank_or_nbfc_soft_loan_sanctioned">Rejected</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">13.legal techinal completed</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="legal_techinal_completed" id="id_legal_techinal_completed" value="Approved" 
+                                {{% if form.legal_techinal_completed.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_legal_techinal_completed">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="legal_techinal_completed" id="id_legal_techinal_completed" value="Rejected" 
+                                {{% if form.legal_techinal_completed.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_legal_techinal_completed">Rejected</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">14.final loan sanctioned</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="final_loan_sanctioned" id="id_final_loan_sanctioned" value="Approved" 
+                                {{% if form.final_loan_sanctioned.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_final_loan_sanctioned">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="final_loan_sanctioned" id="id_final_loan_sanctioned" value="Rejected" 
+                                {{% if form.final_loan_sanctioned.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_final_loan_sanctioned">Rejected</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">15.agreement signatures done</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="agreement_signatures_done" id="id_agreement_signatures_done" value="Approved" 
+                                {{% if form.agreement_signatures_done.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_agreement_signatures_done">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="agreement_signatures_done" id="id_agreement_signatures_done" value="Rejected" 
+                                {{% if form.agreement_signatures_done.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_agreement_signatures_done">Rejected</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">16.Enach-Auto debit done</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="enach_verification" id="id_enach_verification" value="Approved" 
+                                {{% if form.enach_verification.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_enach_verification">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="enach_verification" id="id_enach_verification" value="Rejected" 
+                                {{% if form.enach_verification.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_enach_verification">Rejected</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">17.Disbursment</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="disbursment_verification" id="id_disbursment_verification" value="Approved" 
+                                {{% if form.disbursment_verification.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_disbursment_verification">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="disbursment_verification" id="id_disbursment_verification" value="Rejected" 
+                                {{% if form.disbursment_verification.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_disbursment_verification">Rejected</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">18.post documentation(Mortage)</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="post_documentation" id="id_post_documentation" value="Approved" 
+                                {{% if form.post_documentation.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_post_documentation">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="post_documentation" id="id_post_documentation" value="Rejected" 
+                                {{% if form.post_documentation.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_post_documentation">Rejected</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+   
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">19.cheque issued/loan amount credited in customer bank aacount</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="cheque_issued" id="id_cheque_issued" value="Approved" 
+                                {{% if form.cheque_issued.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_cheque_issued">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="cheque_issued" id="id_cheque_issued" value="Rejected" 
+                                {{% if form.cheque_issued.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_cheque_issued">Rejected</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                        <label class="form-label text-center d-block fw-bold">20.Application successfully</label>
+                        <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="verification_status" id="id_verification_status" value="Approved" 
+                                {{% if form.verification_status.value == "Approved" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-success fw-normal" for="id_verification_status">Completed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input fs-5" type="radio" name="verification_status" id="id_verification_status" value="Rejected" 
+                                {{% if form.verification_status.value == "Rejected" %}
+                                checked
+                               {% endif %}}>
+                                <label class="form-check-label text-danger fw-normal" for="id_verification_status">Rejected</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-5">Submit</button>
+
+            </div><!--Row-->            
+        </form>
+        </div>
+        </div>
+   <br><br>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const allRadioButtons = document.querySelectorAll('.form-check-input');
+        
+                function updateRadioButtons() {
+                    let startDisabling = false;
+                    allRadioButtons.forEach((radio) => {
+                        if (startDisabling) {
+                            radio.disabled = true;
+                        } else {
+                            radio.disabled = false;
+                        }
+                        if (radio.checked && radio.value === 'Rejected') {
+                            startDisabling = true;
+                            
+                        }
+                       
+                    });
+                }
+        
+                allRadioButtons.forEach((radio) => {
+                    radio.addEventListener('input', function() {
+                        updateRadioButtons();
+                    });
+                });
+        
+
+                updateRadioButtons();
+            });
+        </script>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>
+

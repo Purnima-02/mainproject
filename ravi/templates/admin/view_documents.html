@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Personal Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .fixed-size-img {
+            width: 150px; 
+            height: 150px; 
+            object-fit: cover; 
+        }
+        
+        .pdf {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+        }
+        
+        .pdf,
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1,
+        h3 {
+            text-align: center;
+        }
+
+        h1 {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">View Personal Document</h2>
+        <form method="post" action="{% url 'update_document_detail' document_upload.id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="aadhar_card_front">Aadhar Card Front</label>
+                <div>
+                    {% if document_upload.aadhar_card_front %}
+                        <img src="{{ document_upload.aadhar_card_front.url }}" alt="Aadhar Card Front" class="img-fluid fixed-size-img">
+                    {% else %}
+                        <p>No Aadhar Card Front image available.</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="aadhar_card_back">Aadhar Card Back</label>
+                <div>
+                    {% if document_upload.aadhar_card_back %}
+                        <img src="{{ document_upload.aadhar_card_back.url }}" alt="Aadhar Card Back" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pan_card">PAN Card</label>
+                <div>
+                    {% if document_upload.pan_card %}
+                        <img src="{{ document_upload.pan_card.url }}" alt="PAN Card" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customer_photo">Customer Photo</label>
+                <div>
+                    {% if document_upload.customer_photo %}
+                        <img src="{{ document_upload.customer_photo.url }}" alt="Customer Photo" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="payslip_1">Payslip 1</label>
+                <div>
+                    {% if document_upload.payslip_1 %}
+                    <a href="{{ document_upload.payslip_1.url }}" target="_blank">View pdf </a>     
+                              
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="payslip_2">Payslip 2</label>
+                <div>
+                    {% if document_upload.payslip_2 %}
+                <a href="{{ document_upload.payslip_2.url }}" target="_blank">View pdf </a>     
+               
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="payslip_3">Payslip 3</label>
+                <div>
+                    {% if document_upload.payslip_3 %}
+                       <a href="{{ document_upload.payslip_3.url }}" target="_blank">View pdf </a>
+                   
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bank_statement">Bank Statement</label>
+                <div>
+                    {% if document_upload.bank_statement %}
+                       <a href="{{ document_upload.bank_statement.url }}" target="_blank">View pdf </a>
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="employee_id_card">Employee ID Card</label>
+                <div>
+                    {% if document_upload.employee_id_card %}
+                        <img src="{{ document_upload.employee_id_card.url }}" alt="Employee ID Card" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="current_address_proof">Current Address Proof</label>
+                <div>
+                    {% if document_upload.current_address_proof %}
+                        <img src="{{ document_upload.current_address_proof.url }}" alt="Current Address Proof" class="img-fluid fixed-size-img">
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="other_document_1">Other Document 1</label>
+                <div>
+                    {% if document_upload.other_document_1 %}
+                        <a href="{{ document_upload.other_document_1.url }}" target="_blank">View pdf </a>
+                   
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="other_document_2">Other Document 2</label>
+                <div>
+                    {% if document_upload.other_document_2 %}
+                        <a href="{{ document_upload.other_document_2.url }}" target="_blank">View pdf </a>
+                    
+                    {% endif %}
+                </div>
+            </div>
+            <a href="{% url 'update_document_detail' document_upload.id %}" class="btn btn-primary">Edit</a>
+        </form>
+    </div>
+</body>
+</html>

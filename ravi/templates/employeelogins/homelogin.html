@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login</title>
+    <style>
+        button {
+            padding: 10px;
+            background-color: #0a8088;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            padding: 15px;
+        }
+        h1 {
+            background-color: #0a8088;
+            color: black;
+            text-align: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+        table {
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #0a8088;
+            color: white;
+            border-radius: 10px;
+        }
+        td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Login Page</h1>
+    <center>
+        <form action="{% url 'homelogin' %}" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td><input type="text" name="username" placeholder="Username" required></td>
+                </tr>
+                <tr>
+                    <td><input type="password" name="password" placeholder="Password" required></td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Login</button></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+</body>
+</html>

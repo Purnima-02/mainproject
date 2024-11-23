@@ -1,0 +1,1029 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>used Car Loan</title>
+    <!-- {% comment %} <link rel="stylesheet" href="{% static 'css/loan.css' %}"> {% endcomment %} -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" href="{% static 'css/Common.css' %}">
+        <link rel="stylesheet" href="{% static 'css/Loan.css' %}">
+        
+
+        <script src="{% static 'js/Main.js' %}"></script>
+        <script src="{% static 'js/Common.js' %}"></script>
+
+        
+        <!--JQuery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
+
+
+    
+    <!--seperate-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!--seperate-->
+
+<style>
+
+    
+    .faqcard.card {
+        background-color: #e3dcc1;
+        margin-bottom: 25px; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); 
+        border: none; 
+    }
+    .faqcard h5{
+            font-weight: bold;
+        }
+    .faqcard .card-header {
+        cursor: pointer; 
+    }    
+    .faqcard .card-header {
+        cursor: pointer;
+    }    
+    </style>
+
+</head>
+</head>
+
+<body>
+
+    <div class="navbar-section">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url "index" %}"><img src="{% static "assets/img/mainlogo-removebg-preview.png" %}" alt="SLN-Logo" class="img-fluid w-100" style="height: 100px;"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link Aboutus" aria-current="page" href="{% url 'about' %}">About Us</a>
+                        </li>
+      
+                        <li class="nav-item dropdown loan">
+                            <a class="nav-link dropdown-toggle loans" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Loans
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'personalloans' %}">Personal Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'bussinessloan' %}">Business Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'homeloan' %}">Home Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'lap' %}">Loan Against Property</a></li>
+
+      
+                                <li class="dropdown-submenu hover-dropdown">
+                                    <a class="dropdown-item" href="{% url 'carloan' %}">Car Loan</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'usedcar' %}">Used Car Loans</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'newcar' %}">New Car Loans</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'educationalloan' %}">Educational Loan</a></li>
+
+                                <li><a class="dropdown-item" href="{% url 'gold' %}">Gold Loan</a></li>
+
+                                <li class="nav-item" >
+                                    <a class="dropdown-item"  href="{% url 'otherbasicdetail' %}">Other Loan</a>
+                                </li>
+                                
+      
+                            </ul>
+                        </li>
+      
+                        <li class="nav-item">
+                            <a class="nav-link credit-cards" href="{% url 'creditpage' %}">Credit Cards</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle insurance" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Insurance
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'allinsurance'%}">All Insurances</a></li>
+                                <li><a class="dropdown-item" href="{% url 'lifeinsurance'%}">Life Insurance</a></li>
+                                <li><a class="dropdown-item" href="{% url 'generalinsurance'%}">General Insurance</a></li>
+                                <li><a class="dropdown-item" href="{% url 'healthinsurance'%}">Health Insurance</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contactus" href="{% url 'contact'%}">Contact Us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle partner" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Become a Partner
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'dsa' %}">DSA Partner</a></li>
+                                <li><a class="dropdown-item" href="{% url 'franchise' %}">Franchise Program</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle insurance" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                CheckStatus
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                {% if pl %}
+            {% for item in pl %}
+                <li>
+                    <a href="{% url 'view_personal_verify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                        PersonalLoan
+                    </a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No loans available.</li>
+        {% endif %}
+        {% if bus %}
+        {% for loan in bus %}
+           <li><a href="{% url 'buscustomer-profile' application_id=loan.id %}" class="dropdown-item" style="text-decoration: none;">
+               BusinessLoan</a></li>
+               {% endfor %}
+               {% else %}
+   <li>No loans available.</li>
+{% endif %}
+                                
+                                {% if edu %}
+                                {% for item in edu %}
+                                    <li>
+                                        <a href="{% url 'Educustomer-profile' application_id=item.id %}" class="dropdown-item"style="text-decoration: none;">
+                                            educationalloan
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                <li>No loans available.</li>
+                            {% endif %}
+
+                                {% if hl %}
+            {% for item in hl %}
+                <li>
+                    <a href="{% url 'view_home_verify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                        Home Loan
+                    </a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No loans available.</li>
+        {% endif %}
+                                <!-- ================================== -->
+                                {% if cl %}
+            {% for item in cl %}
+                <li>
+                    <a href="{% url 'customerprofile' application_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                        Car Loan
+                    </a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No loans available.</li>
+        {% endif %}
+
+        {% if cc %}
+        {% for item in cc %}
+            <li>
+                <a href="{% url 'viewcustomerverify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                    Creditcard
+                </a>
+            </li>
+        {% endfor %}
+    {% else %}
+        <li>No loans available.</li>
+    {% endif %}
+
+                                {% if loans %}
+                             {% for loan in loans %}
+                                <li><a href="{% url 'viewcustomerverify' instance_id=loan.id %}" class="dropdown-item" style="text-decoration: none;">
+                                    LoanAgainstProperty</a></li>
+                                    {% endfor %}
+                                    {% else %}
+                        <li>No loans available.</li>
+                    {% endif %}
+                            </ul>
+                        </li>
+                    <!-- Navigation bar -->
+                    <li class="nav-item dropdown me-4">
+                        <a class="btn btn-danger dropdown-toggle loans" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% if request.session.email %}
+                                My Profile
+                            {% else %}
+                                Sign In
+                            {% endif %}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            {% if request.session.email %}
+                                <li><a class="dropdown-item" href="#">{{ request.session.email }}</a></li>
+                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                                {% else %}
+                                    <li><a class="dropdown-item" href="{% url 'generate-verify-otp' %}">Sign In</a></li>
+                                {% endif %}
+                        </ul>
+                    </li>
+                               
+                   
+                    </ul>
+                                
+                            </ul>
+                        </li>
+          
+          
+          
+          
+          
+                            
+                        </ul>
+                </div>
+            </div>
+        </nav>
+      </div>
+      
+<!-- nav bar code  -->
+
+<script>
+    $(document).ready(function() {
+        $('.dropdown-submenu.click-dropdown .dropdown-toggle').on('click', function(e) {
+            e.stopPropagation();
+            $(this).next('.dropdown-menu').toggle();
+        });
+    });
+</script>
+
+
+    <!-- nav bar code  -->
+    <style>
+
+        .customer-support{
+            position: fixed;
+            bottom:100px;
+            left: calc(100% - 140px);
+            z-index: 99999;
+        }
+        
+        iframe{
+            height: 400px;
+        }
+            </style>
+        
+            <div class="customer-support" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <img src="{% static 'Images/cust.png' %}" alt="" height="50" width="50">
+            </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel8">Customer Support</h5>
+                        <button type="button" class="btn-close ModelclosedButtn" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+        
+                   
+                        <div class="modal-body">
+        
+                            
+            
+                            <iframe src="http://3.208.103.10:8000/ticket_create/" frameborder="0" style="width: 100%;"></iframe>
+        
+                        </div>
+                        <!--Modal body-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger ModelclosedButtn" data-bs-dismiss="modal">Close</button>
+                           
+                        </div>
+                   
+                </div>
+            </div>
+        </div>
+        
+        <script>
+        
+            $('.customer-support').click(()=>{
+                
+                $('.customer-support').hide()
+        
+            })
+        
+            $('.ModelclosedButtn').click(()=>{
+                $('.customer-support').show()
+        })
+        </script>
+        
+
+    <section class="Psection1">
+        <div class="wavy-background">
+            <div class="container">
+                <div class="row">
+                    <!--column1-->
+                    <div class="col-lg-6 col-sm-12 column1">
+                        <div class="content">
+                            <p class="display-5 fw-bold main-heading">Easily Secure Financing for Your New Vehicle with Our Car Loan
+                                Solutions
+                            </p>
+                        </div>
+                        <br><br>
+                        <h6 class="sub-heading">Explore our Car Loan options featuring competitive interest rates, tailored to make your new
+                            car purchase more affordable.</h6>
+                            <br><br>
+
+                        
+
+                            {% if request.session.clafterurl %}
+                                
+                            <a href="{{ request.session.clafterurl }}"><button class="btn button btn-danger"><b>Apply</b></button></a>
+    
+                            {% else  %}
+    
+                            <a href="{% url 'car-loan-application' %}"><button class="btn button btn-danger"><b>Apply</b></button></a>
+    
+                                
+                            {% endif %}
+                        </div>
+                    <!--column1-->
+                    
+                    <div class="col-lg-6 col-sm-12 column2">
+                        <img src="{% static 'Images/GoldLoanImages/gold-loan.png' %}" class="img-fluid w-100">
+                    </div>
+                </div>
+            </div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#f0faff" fill-opacity="1"
+                    d="M0,64L40,96C80,128,160,192,240,218.7C320,245,400,235,480,224C560,213,640,203,720,197.3C800,192,880,192,960,181.3C1040,171,1120,149,1200,138.7C1280,128,1360,128,1400,128L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
+                </path>
+            </svg>
+        </div>
+    </section>
+
+
+    <div class="position-fixed ms-auto scroll-to-top">
+        <!-- <img src="./Images/Scroll_to_top_icon.png" class="img-fluid" style="width:50px;"> -->
+    </div>
+
+
+    <section id="Psection2" class="Psection2">
+        <div class="container mt-md-5">
+            <nav class="">
+                <a href="#" data-section="PersonalLoan-section1" class="nav-item item1">OVERVIEW</a><span
+                    class="symbol">|</span>
+                <a href="#" data-section="PersonalLoan-section2" class="nav-item">FEATURES</a><span
+                    class="symbol">|</span>
+                <a href="#" data-section="PersonalLoan-section3" class="nav-item">ELIGIBILITY</a><span
+                    class="symbol">|</span>
+                <a href="#" data-section="PersonalLoan-section4" class="nav-item">DOCUMENTS</a><span
+                    class="symbol">|</span>
+                <a href="#" data-section="PersonalLoan-section5" class="nav-item">EMI CALCULATOR</a><span
+                    class="symbol">|</span>
+                <!-- <a href="#" data-section="PersonalLoan-section6" class="nav-item">FEES AND CHARGES</a><span
+                    class="symbol">|</span> -->
+                <a href="#" data-section="PersonalLoan-section7" class="nav-item">FAQ'S</a><span class="symbol">|</span>
+            </nav>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <section class="Psection3 mt-5 overview" id="PersonalLoan-section1">
+        <div class="container">
+            <h1>Used Car Loan Feature</h1>
+            <div class="row mt-5">
+                <div class="col-12 col-md-6 col-lg-2 mb-4">
+                    <div class="card w-100 h-100">
+                        <img src="{% static 'Images/cardsImages/percentageTag.png' %}" class="card-img-top w-50" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build .</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-2 mb-4">
+                    <div class="card w-100 h-100">
+                        <img src="{% static 'Images/cardsImages/coinsHands.png' %}" class="card-img-top w-50" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build .</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-2 mb-4 ">
+                    <div class="card w-100 h-100">
+                        <img src="{% static 'Images/cardsImages/coinsBlog.png' %}" class="card-img-top w-50" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build .</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-2 mb-4">
+                    <div class="card w-100 h-100">
+                        <img src="{% static 'Images/cardsImages/singleCoin.png' %}" class="card-img-top w-50" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build .</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+    
+
+    <!-- Section4 -->
+
+    <section class="Features Psection4 mt-5" id="PersonalLoan-section2">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 column1">
+
+                    <h1>Features and Benefits of our Used Car Loan</h1>
+                    <br>
+
+
+
+                    <div class="container">
+
+                        <!-- <div style="width:5px;height: 5px; background-color: black;border-radius: 50%;"></div> -->
+
+
+                        <ul>
+                            <li style="line-height: 30px;">
+                                <strong>Seize the Opportunity: </strong> Acquire a high-quality used car without waiting to accumulate the full amount upfront.
+                            </li>
+                            <li class="mt-3" style="line-height: 30px;">
+                                <strong>  Budget-Conscious:</strong> We provide the necessary funds for purchasing your chosen used car, repayable through convenient monthly installments.
+                            </li>
+                            <li class="mt-3" style="line-height: 30px;">
+                                <strong>Flexible Choices:</strong>  Select from a variety of used car models that align with your preferences and needs.
+                            </li>
+                            <li class="mt-3" style="line-height: 30px;">
+                                <strong>Immediate Possession: </strong>  Drive your desired used car without the delay of saving for years.
+                            </li>
+
+                            <li class="mt-3" style="line-height: 30px;">
+                                <strong> Exceptional Value: </strong>  Secure a dependable used car offering great value and desirable features.
+                            </li>
+
+                            <li class="mt-3" style="line-height: 30px;">
+                                <strong>Build Your Credit: </strong> Making regular payments can significantly improve your credit history over time.
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="col-12 column2 mt-5">
+
+                    <div class="card w-100 h-100">
+
+
+                        <div class="card-body">
+
+
+                            <h3 class="card-title">Loan Against Property Eligibility and Documents</h3>
+
+                            <div class="row align-items-center"><!--row-->
+                                <div class="col-md-6 col-12">
+                                    <p class="">
+                                    <p>Read on to know the criteria required to apply for our Personal Loan.</p>
+                                    </p>
+                                </div>
+                                <div class="col-md-6 col-12   text-md-end ">
+
+
+                                    <a href="#"><button class="btn button btn-danger" class="">Apply</button></a>
+
+
+                                </div>
+                            </div><!--row-->
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+    </section>
+
+    <!-- Section4 -->
+
+
+    <!-- section5 -->
+
+
+    <section class="Psection5 mt-5" id="PersonalLoan-section3">
+
+        <div class="container">
+            <h1>Used Car Loan Eligibility Criteria:</h1>
+            <br>
+            <div class="container">
+
+                <ol>
+                    <li><strong>Age: &nbsp;</strong> Typically between 21 and 65 years.</li>
+                    <li><strong>Income: &nbsp;</strong> Demonstrable minimum monthly or yearly earnings.</li>
+                    <li><strong>Employment: &nbsp;</strong> Stable employment history of 1-2 years.</li>
+                    <li><strong> Credit Score: &nbsp;</strong> Generally requires a good score, typically 650 or higher.
+                    </li>
+
+                    <li><strong>Down Payment: &nbsp;</strong> A certain percentage of the car's purchase price.</li>
+
+                    <li><strong> Documentation: &nbsp;</strong> Necessary documents include ID, address proof, income
+                        verification, and car ownership papers.</li>
+
+                    <li><strong> Loan Amount: &nbsp;</strong> Determined based on income level and repayment capacity.
+                    </li>
+
+                    <li><strong> Debt-to-Income Ratio: &nbsp;</strong> Existing debts are considered in the evaluation
+                        process.</li>
+
+
+                </ol>
+
+                <p class="fw-bold mt-5 fs-5">Eligibility Criteria for Used Car Loan for Salaried and Self-Employed
+                    Individuals</p>
+
+                <p class="fw-bold  fs-6"> Factors Influencing Eligibility for a Used Car Loan:</p>
+                <ul>
+                    <li>Credit Rating</li>
+                    <li>Income Bracket</li>
+                    <li>Job Stability</li>
+                    <li>Debt-to-Income Proportion</li>
+                    <li>Car's Age</li>
+                    <li>Requested Loan Amount</li>
+                    <li>Initial Down Payment</li>
+                    <li>Loan Duration</li>
+                    <li>Past Credit Record</li>
+                    <li>Current Financial Commitments</li>
+                </ul>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- section5 -->
+
+
+    <!-- section6 -->
+
+
+    <section class="Psection6 mt-5" id="PersonalLoan-section4">
+        <div class="container">
+
+            <h1>Used Car Loans Documentation</h1>
+            <p>To initiate the loan process for a used car, you'll need to provide documentation to demonstrate your
+                eligibility and capability as requested by your lender. Gather the following documents to ensure a swift
+                loan approval process.</p>
+            <br>
+            <p class="fw-bold">Documents Required:</p>
+            <div class="container">
+
+                <ol>
+                    <li>Valid Photo ID Proofs for KYC</li>
+                    <li>PAN Card</li>
+                    <li>Income Proof: Last 2 years' Income Tax Returns</li>
+                    <li>Latest 3 months' Salary Slips</li>
+                    <li>Last 6 months' Salary Account Statements</li>
+                    <li>Proof of Signature Verification</li>
+                    <li>Car Registration Certificate</li>
+
+                </ol>
+
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- section6 -->
+
+    <!-- section7 -->
+
+    <section class="Psection7 mt-5" id="PersonalLoan-section5">
+
+        <div class="container">
+
+            <h1>EMI Calculator for Used Car Loan</h1>
+
+
+            <p>An EMI calculator is a handy tool to estimate the monthly payments for your used car loan over a specific
+                period.
+                By using the RuLoans EMI calculator, you can pre-calculate your EMI, aiding in better financial
+                planning. Furthermore, it allows you to check eligibility and compare various loan options through the
+                RuLoans used car loan calculator.
+            </p>
+
+            <p class="fw-bold">Using a pre-owned Car Loan EMI (Equated Monthly Installment) calculator allows you to
+                estimate your monthly loan repayment amount. To use a pre-owned Car Loan EMI calculator efficiently,
+                follow these steps:</p>
+
+
+            <div class="container">
+                <ol>
+                    <li>Input the loan amount, interest rate, and tenure.</li>
+                    <li>Click on the Calculate button.</li>
+                    <li>View the EMI, total interest, and total repayment.</li>
+                    <li>Adjust the tenure if necessary.</li>
+                    <li>Factor in any additional costs.</li>
+                    <li>Ensure it fits within your budget.</li>
+                    <li>Confirm details with the lender before finalizing.</li>
+                </ol>
+            </div>
+
+            <p class="fw-bold">How is a Used Car Loan EMI Calculated?</p>
+            <p>The EMI (Equated Monthly Installment) for a used car loan is determined using the compound interest
+                formula:</p>
+
+
+            <p style="margin-right: 100%;">
+                $$ \text{EMI} = \frac{P \times r \times (1 + r)^n}{(1 + r)^n - 1} $$
+            </p>
+            <p class="fw-bold">where:</p>
+
+            <p>EMI = Equated Monthly Installment</p>
+
+            <p>P = Loan principal amount</p>
+
+            <p>r = Monthly interest rate (Annual interest rate divided by 12, expressed as a decimal)</p>
+
+           <p> n = Loan tenure in months</p>
+        </div>
+    </section>
+
+
+    <!-- section7 -->
+
+
+    <!-- section8 -->
+
+    <!-- <section class="Psection8 mt-5" id="PersonalLoan-section6">
+
+        <div class="container">
+            <h1>Costs and Fees Associated with Used Loan</h1>
+            <p>"The fees and charges for used car loans typically differ between lenders and individual cases. The following table provides an overview of the fees and charges associated with used car loans, offering a comprehensive understanding of the applicable costs."</p>
+
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <div class="card px-4 ">
+                        <div class="card-body">
+
+
+
+                            <div class="custom-table">
+                                <table class="table table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>Particulars</th>
+                                            <th>Charges</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+
+
+                                            <td>
+                                                <h6>Loan Processing Fees</h6>
+                                            </td>
+                                            <td>
+                                                <p>Ranges from 0.5% to 4% of the loan amount.</p>
+                                            </td>
+
+
+                                        </tr>
+                                        <br>
+                                        <tr>
+                                            <td>
+                                                <h6>Loan Cancellation Fees:</h6>
+                                            </td>
+                                            <td>
+                                                <p>Typically about Rs 3,000.</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6>Stamp Duty Charges:</h6>
+                                            </td>
+                                            <td>
+                                                <p>Charged based on actuals.</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6>Legal Fees:</h6>
+                                            </td>
+                                            <td>
+                                                <p>Determined based on actual expenses.</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6>Penal Charges:</h6>
+                                            </td>
+                                            <td>
+                                                <p>Usually set at 2% per month, equivalent to 24% annually.</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6>EMI/Cheque Bounce Charges:</h6>
+                                            </td>
+                                            <td>
+                                                <p>Approximately Rs 400 per bounce.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-5 text-primary">Additional fees and charges that lenders might impose on your personal loan comprise documentation fees, verification fees, charges for duplicate statements, fees for issuing NOC certificates, and swap charges.
+
+                </p>
+        </div>
+
+
+
+    </section> -->
+
+
+
+    <!-- section8 -->
+
+
+
+    <!-- section9 -->
+
+
+    <section class="Psection9 mt-5" id="PersonalLoan-section7">
+
+
+        <div class="container mt-3">
+            <h1>Frequently Asked Questions About Financing Used Cars</h1>
+
+            <div class="row">
+                <div class="col-12">
+
+                    
+                    <div id="faqAccordion"><!--Accordian-->
+
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq1Heading" data-toggle="collapse" data-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                                <h5 class="mb-0">
+                                    1. What are used car loans?
+                                </h5>
+                            </div>
+                            <div id="faq1" class="collapse" aria-labelledby="faq1Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Used car loans are financing options specifically designed to help individuals purchase pre-owned vehicles. They provide borrowers with the necessary funds to buy a used car while repaying the borrowed amount over a specified period, typically with interest.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq2Heading" data-toggle="collapse" data-target="#faq2" aria-expanded="true" aria-controls="faq2">
+                                <h5 class="mb-0">
+                                    2. How do used car loans differ from new car loans?
+                                </h5>
+                            </div>
+                            <div id="faq2" class="collapse" aria-labelledby="faq2Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Unlike new car loans that finance the purchase of brand-new vehicles, used car loans are tailored for buying second-hand cars. They often come with different interest rates and terms, reflecting the lower value and different risks associated with used vehicles.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq3Heading" data-toggle="collapse" data-target="#faq3" aria-expanded="true" aria-controls="faq3">
+                                <h5 class="mb-0">
+                                    3. What factors should I consider before applying for a used car loan?
+                                </h5>
+                            </div>
+                            <div id="faq3" class="collapse" aria-labelledby="faq3Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Before applying, consider your credit score, the interest rates offered by lenders, loan terms, down payment requirements, and the overall cost of ownership, including maintenance and insurance costs.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq4Heading" data-toggle="collapse" data-target="#faq4" aria-expanded="true" aria-controls="faq4">
+                                <h5 class="mb-0">
+                                    4. Can I get a used car loan with bad credit?
+                                </h5>
+                            </div>
+                            <div id="faq4" class="collapse" aria-labelledby="faq4Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Yes, some lenders specialize in providing used car loans to individuals with less-than-perfect credit scores. However, interest rates and loan terms may be less favorable compared to those offered to borrowers with higher credit scores.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq5Heading" data-toggle="collapse" data-target="#faq5" aria-expanded="true" aria-controls="faq5">
+                                <h5 class="mb-0">
+                                    5. What documents are typically required to apply for a used car loan?
+                                </h5>
+                            </div>
+                            <div id="faq5" class="collapse" aria-labelledby="faq5Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    You'll usually need documents such as proof of identity (like a driver's license), proof of income (such as pay stubs or tax returns), proof of residence, and details about the vehicle you intend to purchase (like its VIN and mileage).
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq6Heading" data-toggle="collapse" data-target="#faq6" aria-expanded="true" aria-controls="faq6">
+                                <h5 class="mb-0">
+                                    6. How much can I borrow with a used car loan?
+                                </h5>
+                            </div>
+                            <div id="faq6" class="collapse" aria-labelledby="faq6Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    The amount you can borrow depends on various factors, including your creditworthiness, the lender's policies, the vehicle's age and condition, and whether you're making a down payment. Generally, lenders may finance up to the vehicle's appraised value or a percentage of it.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq7Heading" data-toggle="collapse" data-target="#faq7" aria-expanded="true" aria-controls="faq7">
+                                <h5 class="mb-0">
+                                    7. Are there any fees associated with a used car loan?
+                                </h5>
+                            </div>
+                            <div id="faq7" class="collapse" aria-labelledby="faq7Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Yes, lenders may charge fees such as loan origination fees, processing fees, prepayment penalties (if applicable), and late payment fees. It's important to review the loan terms carefully to understand all associated costs.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq8Heading" data-toggle="collapse" data-target="#faq8" aria-expanded="true" aria-controls="faq8">
+                                <h5 class="mb-0">
+                                    8. What happens if I default on a used car loan?
+                                </h5>
+                            </div>
+                            <div id="faq8" class="collapse" aria-labelledby="faq8Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Defaulting on a used car loan can lead to serious consequences, such as damage to your credit score, repossession of the vehicle by the lender, and legal actions to recover the outstanding balance. It's crucial to communicate with your lender if you anticipate difficulties in making payments.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq9Heading" data-toggle="collapse" data-target="#faq9" aria-expanded="true" aria-controls="faq9">
+                                <h5 class="mb-0">
+                                    9. Can I refinance a used car loan?
+                                </h5>
+                            </div>
+                            <div id="faq9" class="collapse" aria-labelledby="faq9Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Yes, refinancing allows you to replace your current used car loan with a new loan, often with more favorable terms such as lower interest rates or longer repayment periods. Refinancing can help reduce monthly payments or overall interest costs.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq10Heading" data-toggle="collapse" data-target="#faq10" aria-expanded="true" aria-controls="faq10">
+                                <h5 class="mb-0">
+                                    10. How long does it take to get approval for a used car loan?
+                                </h5>
+                            </div>
+                            <div id="faq10" class="collapse" aria-labelledby="faq10Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    The approval process varies by lender but typically involves submitting an application, providing required documents, and undergoing a credit check. Approval times can range from a few hours to several days, depending on the lender's process and your financial situation.
+                                </div>
+                            </div>
+                        </div>
+
+                        </div><!--Accordian-->
+
+                    </div><!--column1-->
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- section9 -->
+
+    <br><br><br>
+
+     <!-- footer code Start -->
+     <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <img src="{% static 'assets/img/mainlogo-removebg-preview.png' %}" alt="" class="logo">
+                <p>&copy;2024 SLN Finserv &mdash; All Rights Reserved</p>
+                <p>Toll-free Number &mdash; 1800-266-7576</p>
+            </div>
+            <div class="footer-section">
+                <h3>LOANS</h3>
+                <ul>
+                    <li><a href="#">Home Loan</a></li>
+                    <li><a href="#">Personal Loan</a></li>
+                    <li><a href="#">Business Loan</a></li>
+                    <li><a href="#">Car Loan</a></li>
+                    <li><a href="#">Car Refinance</a></li>
+                    <li><a href="#">Used Car Loan</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>KNOWLEDGE CENTER</h3>
+                <ul>
+                    <li><a href="#">Blogs</a></li>
+                    <li><a href="#">Videos</a></li>
+                    <li><a href="#">Product Info</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>INSURANCE</h3>
+                <ul>
+                    <li><a href="#">Life Insurance</a></li>
+                    <li><a href="#">Health Insurance</a></li>
+                    <li><a href="#">General Insurance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Grow With Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Data Storage Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href=""><i class="bi bi-whatsapp"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href=""><i class="bi bi-youtube"></i></a>
+            <a href=""><i class="bi bi-envelope-at-fill"></i></a>
+        </div>
+    </footer>
+    <!-- footer code End -->
+
+
+
+
+    {% comment %} <script src="{% static 'js/Main.js' %}"></script> {% endcomment %}
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script> -->
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

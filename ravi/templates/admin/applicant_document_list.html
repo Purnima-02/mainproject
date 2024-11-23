@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>home loan Applicant Documents List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Home loan Documents List</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Applicant Profile</th>
+                    <th>Document Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for document in applicant_documents %}
+                <tr>
+                    <td>{{ document.id }}</td>
+                    <td>{{ document.applicant_profile }}</td>
+                    <td>{{ document.document_type }}</td>
+                    <td>
+                        <a href="{% url 'update_applicant_document' document.id %}" class="btn btn-primary">Update</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<html>
+    {% load static %}
+    <head>
+
+
+<title>gold loan application form</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+    .form-section {
+        margin-top: 20px;
+    }
+    .form-section h4 {
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 5px;
+    }
+    .invalid-feedback {
+        display: block;
+        color: red;
+    }
+    
+</style>
+{% load static %}
+<script src="{% static 'js/basicform.js' %}"></script>
+</head>
+
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function clearErrorMessages(field) {
+                var parent = field.closest('.form-group');
+                if (parent) {
+                    var errorFeedback = parent.querySelector('.invalid-feedback');
+                    if (errorFeedback) {
+                        errorFeedback.innerHTML = '';
+                    }
+                }
+            }
+        
+            var fields = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
+            fields.forEach(function(field) {
+                field.addEventListener('input', function() {
+                    clearErrorMessages(this);
+                });
+       });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('#id_mobile_number,#id_Aadhar_number','#id_pincode').forEach((s) => {
+            s.addEventListener('input', function (e) {
+                var value = e.target.value;
+                e.target.value = value.replace(/[^0-9]/g, '');
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var panNumberField = document.getElementById('id_Pan_number');
+    panNumberField.addEventListener('input', function() {
+        var value = this.value;
+        this.value = value.replace(/[^A-Z0-9]/g, '');
+    });
+});
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('#id_name','#id_state').forEach((s)=>{
+            s.addEventListener('input', function(e) {
+               var value = e.target.value;
+                e.target.value = value.replace(/[^A-Za-z]/g, '');
+    });
+});
+});
+
+    </script>
+    
+    
+<div class="container mt-5">
+   
+<h3 style="text-align:center;">GoldLoan Application Form</h3>
+   
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+
+            <div class="form-group">
+                <label for="id_name">Name(As per Pan)<i class="text-danger">*</i></label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.name.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label for="id_Aadhar_number">Aadhar Number<i class="text-danger">*</i></label>
+                    {{ form.Aadhar_number }}
+                    {% if form.Aadhar_number.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.Aadhar_number.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label for="id_Pan_number">Pan Number<i class="text-danger">*</i></label>
+                       <input type="text" class="form-control" readonly id="Pan_number" value="{{ pan_number }}">
+                    </div>
+                    </div>
+                
+                    <div class="col-md-6">
+                <div class="form-group">
+                    <label for="id_mobile_number">Contact Number<i class="text-danger">*</i></label>
+                    <input type="text" class="form-control" readonly id="mobile_number" value="{{ mobile_number}}">
+                </div>
+                </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="id_email">Email</label>
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="id_state">State<i class="text-danger">*</i></label>
+                            {{ form.state }}
+                            {% if form.state.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.state.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        </div>
+
+                </div>
+                <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_pincode">Pincode<i class="text-danger">*</i></label>
+                        {{ form.pincode }}
+                        {% if form.pincode.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.pincode.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    </div>
+               
+                        </div>  
+               
+        
+    <center>
+        <button type="submit" class="btn btn-primary">Submit</button></center>&nbsp;&nbsp;
+
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    
+    window.addEventListener('message', function(event) {
+     
+        if (event.data === 'Apply custom styles') {
+            document.body.style.backgroundColor = 'white';
+    
+    
+            var style = document.createElement('style');
+            style.innerHTML = `
+               body::-webkit-scrollbar{
+               display:none;
+               }
+            `;
+            document.head.appendChild(style);
+        
+       }
+    });
+    </script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,730 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Contact</title>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/css-layout/1.1.1/css-layout.min.js" integrity="sha512-WeFxT4bqnrM1Laaz9RzBX3ttu+vleafd9wICGomR7KUPmaJUf6+Ysu9Zoqm4UyEjgsIArS4JsnHSWrPKOACDgQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'css/Common.css' %}">
+  <link rel="stylesheet" href="{% static 'css/Loan.css' %}">
+  <script src="{% static 'js/Common.js' %}"></script>
+
+  <!--JQuery-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+
+<style>
+
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+button:hover{
+  background-color: blue;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    
+  .container label:hover{
+    color: blue;
+  } 
+  .container u:hover{
+      color: blue;
+    }
+    .button:hover{
+      color: blue;
+    }
+
+
+  }
+
+  h6 label:hover{
+    color: blue;
+  } 
+
+
+
+#form-group1:hover {
+  background-color:blue; 
+}
+
+
+footer {
+    background-color: black;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 10px;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover { 
+    color: #ff9800;
+}
+
+.logo {
+    max-width: 150px;
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.5em;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #ff9800;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+}
+
+.navbar-section .dropdown-submenu {
+  position: relative;
+}
+
+{% comment %} .navbar-section .dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+
+.navbar-section .dropdown-submenu:hover .dropdown-menu {
+  display: block;
+} {% endcomment %}
+
+.navbar-section .navbar-nav{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+ 
+}
+.navbar-section .navbar-nav .nav-item{
+  padding-top: 5px;
+}
+.navbar-section nav{
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+}
+.navbar-section{
+  height: 120px;
+  background-color: black;
+ 
+}
+.navbar-section button{
+    text-decoration: none;
+    color: #ff4757;
+    display: inline-block;
+    /* border: 2px solid #fff; */
+
+}
+.navbar-section button:hover{
+    background-color: rgb(36,148,168);
+    color: #fff;
+}
+
+
+
+</style>
+
+</head>
+<!-- ----------nav----------------- -->
+
+
+<div class="navbar-section">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="{% url "index" %}"><img src="{% static "assets/img/mainlogo-removebg-preview.png" %}" alt="SLN-Logo" class="img-fluid w-100" style="height: 100px;"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                  <li class="nav-item">
+                      <a class="nav-link Aboutus" aria-current="page" href="{% url 'about' %}">About Us</a>
+                  </li>
+
+                  <li class="nav-item dropdown loan">
+                    <a class="nav-link dropdown-toggle loans" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Loans
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{% url 'personalloans' %}">Personal Loan</a></li>
+                        <li><a class="dropdown-item" href="{% url 'bussinessloan' %}">Business Loan</a></li>
+                        <li><a class="dropdown-item" href="{% url 'homeloan' %}">Home Loan</a></li>
+                        <li><a class="dropdown-item" href="{% url 'lap' %}">Loan Against Property</a></li>
+
+
+                        <li class="dropdown-submenu hover-dropdown">
+                            <a class="dropdown-item" href="{% url 'carloan' %}">Car Loan</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'usedcar' %}">Used Car Loans</a></li>
+                                <li><a class="dropdown-item" href="{% url 'newcar' %}">New Car Loans</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" href="{% url 'educationalloan' %}">Educational Loan</a></li>
+
+                        <li><a class="dropdown-item" href="{% url 'gold' %}">Gold Loan</a></li>
+
+                        <li class="nav-item" >
+                            <a class="dropdown-item"  href="{% url 'otherbasicdetail' %}">Other Loan</a>
+                        </li>
+                        
+
+                    </ul>
+                </li>
+
+                  <li class="nav-item">
+                      <a class="nav-link credit-cards" href="{% url 'creditpage' %}">Credit Cards</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle insurance" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Insurance
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li><a class="dropdown-item" href="{% url 'allinsurance'%}">All Insurances</a></li>
+                          <li><a class="dropdown-item" href="{% url 'lifeinsurance'%}">Life Insurance</a></li>
+                          <li><a class="dropdown-item" href="{% url 'generalinsurance'%}">General Insurance</a></li>
+                          <li><a class="dropdown-item" href="{% url 'healthinsurance'%}">Health Insurance</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link contactus" href="{% url 'contact'%}">Contact Us</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle partner" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Become a Partner
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li><a class="dropdown-item" href="{% url 'dsa' %}">DSA Partner</a></li>
+                          <li><a class="dropdown-item" href="{% url 'franchise' %}">Franchise Program</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle insurance" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        CheckStatus
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        {% if pl %}
+    {% for item in pl %}
+        <li>
+            <a href="{% url 'view_personal_verify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                PersonalLoan
+            </a>
+        </li>
+    {% endfor %}
+{% else %}
+    <li>No loans available.</li>
+{% endif %}
+{% if bus %}
+{% for loan in bus %}
+   <li><a href="{% url 'buscustomer-profile' application_id=loan.id %}" class="dropdown-item" style="text-decoration: none;">
+       BusinessLoan</a></li>
+       {% endfor %}
+       {% else %}
+<li>No loans available.</li>
+{% endif %}
+                        
+                        {% if edu %}
+                        {% for item in edu %}
+                            <li>
+                              <a href="{% url 'Educustomer-profile' application_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                                educationalloan
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No loans available.</li>
+                    {% endif %}
+
+                        {% if hl %}
+    {% for item in hl %}
+        <li>
+            <a href="{% url 'view_home_verify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                Home Loan
+            </a>
+        </li>
+    {% endfor %}
+{% else %}
+    <li>No loans available.</li>
+{% endif %}
+                        <!-- ================================== -->
+                        {% if cl %}
+            {% for item in cl %}
+                <li>
+                    <a href="{% url 'customerprofile' application_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                        Car Loan
+                    </a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No loans available.</li>
+        {% endif %}
+
+        {% if cc %}
+        {% for item in cc %}
+            <li>
+                <a href="{% url 'viewcustomerverify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                  Creditcard
+                </a>
+            </li>
+        {% endfor %}
+    {% else %}
+        <li>No loans available.</li>
+    {% endif %}
+
+                        {% if loans %}
+                     {% for loan in loans %}
+                        <li><a href="{% url 'viewcustomerverify' instance_id=loan.id %}" class="dropdown-item" style="text-decoration: none;">
+                            LoanAgainstProperty</a></li>
+                            {% endfor %}
+                            {% else %}
+                <li>No loans available.</li>
+            {% endif %}
+                    </ul>
+                </li>
+                
+            <!-- Navigation bar -->
+            <li class="nav-item dropdown me-4">
+              <a class="btn btn-danger dropdown-toggle loans" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {% if request.session.email %}
+                      My Profile
+                  {% else %}
+                      Sign In
+                  {% endif %}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  {% if request.session.email %}
+                      <li><a class="dropdown-item" href="#">{{ request.session.email }}</a></li>
+                      <li><a class="dropdown-item" href="#">Logout</a></li>
+                            {% else %}
+                                <li><a class="dropdown-item" href="{% url 'generate-verify-otp' %}">Sign In</a></li>
+                            {% endif %}
+              </ul>
+          </li>
+                     
+         
+        </ul>
+                      
+                  </ul>
+              </li>
+
+
+
+
+
+                  
+              </ul>
+          </div>
+      </div>
+  </nav>
+</div>
+
+<!--Main NAvBAr-->
+
+<script>
+  $(document).ready(function() {
+      $('.dropdown-submenu.click-dropdown .dropdown-toggle').on('click', function(e) {
+          e.stopPropagation();
+          $(this).next('.dropdown-menu').toggle();
+      });
+  });
+</script>
+<!-- nav bar code  -->
+<!-- nav bar code  -->
+<!-- ------------------nav-end------------ -->
+ 
+<body>
+
+<br>
+         
+
+
+<div class="container">
+  <div class="row">
+    <div style="text-align: center;" class="col-lg-12 col-md-6  col-sm-12">
+    <h2><b>CONTACT US</b></h2></div>
+</div>
+</div>
+<!-- ----------------------forms------------------ -->
+
+
+    
+      <form method="POST" action="{% url 'contact' %}" style="display: block;">
+        {% csrf_token %}
+        <div style="background-color: rgb(36, 148, 168);border-radius: 6px;"class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label style="color: aliceblue;margin-top: 10px;">Name</label><label style="color: red;">*</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter your Full Name" required>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label style="color: aliceblue; margin-top: 10px;">Email Id</label><label style="color: red;">*</label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter Your Email ID" required>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label style="color: aliceblue;">Mobile Number</label><label style="color: red;">*</label>
+                        <input type="text" class="form-control" name="mobile_number" placeholder="Enter Your Mobile Number" required>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label style="color: aliceblue;">State</label><label style="color: red;">*</label>
+                        <label style="color: aliceblue;">State</label><label style="color: red;">*</label>
+                        <select name="state" class="form-select" style="cursor: pointer;" required>
+                            <option value="">Select your state</option>
+                            <option>Andhra Pradesh</option>
+                            <option>Arunachal Pradesh</option>
+                            <option>Assam</option>
+                            <option>Bihar</option>
+                            <option>Chhattisgarh</option>
+                            <option>Goa</option>
+                            <option>Gujarat</option>
+                            <option>Haryana</option>
+                            <option>Himachal Pradesh</option>
+                            <option>Jharkhand</option>
+                            <option>Karnataka</option>
+                            <option>Kerala</option>
+                            <option>Madhya Pradesh</option>
+                            <option>Maharashtra</option>
+                            <option>Manipur</option>
+                            <option>Meghalaya</option>
+                            <option>Mizoram</option>
+                            <option>Nagaland</option>
+                            <option>Odisha</option>
+                            <option>Punjab</option>
+                            <option>Rajasthan</option>
+                            <option>Sikkim</option>
+                            <option>Tamil Nadu</option>
+                            <option>Telangana</option>
+                            <option>Tripura</option>
+                            <option>Uttar Pradesh</option>
+                            <option>Uttarakhand</option>
+                            <option>West Bengal</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label style="color: aliceblue;">City</label><label style="color: red;">*</label>
+                        <input type="text" class="form-control" name="city" placeholder="Enter Your City" required>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label style="color: aliceblue;">Reason to Connect</label><label style="color: red;">*</label>
+                      <select name="reason_to_connect" class="form-select" style="cursor: pointer;" required>
+                          <option value="">Reason to Connect</option>
+                          <option>Complaints Related</option>
+                          <option>Communication Address</option>
+                          <option>Customer Portal / Website Issue</option>
+                          <option>Disbursement / Loan Related</option>
+                          <option>Document Issue</option>
+                          <option>General Queries</option>
+                          <option>Loan Application Related</option>
+                          <option>Moratorium</option>
+                          <option>Payment Related</option>
+                          <option>Service Issue</option>
+                          <option>OTP Issue</option>
+                          <option>Payout Related</option>
+                          <option>Issues with backend service</option>
+                      </select>
+      
+                    </div>
+                </div>
+            </div>
+      
+            <div class="row">
+                <div class="col-lg-12 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label style="color: aliceblue;">Subject</label><label style="color: red;">*</label>
+                        <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="row">
+                <div class="col-lg-12 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label style="color: aliceblue;">Message</label><label style="color: red;">*</label>
+                        <textarea name="message" class="form-control" placeholder="Message" required></textarea>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="row">
+                <div class="col-lg-12 col-md-6 col-sm-12">
+                    <button class="btn btn-danger w-100" type="submit">Send Message</button>
+                </div>
+            </div>
+      </div>
+      </form>
+      
+    <br>
+    <style>
+
+      .customer-support{
+          position: fixed;
+          bottom:100px;
+          left: calc(100% - 140px);
+          z-index: 99999;
+      }
+      
+      iframe{
+          height: 400px;
+      }
+          </style>
+      
+          <div class="customer-support" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <img src="{% static 'Images/cust.png' %}" alt="" height="50" width="50">
+          </div>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog ">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel8">Customer Support</h5>
+                      <button type="button" class="btn-close ModelclosedButtn" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+      
+                 
+                      <div class="modal-body">
+      
+                          
+          
+                        <iframe src="http://3.208.103.10:8000/ticket_create/" frameborder="0" style="width: 100%;"></iframe>
+      
+                      </div>
+                      <!--Modal body-->
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-danger ModelclosedButtn" data-bs-dismiss="modal">Close</button>
+                         
+                      </div>
+                 
+              </div>
+          </div>
+      </div>
+      
+      <script>
+      
+          $('.customer-support').click(()=>{
+              
+              $('.customer-support').hide()
+      
+          })
+      
+          $('.ModelclosedButtn').click(()=>{
+              $('.customer-support').show()
+      })
+      </script>
+      
+
+<!-- --------------------------form end---------------------------- -->
+
+<br><br>
+
+
+  <!-- ----------------------Map start---------------- -->
+    
+        <div class="row">
+          <div class="col-lg-12">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d487293.4778740955!2d78.07836522305927!3d17.41273323043769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1721376831660!5m2!1sen!2sin" width="100%" height="500" style="border: 2px solid white;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>      
+      
+          </div>
+        </div>
+    
+
+<!-- ---------------------------Map End-------------------------- -->
+
+
+
+
+
+
+    <br><br><br>
+
+
+    <!-- ---------------------Reach us-------------- -->
+    <div class="container">
+
+      <h2>Reach Us At</h2>
+      
+       
+      <div  class="row">
+          <div class="col-lg-3 col-md-6 col-sm-12 column1 ">
+             <a style="font-size: 50px;margin-left: 40px;" href="#"><i class="bi-regular bi-clock"></i></a>
+            
+
+              <h6>WORKING HOURS</h6>
+              <p>MON-SAT<br>10:00 AM - 07:00 PM</p>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 column2">
+            <a style="font-size: 50px;margin-left: 20px;" href="#"><i class="bi-regular bi-building"></i></a>
+
+            <h6>Head Office</h6>
+              <p>7/8, 3rd Floor, 215 - Magan Mahal, Sir M.V. Road, Andheri (E), Mumbai - 400 069.</p>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 column3">
+          <a style="font-size: 50px;margin-left: 5px;" href="#"><i class="bi-regular bi-envelope"></i></a>
+            <h6>EMAIL</h6>
+            <form action="/support@slnfinserv.com" method="post">
+
+              <label for="email">support@slnfinserv.com</label>
+            
+            
+            </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 column4">
+            <a style="font-size: 50px;" href="#"><i class="bi bi-telephone"></i></a>
+            <h6>PHONE</h6>
+              <p style="color:black">
+                  <u >1800-266-7576<br>+91 90290 59005</u>
+              </p>
+          </div>
+      </div>
+  </div>
+<!-- --------------end Reach us---------------- -->
+
+
+
+<br><br><br>
+
+
+  <!-- ---------------------Footer---------- -->
+
+
+ <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <img src="{% static 'images/WhatsApp_Image_2024-07-14_at_7.20.33_PM-removebg-preview (1).png' %}" alt="" class="logo">
+                <p>&copy;2024 SLN Finserv &mdash; All Rights Reserved</p>
+                <p>Toll-free Number &mdash; 1800-266-7576</p>
+            </div>
+            <div class="footer-section">
+                <h3>LOANS</h3>
+                <ul>
+                    <li><a href="#">Home Loan</a></li>
+                    <li><a href="#">Personal Loan</a></li>
+                    <li><a href="#">Business Loan</a></li>
+                    <li><a href="#">Car Loan</a></li>
+                    <li><a href="#">Car Refinance</a></li>
+                    <li><a href="#">Used Car Loan</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>KNOWLEDGE CENTER</h3>
+                <ul>
+                    <li><a href="#">Blogs</a></li>
+                    <li><a href="#">Videos</a></li>
+                    <li><a href="#">Product Info</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>INSURANCE</h3>
+                <ul>
+                    <li><a href="#">Life Insurance</a></li>
+                    <li><a href="#">Health Insurance</a></li>
+                    <li><a href="#">General Insurance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Grow With Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Data Storage Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href=""><i class="bi bi-whatsapp"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href=""><i class="bi bi-youtube"></i></a>
+            <a href=""><i class="bi bi-envelope-at-fill"></i></a>
+        </div>
+    </footer>
+    <!-- -----------------End---------------- -->
+</body>
+</html>

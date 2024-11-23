@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Loan Records</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+<!-- Moment.js -->
+<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+<!-- Date Range Picker CSS -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+/>
+
+<!-- Date Range Picker JS -->
+<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+   </head>
+   <body>
+
+    <style>
+
+        body{
+            overflow-x: hidden;
+        }
+        td {
+            min-width: 200px;
+        }
+        td.d-flex{
+            min-width: 400px;
+            justify-content: space-around;
+        }
+    
+        td.d-flex a{
+            min-width: 200px;
+        }
+    
+        /* .table-responsive::-webkit-scrollbar {
+            display: none;
+        }
+    
+        .table-responsive {
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
+    
+        } */
+    
+        .page-active{
+    
+    background-color: rgb(61, 61, 242);
+    color: white !important;
+    }
+    
+    .number:hover{
+    background-color: rgb(61, 61, 242);
+    color: white !important;
+    }
+    .number{
+        cursor: pointer;
+    }
+    </style>
+    
+
+    <!-- <div style="width: 200px;height: 200px;background-color: red;"></div>
+    <div style="width: 200px;height: 200px;background-color: green;"></div>
+    <div style="width: 200px;height: 200px;background-color: green;"></div>
+    <div style="width: 200px;height: 200px;background-color: green;"></div> -->
+    
+    
+   
+
+ <div class="row searchSection mt-5 me-0 gy-3">
+    <style>
+        .back-button {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin-top: 1px;
+        }
+        .back-button:hover {
+            color: #007bff; /* Change color on hover */
+        }
+    </style>
+    
+    <a href="javascript:void(0);" onclick="window.history.back();" class="back-button">← Back</a>
+     
+
+    
+
+    <div class="col-md-6 col-12">
+        <form class="d-flex px-3" method="post" id="serachForm1">
+            {% csrf_token %}
+<input class="form-control me-2 applicationValue" name="field" type="search" placeholder="Search By Field Name.." aria-label="Search">
+<button class="btn btn-outline-primary" type="submit" id="serachButton">Search</button>
+</form>
+</div>
+
+<div class="col-md-6 col-12">
+    <form class="d-flex px-3" method="post" id="serachForm2">
+        {% csrf_token %}
+ <input type="text" name="date" id="daterange" class="form-control w-100 me-2 dateValue" placeholder="Please Select Your Date Range.."/>
+<button class="btn btn-outline-primary" type="submit" id="serachButton2">Search</button>
+</form>
+</div>
+
+
+</div>
+
+<script>
+
+$(document).ready(function () {
+            $('#daterange').daterangepicker({
+                applyButtonClasses: 'btn btn-primary',
+                cancelButtonClasses: 'btn btn-danger',
+                opens: 'right',
+                locale: {
+                    format: 'YYYY-MM-DD',
+                    separator: ' to ', 
+                    cancelLabel: 'Cancel',  
+                    applyLabel: 'OK'
+                    
+                },
+        
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                autoUpdateInput: false,  // Prevent automatic update of the input with the selected date
+                showDropdowns: true,     // Show dropdowns for year and month selection
+                showWeekNumbers: true,   // Show week numbers in the calendar
+                autoApply: false,        // Require users to click Apply/OK to confirm the selection
+            }, function (start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+        
+            // Event listener for Apply (OK) button
+            $('#daterange').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('YYYY-MM-DD') + ' to ' + picker.endDate.format('YYYY-MM-DD'));
+                console.log("Apply clicked: " + $(this).val());
+            });
+        
+            // Event listener for Cancel button
+            $('#daterange').on('cancel.daterangepicker', function (ev, picker) {
+                $(this).val('');  // Clear the input field on cancel
+                console.log("Cancel clicked: Input cleared");
+            });
+        
+            // Event listener for any change in the Date Range Picker
+            $('#daterange').on('apply.daterangepicker change', function() {
+                console.log("Input value changed to: " + this.value);
+            });
+        });
+    
+</script>
+
+ <div class="container-fluid">
+    {% include 'EduDataTable.html' %}
+    </div>
+
+    <button type="button" class="btn btn-danger mx-2" onclick="buttonClickshowAll()">Show All</button>
+
+   
+    
+    
+
+    <script>
+
+
+async function buttonClickshowAll(){
+
+    const loacation=window.location.href;
+  
+
+    const promise=await fetch(`${location}?removeDateFilter=show`);
+  const result=await promise.text();
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(result, "text/html");
+  common(doc);
+}
+
+
+
+function common(doc){
+    
+    document.querySelector('#myTable tbody').innerHTML = doc.querySelector('#myTable tbody').innerHTML;
+                document.querySelector('.pagination').innerHTML = doc.querySelector('.pagination').innerHTML;
+                document.querySelector('.pagesnumber').innerHTML=doc.querySelector('.pagesnumber').innerHTML;
+
+
+
+                if(document.querySelectorAll('.tablescripts')){
+                  document.querySelectorAll('.tablescripts').forEach((scrpt)=>{
+
+                    scrpt.remove();
+                  });
+                }
+                  var scriptTags = doc.querySelectorAll('script');
+                    scriptTags.forEach(function(scriptTag) {
+
+                        var newScript = document.createElement('script');
+                        newScript.className='tablescripts'
+                        if (scriptTag.src) {
+                            newScript.src = scriptTag.src;
+                        } 
+                
+                            newScript.innerHTML = scriptTag.innerHTML;
+                        
+                        document.body.appendChild(newScript);
+                    });
+
+                document.querySelectorAll('.number').forEach(function (newLink) {
+                    newLink.addEventListener('click', linkEventHandler);
+                });
+    
+  
+
+
+}
+
+
+document.querySelector('#serachButton').addEventListener('click', searchTrigger);
+document.querySelector('#serachButton2').addEventListener('click', searchTrigger2);
+
+ function searchTrigger2(e) {
+            e.preventDefault(); 
+            
+            var searchForm = document.querySelector('#serachForm2');
+            var location = window.location.href;
+            var formData = new FormData(searchForm);
+            console.log("serach clicked..");
+            var inpyvalue=document.querySelector('.dateValue').value;
+
+            if(inpyvalue!=''){
+            fetch(location, {
+                method: 'POST',
+                body: formData,
+               
+            })
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                
+                document.querySelector('#myTable tbody').innerHTML = doc.querySelector('#myTable tbody').innerHTML;
+                document.querySelector('.pagination').innerHTML = doc.querySelector('.pagination').innerHTML;
+                document.querySelector('.pagesnumber').innerHTML=doc.querySelector('.pagesnumber').innerHTML;
+
+
+
+                if(document.querySelectorAll('.tablescripts')){
+                  document.querySelectorAll('.tablescripts').forEach((scrpt)=>{
+
+                    scrpt.remove();
+                  });
+                }
+                  var scriptTags = doc.querySelectorAll('script');
+                    scriptTags.forEach(function(scriptTag) {
+
+                        var newScript = document.createElement('script');
+                        newScript.className='tablescripts'
+                        if (scriptTag.src) {
+                            newScript.src = scriptTag.src;
+                        } 
+                
+                            newScript.innerHTML = scriptTag.innerHTML;
+                        
+                        document.body.appendChild(newScript);
+                    });
+
+                document.querySelectorAll('.number').forEach(function (newLink) {
+                    newLink.addEventListener('click', linkEventHandler);
+                });
+            });
+        }
+        
+            
+        }
+
+        
+        function searchTrigger(e) {
+            e.preventDefault(); 
+            
+            var searchForm = document.querySelector('#serachForm1');
+            var location = window.location.href;
+            var formData = new FormData(searchForm);
+            console.log("serach clicked..")
+            var inpyvalue=document.querySelector('.applicationValue').value;
+
+            if(inpyvalue!=''){
+            fetch(location, {
+                method: 'POST',
+                body: formData,
+               
+            })
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                
+                document.querySelector('#myTable tbody').innerHTML = doc.querySelector('#myTable tbody').innerHTML;
+                document.querySelector('.pagination').innerHTML = doc.querySelector('.pagination').innerHTML;
+                document.querySelector('.pagesnumber').innerHTML=doc.querySelector('.pagesnumber').innerHTML;
+
+
+
+                if(document.querySelectorAll('.tablescripts')){
+                  document.querySelectorAll('.tablescripts').forEach((scrpt)=>{
+
+                    scrpt.remove();
+                  });
+                }
+                  var scriptTags = doc.querySelectorAll('script');
+                    scriptTags.forEach(function(scriptTag) {
+
+                        var newScript = document.createElement('script');
+                        newScript.className='tablescripts'
+                        if (scriptTag.src) {
+                            newScript.src = scriptTag.src;
+                        } 
+                
+                            newScript.innerHTML = scriptTag.innerHTML;
+                        
+                        document.body.appendChild(newScript);
+                    });
+
+
+        
+        
+        
+        
+        
+                
+                document.querySelectorAll('.number').forEach(function (newLink) {
+                    newLink.addEventListener('click', linkEventHandler);
+                });
+            });
+        }
+        
+            
+        }
+
+
+        document.querySelectorAll('.number').forEach(function(link) {
+              link.addEventListener('click', linkEventHandler);
+          });
+
+          function linkEventHandler(event) {
+          event.preventDefault();
+          var url = this.getAttribute('href');
+          var loacation=window.location.href;
+          console.log(`${loacation}${url}`);
+  
+          fetch(`${loacation}${url}`, {
+                  headers: {
+                      'X-Requested-With': 'XMLHttpRequest'
+                  }
+              })
+              .then(response => response.text())
+              .then(data => {
+                  
+                  const parser = new DOMParser();
+                  const doc = parser.parseFromString(data, 'text/html');
+  
+                  // Replace the table content
+                //   document.querySelector('#tableContainer').innerHTML = doc.querySelector('#tableContainer').innerHTML;
+  
+
+                document.querySelector('#myTable tbody').innerHTML = doc.querySelector('#myTable tbody').innerHTML;
+                document.querySelector('.pagination').innerHTML = doc.querySelector('.pagination').innerHTML;
+                document.querySelector('.pagesnumber').innerHTML=doc.querySelector('.pagesnumber').innerHTML;
+
+
+                
+                if(document.querySelectorAll('.tablescripts')){
+                  document.querySelectorAll('.tablescripts').forEach((scrpt)=>{
+
+                    scrpt.remove();
+                  });
+                }
+                  var scriptTags = doc.querySelectorAll('script');
+                    scriptTags.forEach(function(scriptTag) {
+
+                        var newScript = document.createElement('script');
+                        newScript.className='tablescripts'
+                        if (scriptTag.src) {
+                            newScript.src = scriptTag.src;
+                        } 
+                
+                            newScript.innerHTML = scriptTag.innerHTML;
+                        
+                        document.body.appendChild(newScript);
+                    });
+
+
+                 
+                  // Re-attach the event listeners to the new pagination links
+                  document.querySelectorAll('.number').forEach(function(newLink) {
+                      newLink.addEventListener('click', linkEventHandler);
+                  });
+
+                  document.querySelector('#serachButton').addEventListener('click', searchTrigger);
+              });
+
+
+      }
+       
+      
+           </script>
+
+
+<!-- jQuery -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+   
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

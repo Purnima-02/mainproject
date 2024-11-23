@@ -1,0 +1,749 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Sweet Alert Box -->
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+   <!-- Include SweetAlert2 JS -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+  {% block Extrascripts %}{% endblock %}
+
+  <title>EMPLOYEE DashBoard</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --offcanvas-width: 260px;
+    }
+
+    .myCanvas1.offcanvas {
+      max-width: var(--offcanvas-width);
+      background-color: black;
+      color: white;
+      box-sizing: border-box;
+    }
+
+    .main-section {
+      min-height: 110vh;
+      z-index: 1111;
+      /* margin-top:0px; */
+      color: black;
+
+      background-color: white;
+      position: relative;
+      transition: 0.5s linear;
+    }
+
+    nav .navbar-nav .item3 {
+      display: none;
+    }
+
+    @media (min-width: 769px) {
+      .main-section {
+        margin-left: calc(var(--offcanvas-width) - 1px);
+      }
+
+      .myCanvas1.offcanvas {
+        transform: none;
+        visibility: visible;
+      }
+    }
+
+    @media (max-width: 767px) {
+      nav .navbar-brand label {
+        display: none;
+      }
+
+      .main-section {
+        margin-left: 0px !important;
+      }
+
+      nav .navbar-nav .item3 {
+        display: block;
+      }
+
+      nav img {
+        width: 100px !important;
+      }
+
+      .myCanvas1.offcanvas {
+        z-index: 1112 !important;
+      }
+    }
+
+    nav .navbar-nav .item1 {
+      font-size: 20px;
+    }
+
+    nav .navbar-nav .item2 {
+      font-size: 50px;
+    }
+
+    nav .navbar-nav {
+      padding: 0 5px;
+
+      /* background-color: blue; */
+      display: flex;
+      align-items: center;
+
+      /* justify-content: space-around; */
+      justify-content: space-between;
+      flex-direction: row;
+    }
+
+    nav .navbar-nav li {
+      margin-right: 20px;
+    }
+
+    .main-navbar {
+      background: black;
+      max-height: 300px;
+      /* width: 100vw; */
+      color: white;
+    }
+
+    .my-active {
+      margin-left: 80px;
+      z-index: 1111;
+    }
+
+    nav .navbar-brand label i {
+      /* display: inline-block; */
+      color: white !important;
+      cursor: pointer;
+    }
+
+    .offcanvas-body .navbar-nav li .icon {
+      font-size: 30px;
+      color: rgb(193, 184, 184);
+    }
+
+    .offcanvas-body .navbar-nav li .content {
+      font-size: 18px;
+      color: rgb(193, 184, 184);
+      text-decoration: none;
+    }
+
+    .offcanvas-body .navbar-nav li:hover .list-item {
+      color: white !important;
+    }
+
+    .offcanvas-body .navbar-nav .item .right-icon {
+      transition: 0.3s linear;
+      color: rgb(193, 184, 184);
+    }
+
+    .offcanvas-body .navbar-nav li a[aria-expanded="true"] .right-icon {
+      transform: rotate(90deg);
+    }
+
+    .offcanvas-body .navbar-nav li .sub-list-item:hover {
+      color: white !important;
+    }
+
+    .white {
+      color: white !important;
+    }
+
+    .offcanvas-body::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- sidebar -->
+  <div class="myCanvas1 offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+    id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title fs-5" id="offcanvasExampleLabel">
+        EMPLOYEE DASHBOARD
+      </h5>
+      <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+    </div>
+    <br />
+
+    <hr class="dropdown-divider" />
+    <div class="offcanvas-body">
+      <div>
+        <ul class="navbar-nav mt-5 firstnav">
+
+          <li class="mb-4 item item1 common">
+            <span class="px-3 icon list-item">
+              <i class="bi bi-speedometer2"></i>
+            </span>
+            <a href="{% url 'all_loans' %}" class="content list-item">DashBoard</a>
+            <hr class="dropdown-divider" />
+          </li>
+
+          <li class="item2 item mt-3 mb-4 loans" style="color: white">
+            <!--Dropdown list-->
+            <a class="nav-link d-flex align-items-center mains" style="font-size: 16px" data-bs-toggle="collapse"
+              href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1">
+              <span class="px-3 pb-1 icon list-item">
+                <i class="bi bi-bank2"></i>
+              </span>
+              <span class="content list-item">Loans</span>
+              <span class="right-icon ms-auto list-item">
+                <i class="bi bi-chevron-right"></i>
+              </span>
+            </a>
+            <div class="collapse ms-3" id="collapseExample1">
+              <div class="">
+                <ul class="navbar-nav">
+
+                  <li class="sub-item1">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'personal_detail_list'%}" class="content sub-list-item item1">Personal Loan</a>
+                  </li>
+                  <li class="sub-item2">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'business_loan_list' %}" class="content sub-list-item">Business Loan</a>
+                  </li>
+                  <li class="sub-item3">
+                    <span class="px-2 icon sub-list-item ">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'customer_profile_list' %}" class="content sub-list-item">Home Loans</a>
+                  </li>
+                  <li class="sub-item4">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'lapview' %}" class="content sub-list-item">LAP Loans</a>
+                  </li>
+                  <li class="sub-item5">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'car_loan_list' %}" class="content sub-list-item">Car Loans</a>
+                  </li>
+                  <li class="sub-item5">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'loan_records' %}" class="content sub-list-item">Education Loans</a>
+                  </li>
+                  <li class="sub-item5">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{%  url 'goldview' %}" class="content sub-list-item">Gold Loans</a>
+                  </li>
+                  <li class="sub-item5">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'otherview' %}" class="content sub-list-item">Other Loans</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <!--Dropdown list-->
+
+          <li class="mb-4 item item4 common">
+            <span class="pl-3 pr-2 icon list-item">
+              <i class="bi bi-credit-card"></i>
+            </span>
+            <a href="{% url 'credit_detail_list' %}" class="content list-item">Credit Card</a>
+            
+          </li>
+
+
+         
+
+
+          <li class="item6 item  mb-4 comissions" style="color: white">
+            <!--Dropdown list-->
+            <a class="nav-link d-flex align-items-center mains" style="font-size: 16px" data-bs-toggle="collapse"
+              href="#collapseExample19" role="button" aria-expanded="false" aria-controls="collapseExample19">
+              <span class="px-3 icon list-item" style="font-size: 30px;">
+                <i class="bi bi-person-vcard"></i>
+              </span>
+              <span class="content list-item">Insurance</span>
+              <span class="right-icon ms-auto list-item">
+                <i class="bi bi-chevron-right"></i>
+              </span>
+            </a>
+            <div class="collapse ms-3" id="collapseExample19">
+              <div class="">
+                <ul class="navbar-nav">
+
+                  <li class="sub-item1">
+                    <span class="pl-2 icon sub-list-item ">
+                      <i class="bi bi-person-vcard"></i>
+                    </span>
+                    <a href="{% url 'insuranceview' %}" class="content sub-list-item item1">All Insurance</a>
+                  </li>
+                  <li class="sub-item2">
+                    <span class="pl-2 icon sub-list-item">
+                      <i class="bi bi-person-vcard"></i>
+                    </span>
+                    <a href="{% url 'insurancelifeview' %}" class="content sub-list-item">Life Insurance</a>
+                  </li>
+                  <li class="sub-item2">
+                    <span class="pl-2 icon sub-list-item">
+                      <i class="bi bi-person-vcard"></i>
+                    </span>
+                    <a href="{% url 'insurancehealthview' %}" class="content sub-list-item">Health Insurance</a>
+                  </li>
+                  <li class="sub-item2">
+                    <span class="pl-2 icon sub-list-item">
+                      <i class="bi bi-person-vcard"></i>
+                    </span>
+                    <a href="{% url 'insurancegenview' %}" class="content sub-list-item">General Insurance</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <!--Dropdown list-->
+
+          <li class="item6 item  mb-4 comissions" style="color: white">
+            <!--Dropdown list-->
+            <a class="nav-link d-flex align-items-center mains" style="font-size: 16px" data-bs-toggle="collapse"
+              href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+              <span class="px-3 icon list-item" style="font-size: 30px;">
+                <i class="bi bi-briefcase" ></i>
+              </span>
+              <span class="content list-item">Basic detail info</span>
+              <span class="right-icon ms-auto list-item">
+                <i class="bi bi-chevron-right"></i>
+              </span>
+            </a>
+            <div class="collapse ms-3" id="collapseExample2">
+              <div class="">
+                <ul class="navbar-nav">
+
+                  <li class="sub-item1">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'perbasicview'%}" class="content sub-list-item item1">Personal Loan</a>
+                  </li>
+                  <li class="sub-item2">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'busbasicview' %}" class="content sub-list-item">Business Loan</a>
+                  </li>
+                  <li class="sub-item3">
+                    <span class="px-2 icon sub-list-item ">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'homebasicview' %}" class="content sub-list-item">Home Loans</a>
+                  </li>
+                  <li class="sub-item4">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'lapbasicview' %}" class="content sub-list-item">LAP Loans</a>
+                  </li>
+                  <li class="sub-item5">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'carbasicview' %}" class="content sub-list-item">Car Loans</a>
+                  </li>
+                  <li class="sub-item5">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'edubasicview' %}" class="content sub-list-item">Education Loans</a>
+                  </li>
+                  <li class="sub-item5">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{%  url 'goldbasicview' %}" class="content sub-list-item">Gold Loans</a>
+                  </li>
+                  <li class="sub-item5">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'otherbasicview' %}" class="content sub-list-item">Other Loans</a>
+                  </li>
+                  <li class="sub-item5">
+                    <span class="px-2 icon sub-list-item">
+                      <i class="bi bi-briefcase"></i>
+                    </span>
+                    <a href="{% url 'creditbasicview' %}" class="content sub-list-item">Credit card</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          
+
+
+
+          <li class="mb-4 item item7 ">
+            <span class="pl-3 pr-2 icon list-item" style="font-size: 20px; color: red !important; ">
+              <i class="fas fa-power-off"></i>
+            </span>
+            <a class="content list-item">LogOut</a>
+            
+          </li>
+         
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .main::-webkit-scrollbar {
+      display: none;
+    }
+    .offcanvas-body .navbar-nav .item7 a{
+
+      cursor: pointer;
+    }
+
+    .swal2-container {
+            z-index: 9999 !important; 
+        }
+
+  </style>
+
+<script>
+
+  document.querySelector('.offcanvas-body .navbar-nav .item7').addEventListener('click',()=>{
+
+    console.log("log out clicked...");
+    console.log(window.location.pathname);
+
+
+    Swal.fire({
+                title: 'Are you sure want to logout?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, logout!',
+                cancelButtonText: 'No, stay'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // User clicked "Yes, logout!"
+                    window.location.pathname = 'emp/logout';  // Replace with your logout URL
+                }
+                
+            });
+        
+  });
+</script>
+  <!--Main section-->
+  <main class="main-section">
+    <nav class="main-navbar navbar navbar-dark">
+      <div class="navbar-brand">
+        <img src="{% static 'images/SLNLOGOBLAck.jpg' %}" alt="Logo" width="180" height="70" />
+        <input type="checkbox" name="" id="my-check" style="display: none" />
+        <label for="my-check">
+          <i class="fas fa-bars"></i>
+        </label>
+      </div>
+
+      <ul class="navbar-nav">
+        <li class="item1 me-md-5">
+          <label>Welcome,{{ username }}</label>
+        </li>
+        <li class="item2">
+          <a href="" class="nav-link"><i class="bi bi-person-fill"></i></a>
+        </li>
+        <li class="item3">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+            aria-controls="offcanvasExample">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="">
+        <div class="row">
+          {% block content1 %}
+
+          <!-- <h1>Im im Fisrt bloack content........</h1> -->
+
+          {% endblock %}     
+          
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+
+document.addEventListener('DOMContentLoaded',()=>{
+
+
+//   const j="{{request.session.recntComiLen}}";
+// console.log(j);
+
+
+
+// const newreocrd="{{request.session.newrecord}}";
+// console.log(newreocrd+" lopkl");
+
+
+//   if(localStorage.getItem('isSeenComissons') && newreocrd==="exist" ){
+
+//     console.log("True...");
+//     document.querySelector('#badge-notify').textContent='';
+//     localStorage.removeItem('isSeenComissons');
+
+//   }
+//   else if(newreocrd==="notexist"){
+//     console.log("false...");
+//     document.querySelector('#badge-notify').textContent="{{request.session.recntComiLen}}";
+//     console.log(document.querySelector('#badge-notify').value);
+//   }
+
+
+
+// localStorage.removeItem('isSeenComissons');
+
+    console.log("ji");
+    function toggleOffcanvas() {
+      var width = window.innerWidth;
+
+      // document.getElementById("p1").textContent=width;
+      // document.write(width)
+      console.log('Current width:', width);
+
+      if (width > 768) {
+        document.querySelector('.offcanvas').classList.add('show');
+      } else {
+        document.querySelector('.offcanvas').classList.remove('show');
+      }
+
+      if (width >= 768 && width <= 896) {
+        document.querySelector('.main-section').classList.add('my-active')
+      }
+      else {
+
+        document.querySelector('.main-section').classList.remove('my-active')
+      }
+    }
+
+    // Initial check
+    toggleOffcanvas();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', toggleOffcanvas);
+    document.querySelector('#my-check').addEventListener('input', function () {
+
+      if (this.checked) {
+        document.querySelector('.main-section').classList.add('my-active')
+      }
+      else {
+        document.querySelector('.main-section').classList.remove('my-active')
+
+      }
+
+
+    });
+
+    var a = window.location.pathname;
+    console.log(a);
+    const res = a.split('/').pop();
+    console.log(res);
+
+    const itemslist = document.querySelectorAll('.offcanvas .offcanvas-body .firstnav .common a');
+
+    
+
+
+
+    if(res === "apply-business" || res === "applyEducation" || res === "apply-home"  || res === "applycar" || res === "lap" || res === "apply-personal" || res === "applyGold") {
+
+      console.log("jj");
+
+      document.querySelector('.collapse .item1').style.color = "white";
+      document.querySelectorAll('.offcanvas .offcanvas-body .navbar-nav .loans .list-item').forEach((element) => {
+
+        element.style.color="white";
+      });
+    }
+
+    else if(res === "AllLoans" || res === "approved" || res === "rejected") {
+
+      
+      document.querySelectorAll('.offcanvas .offcanvas-body .navbar-nav .loans .collapse li a').forEach((i)=>{
+
+
+       
+
+        if(i.getAttribute('href').split('/').pop()===res){
+
+
+          const classVar=i.parentNode.classList[0];
+          console.log(classVar)
+          console.log("kjhg88uy......")
+          document.querySelectorAll(`.offcanvas .offcanvas-body .navbar-nav .loans .collapse .${classVar} .sub-list-item`).forEach((ele)=>{
+
+            ele.style.color="white";
+          });
+
+          document.querySelectorAll('.offcanvas .offcanvas-body .navbar-nav .loans .list-item').forEach((element) => {
+
+element.style.color="white";
+});
+        }
+
+      });
+
+     
+
+    }
+    else if(res==="claim" || res==="viewcomison"){
+
+
+      document.querySelectorAll('.offcanvas .offcanvas-body .navbar-nav .comissions .collapse li a').forEach((i)=>{
+
+
+       
+
+if(i.getAttribute('href').split('/').pop()===res){
+
+
+  const classVar=i.parentNode.classList[0];
+  console.log(classVar);
+  console.log("kjhg88uy......");
+  document.querySelectorAll(`.offcanvas .offcanvas-body .navbar-nav .comissions .collapse .${classVar} .sub-list-item`).forEach((ele)=>{
+
+    ele.style.color="white";
+  });
+
+  document.querySelectorAll('.offcanvas .offcanvas-body .navbar-nav .comissions .list-item').forEach((element) => {
+
+element.style.color="white";
+});
+}
+
+});
+
+
+
+
+
+//       document.querySelectorAll('.offcanvas .offcanvas-body .navbar-nav .comissions .list-item').forEach((element) => {
+
+// element.style.color="white";
+// });
+
+      
+    }
+
+    else{
+
+      console.log("else...")
+      itemslist.forEach((item) => {
+       
+             
+        // console.log(res + "  //lol")
+
+        if(res==="busicheckEligible" || res==="educheckEligible" || res==="lapcheckEligible" || res==="homecheckEligible" || res==="personalcheckEligible" || res==="carcheckEligible" || res==="creditcheckEligible" || res==="goldcheckEligible" || res==="othercheckEligible"){
+
+
+          document.querySelectorAll(`.offcanvas .offcanvas-body .firstnav .item8 .list-item`).forEach((i)=>{
+
+           i.style.color="white";
+              });
+
+        }
+        else if(res==="lifeInsurance" || res==="generalInsurance" || res==="healthInsurance" || res==="allInsurance"){
+
+          document.querySelectorAll(`.offcanvas .offcanvas-body .firstnav .item9 .list-item`).forEach((i)=>{
+
+               i.style.color="white";
+               });
+
+        }
+       
+        // console.log(item.getAttribute('href'));
+        // console.log(item.getAttribute('class'));
+        if(item.getAttribute('href').split('/').pop()===res){
+
+          const classvar=item.parentNode.classList[2];
+          document.querySelectorAll(`.offcanvas .offcanvas-body .firstnav .${classvar} .list-item`).forEach((i)=>{
+
+            i.style.color="white";
+          });
+         
+        }
+
+      });
+
+    }
+
+    // console.log(document.querySelector('.sub-item2 .badge').value+"kkkkkp");
+
+
+    // itemslist.forEach((item)=>{
+
+    //   if(item.getAttribute('href')===res){
+
+    //     item.style.color="white";
+
+    //   }
+    // });
+
+  });
+  </script>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+</body>
+
+</html>

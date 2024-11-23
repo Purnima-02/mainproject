@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View LoanAgainstProperty customer_profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">LoanAgainstProperty Documents</h2>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="loan_type">Loan Type</label>
+                    <input type="text" class="form-control" id="loan_type" name="loan_type" value="{{ customer_profile.loan_type }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="first_name">First Name</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" value="{{ customer_profile.first_name }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" value="{{ customer_profile.last_name }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="gender">Gender</label>
+                    <input type="text" class="form-control" id="gender" name="gender" value="{{ customer_profile.gender }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="date_of_birth">Date of Birth</label>
+                    <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{ customer_profile.date_of_birth }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="mobile_number">Mobile Number</label>
+                    <input type="text" class="form-control" id="mobile_number" name="mobile_number" value="{{ customer_profile.mobile_number }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="pan_card_number">PAN Card Number</label>
+                    <input type="text" class="form-control" id="pan_card_number" name="pan_card_number" value="{{ customer_profile.pan_card_number }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="aadhar_card_number">Aadhar Card Number</label>
+                    <input type="text" class="form-control" id="aadhar_card_number" name="aadhar_card_number" value="{{ customer_profile.aadhar_card_number }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="marital_status">Marital Status</label>
+                    <input type="text" class="form-control" id="marital_status" name="marital_status" value="{{ customer_profile.marital_status }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email_id">Email</label>
+                    <input type="email" class="form-control" id="email_id" name="email_id" value="{{ customer_profile.email_id }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="current_address">Current Address</label>
+                    <textarea class="form-control" id="current_address" name="current_address" readonly value="{{ customer_profile.current_address }}"></textarea>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="current_address_pincode">Current Address Pincode</label>
+                    <input type="text" class="form-control" id="current_address_pincode" name="current_address_pincode" value="{{ customer_profile.current_address_pincode }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="aadhar_address">Aadhar Address</label>
+                    <textarea class="form-control" id="aadhar_address" name="aadhar_address" readonly value="{{ customer_profile.aadhar_address }}"></textarea>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="aadhar_pincode">Aadhar Pincode</label>
+                    <input type="text" class="form-control" id="aadhar_pincode" name="aadhar_pincode" value="{{ customer_profile.aadhar_pincode }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="running_emis_per_month">Running EMIs Per Month</label>
+                    <input type="text" class="form-control" id="running_emis_per_month" name="running_emis_per_month" value="{{ customer_profile.running_emis_per_month }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="income_source">Income Source</label>
+                    <input type="text" class="form-control" id="income_source" name="income_source" value="{{ customer_profile.income_source }}" readonly>
+                </div>
+
+                <!-- Job-related fields -->
+                <div class="form-group col-md-6">
+                    <label for="net_salary_per_month">Net Salary Per Month</label>
+                    <input type="text" class="form-control" id="net_salary_per_month" name="net_salary_per_month" value="{{ customer_profile.net_salary_per_month }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="company_name">Company Name</label>
+                    <input type="text" class="form-control" id="company_name" name="company_name" value="{{ customer_profile.company_name }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="company_type">Company Type</label>
+                    <input type="text" class="form-control" id="company_type" name="company_type" value="{{ customer_profile.company_type }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="job_joining_date">Job Joining Date</label>
+                    <input type="date" class="form-control" id="job_joining_date" name="job_joining_date" value="{{ customer_profile.job_joining_date }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="job_location">Job Location</label>
+                    <input type="text" class="form-control" id="job_location" name="job_location" value="{{ customer_profile.job_location }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="total_job_experience">Total Job Experience</label>
+                    <input type="text" class="form-control" id="total_job_experience" name="total_job_experience" value="{{ customer_profile.total_job_experience }}" readonly>
+                </div>
+               <!-- Business-related fields -->
+                <div class="form-group col-md-6">
+                    <label for="net_income_per_month">Net Income Per Month</label>
+                    <input type="text" class="form-control" id="net_income_per_month" name="net_income_per_month" value="{{ customer_profile.net_income_per_month }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="business_name">Business Name</label>
+                    <input type="text" class="form-control" id="business_name" name="business_name" value="{{ customer_profile.business_name }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="business_type">Business Type</label>
+                    <input type="text" class="form-control" id="business_type" name="business_type" value="{{ customer_profile.business_type }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="business_establishment_date">Business Establishment Date</label>
+                    <input type="date" class="form-control" id="business_establishment_date" name="business_establishment_date" value="{{ customer_profile.business_establishment_date }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="gst_certificate">GST Certificate</label>
+                    <input type="checkbox" class="form-control" id="gst_certificate" name="gst_certificate" {% if customer_profile.gst_certificate %}checked{% endif %} disabled>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="gst_number">GST Number</label>
+                    <input type="text" class="form-control" id="gst_number" name="gst_number" value="{{ customer_profile.gst_number }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="nature_of_business">Nature of Business</label>
+                    <input type="text" class="form-control" id="nature_of_business" name="nature_of_business" value="{{ customer_profile.nature_of_business }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="turnover_per_year">Turnover Per Year</label>
+                    <input type="text" class="form-control" id="turnover_in_lakhs_per_year" name="turnover_in_lakhs_per_year" value="{{ customer_profile.turnover_in_lakhs_per_year }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="property_value">Property Value</label>
+                    <input type="text" class="form-control" id="property_value" name="property_value" value="{{ customer_profile.property_value }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="required_loan_amount">Required Loan Amount</label>
+                    <input type="text" class="form-control" id="required_loan_amount" name="required_loan_amount" value="{{ customer_profile.required_loan_amount }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="existing_loan">Existing Loan</label>
+                    <input type="checkbox" class="form-control" id="existing_loan" name="existing_loan" {% if customer_profile.existing_loan %}checked{% endif %} disabled>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="existing_loan_details">Existing Loan Bank/NBFC Name</label>
+                    <input type="text" class="form-control" id="existing_loan_details" name="existing_loan_details" value="{{ customer_profile.existing_loan_details }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="ref1_name">Reference 1 Person Name</label>
+                    <input type="text" class="form-control" id="ref1_name" name="ref1_name" value="{{ customer_profile.ref1_name }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="ref1_mobile">Reference 1 Mobile</label>
+                    <input type="text" class="form-control" id="ref1_mobile" name="ref1_mobile" value="{{ customer_profile.ref1_mobile }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="ref2_name">Reference 1 Person Name</label>
+                    <input type="text" class="form-control" id="ref2_name" name="ref2_name" value="{{ customer_profile.ref2_name }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="ref2_mobile">Reference 2 Mobile</label>
+                    <input type="text" class="form-control" id="ref2_mobile" name="ref2_mobile" value="{{ customer_profile.ref2_mobile }}" readonly>
+                </div>
+                <!-- Co-Applicant Details -->
+                <div class="form-group col-md-6">
+                    <label for="co_applicant_first_name">Co-Applicant First Name</label>
+                    <input type="text" class="form-control" id="co_applicant_first_name" name="co_applicant_first_name" value="{{ customer_profile.co_applicant_first_name }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="co_applicant_last_name">Co-Applicant Last Name</label>
+                    <input type="text" class="form-control" id="co_applicant_last_name" name="co_applicant_last_name" value="{{ customer_profile.co_applicant_last_name }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="co_applicant_gender">Co-Applicant Gender</label>
+                    <input type="text" class="form-control" id="co_applicant_gender" name="co_applicant_gender" value="{{ customer_profile.co_applicant_gender }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="co_applicant_age">Co-Applicant Age</label>
+                    <input type="text" class="form-control" id="co_applicant_age" name="co_applicant_age" value="{{ customer_profile.co_applicant_age }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="co_applicant_relationship">Co-Applicant Relationship</label>
+                    <input type="text" class="form-control" id="co_applicant_relationship" name="co_applicant_relationship" value="{{ customer_profile.co_applicant_relationship }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="co_applicant_mobile_number">Co-Applicant Mobile Number</label>
+                    <input type="text" class="form-control" id="co_applicant_mobile_number" name="co_applicant_mobile_number" value="{{ customer_profile.co_applicant_mobile_number }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="co_applicant_email_id">Co-Applicant Email</label>
+                    <input type="email" class="form-control" id="co_applicant_email_id" name="co_applicant_email_id" value="{{ customer_profile.co_applicant_email_id }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="co_applicant_occupation">Co-Applicant Occupation</label>
+                    <input type="text" class="form-control" id="co_applicant_occupation" name="co_applicant_occupation" value="{{ customer_profile.co_applicant_occupation }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="co_applicant_net_income_per_month">Co-Applicant Net Income Per Month</label>
+                    <input type="text" class="form-control" id="co_applicant_net_income_per_month" name="co_applicant_net_income_per_month" value="{{ customer_profile.co_applicant_net_income_per_month }}" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-secondary" onclick="window.history.back();">Back</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

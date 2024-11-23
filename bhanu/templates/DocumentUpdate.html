@@ -1,0 +1,80 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EducationLoan Update Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+<style>
+    .asteriskField{
+        color:red;
+    }
+</style>
+</head>
+<body>
+
+
+    <div class="container">
+    <h1 class="text-center">EducationLoan Documents Update</h1>
+
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    
+        <div class="row">
+            <div class="col-md-6">
+    {{form.adhar_card_front|as_crispy_field}}
+
+    {{form.adhar_card_back|as_crispy_field}}
+
+    {{form.pan_card|as_crispy_field}}
+
+    {{form.customer_photo|as_crispy_field}}
+    </div>
+
+    <div class="col-md-6">
+
+    {{form.pay_slip_1|as_crispy_field}}
+
+    {{form.pay_slip_2|as_crispy_field}}
+
+    {{form.pay_slip_3|as_crispy_field}}
+
+    {{form.bank_statement|as_crispy_field}}
+
+    {{form.employee_id_card|as_crispy_field}}
+
+    </div>
+
+    </div>
+
+    <h1>Co Applicant..</h1>
+    <div class="row">
+
+       
+        {{form.co_applicant_aadharFront|as_crispy_field}}
+    
+        {{form.co_applicant_aadharBack|as_crispy_field}}
+    
+        {{form.co_applicant_panCard|as_crispy_field}}
+    
+        {{form.co_applicant_photo|as_crispy_field}}
+
+    </div>
+    
+
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+    </div>
+
+</body>
+</html>
+
+

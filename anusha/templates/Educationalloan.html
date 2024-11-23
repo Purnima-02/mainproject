@@ -1,0 +1,1069 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+     <!-- <link rel="stylesheet" href="{% static 'css/loan.css' %}">  -->
+
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
+   
+    <link rel="stylesheet" href="{% static 'css/Common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Loan.css' %}">
+
+<!--seperate-->
+   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   
+<!--seperate-->
+
+ <style>
+
+    
+    .faqcard.card {
+        background-color: #e3dcc1;
+        margin-bottom: 25px; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); 
+        border: none; 
+    }
+    .faqcard .card-header {
+        cursor: pointer; 
+    }    
+    .faqcard .card-header {
+        cursor: pointer;
+    }    
+    </style>
+    
+
+    <script src="{% static 'js/Main.js' %}"></script>
+    <script src="{% static 'js/Common.js' %}"></script>
+
+    
+    <!--JQuery-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+    <title>Education Loan</title>
+</head>
+
+<body>
+    
+
+    <div class="navbar-section">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url "index" %}"><img src="{% static "assets/img/mainlogo-removebg-preview.png" %}" alt="SLN-Logo" class="img-fluid w-100" style="height: 100px;"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link Aboutus" aria-current="page" href="{% url 'about' %}">About Us</a>
+                        </li>
+      
+                        <li class="nav-item dropdown loan">
+                            <a class="nav-link dropdown-toggle loans" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Loans
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'personalloans' %}">Personal Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'bussinessloan' %}">Business Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'homeloan' %}">Home Loan</a></li>
+                                <li><a class="dropdown-item" href="{% url 'lap' %}">Loan Against Property</a></li>
+
+      
+                                <li class="dropdown-submenu hover-dropdown">
+                                    <a class="dropdown-item" href="{% url 'carloan' %}">Car Loan</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'usedcar' %}">Used Car Loans</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'newcar' %}">New Car Loans</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'educationalloan' %}">Educational Loan</a></li>
+
+                                <li><a class="dropdown-item" href="{% url 'gold' %}">Gold Loan</a></li>
+
+                                <li class="nav-item" >
+                                    <a class="dropdown-item"  href="{% url 'otherbasicdetail' %}">Other Loan</a>
+                                </li>
+                                
+      
+                            </ul>
+                        </li>
+      
+                        <li class="nav-item">
+                            <a class="nav-link credit-cards" href="{% url 'creditpage' %}">Credit Cards</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle insurance" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Insurance
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'allinsurance'%}">All Insurances</a></li>
+                                <li><a class="dropdown-item" href="{% url 'lifeinsurance'%}">Life Insurance</a></li>
+                                <li><a class="dropdown-item" href="{% url 'generalinsurance'%}">General Insurance</a></li>
+                                <li><a class="dropdown-item" href="{% url 'healthinsurance'%}">Health Insurance</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contactus" href="{% url 'contact'%}">Contact Us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle partner" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Become a Partner
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'dsa' %}">DSA Partner</a></li>
+                                <li><a class="dropdown-item" href="{% url 'franchise' %}">Franchise Program</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle insurance" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                CheckStatus
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                {% if pl %}
+            {% for item in pl %}
+                <li>
+                    <a href="{% url 'view_personal_verify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                        PersonalLoan
+                    </a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No loans available.</li>
+        {% endif %}
+        {% if bus %}
+        {% for loan in bus %}
+           <li><a href="{% url 'buscustomer-profile' application_id=loan.id %}" class="dropdown-item" style="text-decoration: none;">
+               BusinessLoan</a></li>
+               {% endfor %}
+               {% else %}
+   <li>No loans available.</li>
+{% endif %}
+                                
+                                {% if edu %}
+                                {% for item in edu %}
+                                    <li>
+                                        <a href="{% url 'Educustomer-profile' application_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                                            educationalloan
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                <li>No loans available.</li>
+                            {% endif %}
+
+                                {% if hl %}
+            {% for item in hl %}
+                <li>
+                    <a href="{% url 'view_home_verify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                        Home Loan
+                    </a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No loans available.</li>
+        {% endif %}
+                                <!-- ================================== -->
+                                {% if cl %}
+                                {% for item in cl %}
+                                    <li>
+                                        <a href="{% url 'customerprofile' application_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                                            Car Loan
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                <li>No loans available.</li>
+                            {% endif %}
+                    
+                            {% if cc %}
+                            {% for item in cc %}
+                                <li>
+                                    <a href="{% url 'viewcustomerverify' instance_id=item.id %}" class="dropdown-item" style="text-decoration: none;">
+                                        Creditcard
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <li>No loans available.</li>
+                        {% endif %}
+                    
+                                {% if loans %}
+                             {% for loan in loans %}
+                                <li><a href="{% url 'viewcustomerverify' instance_id=loan.id %}" class="dropdown-item" style="text-decoration: none;">
+                                    LoanAgainstProperty</a></li>
+                                    {% endfor %}
+                                    {% else %}
+                        <li>No loans available.</li>
+                    {% endif %}
+                            </ul>
+                        </li>
+                    <!-- Navigation bar -->
+                    <li class="nav-item dropdown me-4">
+                        <a class="dropdown-toggle loans btn btn-danger" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% if request.session.email %}
+                                My Profile
+                            {% else %}
+                                Sign In
+                            {% endif %}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            {% if request.session.email %}
+                                <li><a class="dropdown-item" href="#">{{ request.session.email }}</a></li>
+                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                                {% else %}
+                                    <li><a class="dropdown-item" href="{% url 'generate-verify-otp' %}">Sign In</a></li>
+                                {% endif %}
+                        </ul>
+                    </li>
+                               
+                    
+                    </ul>
+                                
+                            </ul>
+                        </li>
+          
+          
+          
+          
+          
+                            
+                        </ul>
+                </div>
+            </div>
+        </nav>
+      </div>
+      
+<!-- nav bar code  -->
+
+<script>
+    $(document).ready(function() {
+        $('.dropdown-submenu.click-dropdown .dropdown-toggle').on('click', function(e) {
+            e.stopPropagation();
+            $(this).next('.dropdown-menu').toggle();
+        });
+    });
+</script>
+
+    <!-- nav bar code  -->
+
+
+
+
+    <section class="Psection1">
+        <div class="wavy-background">
+            <div class="container">
+                <div class="row">
+                    <!--column1-->
+                    <div class="col-lg-6 col-sm-12 column1">
+                        <div class="content">
+                            <p class="display-5 fw-bold main-heading">Accessible Education Loans to Fulfill Your Academic Goals!</p>
+                        </div>
+                        <br><br>
+                        <h6 class="sub-heading">Explore a range of Education Loans from India's leading lenders through Ruloans, tailored to
+                            empower your academic ambitions with financial ease.</h6>
+                        
+
+                        {% if request.session.Eduafterurl %}
+                            
+                        <a href="{{ request.session.Eduafterurl }}"><button class="btn button btn-danger"><b>Apply</b></button></a>
+
+                        {% else  %}
+
+                        <a href="{% url 'createEducationloan' %}"><button class="btn button btn-danger"><b>Apply</b></button></a>
+
+                            
+                        {% endif %}
+
+                    </div>
+                    <!--column1-->
+
+                    </div>
+                    <!--column1-->
+                    <div class="col-lg-6 col-sm-12 column2">
+                        <img src="{% static 'Images/EducationalLoanImages/education-loan.png' %}" class="img-fluid w-100">
+                    </div>
+                </div>
+            </div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#f0faff" fill-opacity="1"
+                    d="M0,64L40,96C80,128,160,192,240,218.7C320,245,400,235,480,224C560,213,640,203,720,197.3C800,192,880,192,960,181.3C1040,171,1120,149,1200,138.7C1280,128,1360,128,1400,128L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
+                </path>
+            </svg>
+        </div>
+    </section>
+
+
+    <div class="position-fixed ms-auto scroll-to-top">
+        <!-- <img src="./Images/Scroll_to_top_icon.png" class="img-fluid" style="width:50px;"> -->
+    </div>
+
+
+    <section id="Psection2" class="Psection2">
+        <div class="container mt-md-5">
+            <nav class="">
+                <a href="#" data-section="PersonalLoan-section1" class="nav-item item1">OVERVIEW</a><span
+                    class="symbol">|</span>
+                <a href="#" data-section="PersonalLoan-section2" class="nav-item">FEATURES</a><span
+                    class="symbol">|</span>
+                <a href="#" data-section="PersonalLoan-section3" class="nav-item">ELIGIBILITY</a><span
+                    class="symbol">|</span>
+                <a href="#" data-section="PersonalLoan-section4" class="nav-item">DOCUMENTS</a><span
+                    class="symbol">|</span>
+                <a href="#" data-section="PersonalLoan-section5" class="nav-item">EMI CALCULATOR</a><span
+                    class="symbol">|</span>
+                <!-- <a href="#" data-section="PersonalLoan-section6" class="nav-item">FEES AND CHARGES</a><span
+                    class="symbol">|</span> -->
+                <a href="#" data-section="PersonalLoan-section7" class="nav-item">FAQ'S</a><span class="symbol">|</span>
+            </nav>
+        </div>
+    </section>
+
+
+
+
+    <section class="Psection3 mt-5 overview" id="PersonalLoan-section1">
+
+
+
+        <div class="container">
+
+
+            <h1>Education Loan Features</h1>
+
+            <div class="row mt-5">
+
+                <div class="col-12 col-md-6 col-lg-2 mb-4">
+                    <div class="card w-100 h-100">
+                        <img src="{% static 'Images/cardsImages/percentageTag.png' %}" class="card-img-top w-50" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build .</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-2 mb-4">
+                    <div class="card w-100 h-100">
+                        <img src="{% static 'Images/cardsImages/coinsHands.png' %}" class="card-img-top w-50" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build .</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-2 mb-4">
+                    <div class="card w-100 h-100">
+                        <img src="{% static 'Images/cardsImages/coinsBlog.png' %}" class="card-img-top w-50" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build .</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br><br>
+
+
+            <h1>Education Loan - Benefits</h1>
+
+            <div class="row mt-5 container">
+
+                <div class="col-12 col-md-4">
+
+                    <p class="display-2 fw-bold content">1</p>
+                    <h4>Unlock substantial loans</h4>
+                    <p style="text-align: justify;"> Prepare a detailed business proposal before seeking the loan.
+                        Assess your credit score, determine the loan amount needed, research various business loan
+                        offerings in the market, and organize all necessary documentation in advance.</p>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <p class="display-2 fw-bold content">2</p>
+                    <h4>Benefit from competitive interest rates</h4>
+                    <p style="text-align: justify;">Submit proofs of address and photo identification for the owners,
+                        evidence of business existence, income verification, partnership deed for partnership firms,
+                        articles of association, memorandum of association, board resolution, and PAN card.</p>
+
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <p class="display-2 fw-bold content">3</p>
+                    <h4>Pre-approval for admission</h4>
+                    <p style="text-align: justify;">Applicants should be aged between 21 and 65 years, with a business
+                        operating for at least 3 years. Minimum business turnover and annual income as per the tax
+                        returns will be necessary. The business should have been profitable for at least the past year.
+
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+    <!-- Section4 -->
+
+    <section class="Features Psection4 mt-5" id="PersonalLoan-section2">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 column1">
+
+                    <h1>Features and Benefits of our Education Loan</h1>
+                    <br>
+
+
+
+                    <div class="container">
+
+                        <!-- <div style="width:5px;height: 5px; background-color: black;border-radius: 50%;"></div> -->
+
+
+                        <ul>
+                            <li><strong>Grace Period:</strong> Typically, repayment begins after completing the course,
+                                allowing students time to secure employment.</li>
+                            <li><strong>Joint Applicant Option:</strong> Parents or guardians can co-apply to increase
+                                eligibility.</li>
+                            <li><strong>Tax Benefits:</strong> Interest on repayments may qualify for tax deductions
+                                under Section 80E of the Income Tax Act.</li>
+                            <li><strong>Diverse Courses and Institutions:</strong> Loans cover various educational
+                                levels, including school and higher education, in both Indian and international
+                                institutions.</li>
+                            <li><strong>Secured and Unsecured Loans:</strong> Depending on the loan amount, some loans
+                                require collateral, while smaller ones may be unsecured.</li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="col-12 column2 mt-5">
+
+                    <div class="card w-100 h-100">
+
+
+                        <div class="card-body">
+
+
+                            <h3 class="card-title">Education Loan Eligibility and Documents</h3>
+
+                            <div class="row align-items-center"><!--row-->
+                                <div class="col-md-6 col-12">
+                                    <p class="">
+                                    <p>Read on to know the criteria required to apply for our Educational Loan.</p>
+                                    </p>
+                                </div>
+                                <div class="col-md-6 col-12   text-md-end ">
+
+
+                                    <a href="{% url 'edubasicdetail' %}"><button class="btn button btn-danger" class="">Apply</button></a>
+
+
+                                </div>
+                            </div><!--row-->
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+    </section>
+
+    <!-- Section4 -->
+
+
+
+
+    <!-- section5 -->
+
+    <section class="Psection5 mt-5" id="PersonalLoan-section3">
+
+        <div class="container">
+            <h1>Eligibility Criteria </h1>
+            <br>
+
+            <p>Education loan eligibility criteria can vary depending on the country of study, the lender, and the type
+                of loan you're applying for. However in a general overview the factors that often influence education
+                loan eligibility are</p>
+
+
+            <ul>
+                <li><strong>Age:</strong> Most lenders establish both minimum and maximum age requirements for loan
+                    applicants. Typically, you must be of legal age (18 years or older) to qualify for a loan.</li>
+
+                <li><strong>Program Eligibility:</strong> Education loans are usually associated with specific
+                    educational programs or courses. Lenders often maintain a list of eligible institutions and programs
+                    that qualify for loans.</li>
+
+                <li><strong>Admission Offer:</strong> Many lenders require proof of admission to an accredited
+                    educational institution as part of the loan application process.</li>
+
+                <li><strong>Academic Performance:</strong> Some lenders consider your academic performance, such as your
+                    previous grades or educational achievements, when evaluating loan eligibility.</li>
+
+                <li><strong>Co-borrower or Guarantor:</strong> If you have limited credit history or income, lenders may
+                    require a co-borrower or guarantor (typically a parent or guardian) to share responsibility for loan
+                    repayment.</li>
+
+                <li><strong>Credit History:</strong> Both the student's and their co-borrower/guarantor's credit history
+                    and credit score are important factors in loan approval. A strong credit history can improve your
+                    chances of obtaining favorable loan terms.</li>
+
+                <li><strong>Income and Financial Capability:</strong> Some lenders assess your ability to repay the loan
+                    based on your income or your co-borrower's income.</li>
+
+                <li><strong>Loan Amount:</strong> The amount you request in relation to the program's cost may impact
+                    your eligibility. Lenders often set specific limits on the maximum loan amount they will provide.
+                </li>
+
+                <li><strong>Collateral or Security:</strong> For larger loan amounts, lenders may require collateral or
+                    security, such as property, investments, or other valuable assets.</li>
+
+                <li><strong>Documentation:</strong> As part of the loan application process, you will likely need to
+                    submit various documents, including proof of identity, admission confirmation, income statements,
+                    and more.</li>
+            </ul>
+
+        </div>
+    </section>
+
+
+    <!-- section5 -->
+
+
+
+
+    <!-- section6 -->
+
+
+    <section class="Psection6 mt-5" id="PersonalLoan-section4">
+        <div class="container">
+
+            <h1>Documents Required for Applying for an Educational Loan:</h1>
+            <div class="container">
+
+
+                <p>Documentation: You will likely need to provide various documents as part of your loan application,
+                    such as proof of identity, proof of admission, income documents, and more for both Student as well
+                    as the Guarantor or co-borrower.</p>
+
+                <div class="container">
+                    <li>Student Applicant</li>
+                    <li>Co-signer/Guarantor</li>
+                    <li>Income Verification for Salaried Co-signer/Guarantor</li>
+                    <li>Income Verification for Self-employed Co-signer/Guarantor</li>
+
+                </div>
+
+
+                <p class="fw-bold mt-2">Explore in detail by Visiting the Documents Required Page</p>
+
+            </div>
+        </div>
+    </section>
+    <style>
+
+        .customer-support{
+            position: fixed;
+            bottom:100px;
+            left: calc(100% - 140px);
+            z-index: 99999;
+        }
+        
+        iframe{
+            height: 400px;
+        }
+            </style>
+        
+            <div class="customer-support" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <img src="{% static 'Images/cust.png' %}" alt="" height="50" width="50">
+            </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel8">Customer Support</h5>
+                        <button type="button" class="btn-close ModelclosedButtn" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+        
+                   
+                        <div class="modal-body">
+        
+                            
+            
+                            <iframe src="http://3.208.103.10:8000/ticket_create/" frameborder="0" style="width: 100%;"></iframe>
+        
+                        </div>
+                        <!--Modal body-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger ModelclosedButtn" data-bs-dismiss="modal">Close</button>
+                           
+                        </div>
+                   
+                </div>
+            </div>
+        </div>
+        
+        <script>
+        
+            $('.customer-support').click(()=>{
+                
+                $('.customer-support').hide()
+        
+            })
+        
+            $('.ModelclosedButtn').click(()=>{
+                $('.customer-support').show()
+        })
+        </script>
+        
+
+    <!-- section6 -->
+
+
+    <!-- section7 -->
+
+    <section class="Psection7 mt-5" id="PersonalLoan-section5">
+
+        <div class="container">
+
+            <h1>Education Loan EMI Calculator</h1>
+            <p class="mt-3">Using an Education Loan EMI (Equated Monthly Installment) calculator can help you estimate
+                your monthly loan repayment amount.</p>
+            <p>Follow these steps to use a Education Loan EMI calculator effectively:</p>
+
+            <div class="ms-3">
+                <ul>
+                    <li>Input loan amount, interest rate, and tenure.</li>
+                    <li>Click to calculate.</li>
+                    <li>View monthly EMI, total interest payable, and overall repayment.</li>
+                    <li>Adjust tenure as required.</li>
+                    <li>Include additional expenses if applicable.</li>
+                    <li>Assess financial compatibility.</li>
+                    <li>Seek lender confirmation before finalizing.</li>
+                </ul>
+
+            </div>
+
+            <p class="mt-5 fw-bold">How is Education Loan EMI Calculated?</p>
+
+            <p class="fw-bold">Education Loan EMI (Equated Monthly Installment) is calculated using the following
+                Compound Interest formula:</p>
+
+            <p style="margin-right: 100%;">
+                $$ \text{EMI} = \frac{P \times r \times (1 + r)^n}{(1 + r)^n - 1} $$
+            </p>
+            <p class="fw-bold">Where:</p>
+
+
+            <p>EMI = Equated Monthly Installment</p>
+
+            <p>P = Loan principal amount</p>
+
+            <p>r = Monthly interest rate (Annual interest rate divided by 12, expressed as a decimal)</p>
+
+            <p>n = Loan tenure in months</p>
+
+            <p><strong>How to Calculate the Educational Loans EMI?</strong></p>
+
+
+            <p><strong>To use an Education Loan EMI Calculator:</strong></p>
+
+            <ul>
+                <li><strong>Loan Details:</strong> Provide details such as the loan amount you intend to borrow, the
+                    applicable interest rate, and choose the repayment tenure in months or years.</li>
+
+                <li><strong>Calculate:</strong> Click the "Calculate" or "Calculate EMI" button to compute the estimated
+                    monthly EMI amount based on your inputs.</li>
+
+                <li><strong>View Results:</strong> The calculator will display the monthly EMI and break down the
+                    principal and interest components for each payment.</li>
+
+                <li><strong>Explore Variations:</strong> Experiment with different loan amounts, interest rates, and
+                    repayment tenures to observe how they impact your monthly EMI.</li>
+
+                <li><strong>Assess Affordability:</strong> Determine whether the calculated EMI fits comfortably within
+                    your budget to ensure manageable repayment.</li>
+
+                <li><strong>Plan Your Finances:</strong> Utilize the EMI calculation to plan your monthly financial
+                    obligations and maintain timely loan repayment.</li>
+            </ul>
+
+
+        </div>
+    </section>
+
+
+    <!-- section7 -->
+
+
+
+    <!-- section8 -->
+
+    <!-- <section class="Psection8 mt-5" id="PersonalLoan-section6">
+
+        <div class="container">
+            <h1>Costs and Fees Associated with Education Loan</h1>
+            <p>The fees and charges of home loans usually vary from lender to lender and from case to case. The
+                aforementioned table will give you a fair idea of the fees and charges related to home loans:</p>
+
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <div class="card px-4 ">
+                        <div class="card-body">
+
+
+
+                            <div class="custom-table">
+                                <table class="table table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>Particulars</th>
+                                            <th>Charges</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+
+
+                                            <td>
+                                                <h6>Loan Processing Fees</h6>
+                                            </td>
+                                            <td>
+                                                <p>0.5% to 4% of the loan amount</p>
+                                            </td>
+
+
+                                        </tr>
+                                        <br>
+                                        <tr>
+                                            <td>
+                                                <h6>Loan Cancellation</h6>
+                                            </td>
+                                            <td>
+                                                <p>Typically approximately Rs 3,000</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6>Stamp Duty Charges</h6>
+                                            </td>
+                                            <td>
+                                                <p>Varies based on actual costs incurred</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6>Legal Fees</h6>
+                                            </td>
+                                            <td>
+                                                <p>Subject to actual expenses</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6>Penal Charges</h6>
+                                            </td>
+                                            <td>
+                                                <p>Typically charged at 2% per month; equivalent to 24% annually</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6>EMI / Cheque Bonus</h6>
+                                            </td>
+                                            <td>
+                                                <p>Approximately Rs 400 per bounced payment</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-5 text-primary">Additional fees and charges that lenders might impose on your personal loan
+                comprise documentation fees, verification fees, charges for duplicate statements, fees for issuing NOC
+                certificates, and swap charges.
+
+
+
+
+
+
+            </p>
+        </div>
+
+
+
+    </section> -->
+
+
+
+    <!-- section8 -->
+
+
+
+    <!-- section9 -->
+     <style>
+        .faqcard h5{
+            font-weight: bold;
+        }
+
+
+     </style>
+
+
+    <section class="Psection9 mt-5" id="PersonalLoan-section7">
+
+
+        <div class="container mt-3">
+
+
+            <div class="row">
+                <div class="col-12">
+                    <h1>FAQs</h1>
+
+                    <div id="faqAccordion"><!--Accordian-->
+
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq1Heading" data-toggle="collapse" data-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                                <h5 class="mb-0">
+                                    What are the eligibility criteria for an educational loan?
+                                </h5>
+                            </div>
+                            <div id="faq1" class="collapse" aria-labelledby="faq1Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Educational loans typically require the applicant to be a resident citizen of the country, have secured admission to a recognized course, and provide necessary documents like admission letter, academic records, etc.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq2Heading" data-toggle="collapse" data-target="#faq2" aria-expanded="true" aria-controls="faq2">
+                                <h5 class="mb-0">
+                                    What expenses can an educational loan cover?
+                                </h5>
+                            </div>
+                            <div id="faq2" class="collapse" aria-labelledby="faq2Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Educational loans typically cover tuition fees, examination fees, library fees, cost of books, equipment required for the course, and hostel or accommodation charges.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq3Heading" data-toggle="collapse" data-target="#faq3" aria-expanded="true" aria-controls="faq3">
+                                <h5 class="mb-0">
+                                    What is the interest rate charged on educational loans?
+                                </h5>
+                            </div>
+                            <div id="faq3" class="collapse" aria-labelledby="faq3Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Interest rates on educational loans can vary based on the lender, the amount borrowed, and the repayment period. They may be fixed or variable and often come with concessions for certain categories of students.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq4Heading" data-toggle="collapse" data-target="#faq4" aria-expanded="true" aria-controls="faq4">
+                                <h5 class="mb-0">
+                                    What are the repayment options for educational loans?
+                                </h5>
+                            </div>
+                            <div id="faq4" class="collapse" aria-labelledby="faq4Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Repayment of educational loans typically starts after the completion of the course or a grace period thereafter. It can be repaid in EMIs spread over a few years, with flexibility in repayment terms.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq5Heading" data-toggle="collapse" data-target="#faq5" aria-expanded="true" aria-controls="faq5">
+                                <h5 class="mb-0">
+                                    Can educational loans cover study abroad programs?
+                                </h5>
+                            </div>
+                            <div id="faq5" class="collapse" aria-labelledby="faq5Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Yes, educational loans can cover expenses for studying abroad, including tuition fees, travel expenses, living costs, and other related expenses as per the lender's policy.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq6Heading" data-toggle="collapse" data-target="#faq6" aria-expanded="true" aria-controls="faq6">
+                                <h5 class="mb-0">
+                                    Are there any tax benefits available on educational loans?
+                                </h5>
+                            </div>
+                            <div id="faq6" class="collapse" aria-labelledby="faq6Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Under certain conditions, educational loans may qualify for tax benefits under Section 80E of the Income Tax Act, allowing deductions on the interest paid during the repayment period.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card faqcard">
+                            <div class="card-header" id="faq7Heading" data-toggle="collapse" data-target="#faq7" aria-expanded="true" aria-controls="faq7">
+                                <h5 class="mb-0">
+                                    How can one apply for an educational loan?
+                                </h5>
+                            </div>
+                            <div id="faq7" class="collapse" aria-labelledby="faq7Heading" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    To apply for an educational loan, one typically needs to approach a bank or financial institution, submit the required documents, provide details about the course and institution, and meet the eligibility criteria set by the lender.
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div><!--Accordian-->
+                   
+
+                </div><!--column1-->
+
+                <br><br>
+
+
+
+              
+
+                
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+    <!-- section9 -->
+
+    <br><br><br>
+
+
+
+     <!-- footer code Start -->
+     <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <img src="{% static 'assets/img/mainlogo-removebg-preview.png' %}" alt="" class="logo">
+                <p>&copy;2024 SLN Finserv &mdash; All Rights Reserved</p>
+                <p>Toll-free Number &mdash; 1800-266-7576</p>
+            </div>
+            <div class="footer-section">
+                <h3>LOANS</h3>
+                <ul>
+                    <li><a href="#">Home Loan</a></li>
+                    <li><a href="#">Personal Loan</a></li>
+                    <li><a href="#">Business Loan</a></li>
+                    <li><a href="#">Car Loan</a></li>
+                    <li><a href="#">Car Refinance</a></li>
+                    <li><a href="#">Used Car Loan</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>KNOWLEDGE CENTER</h3>
+                <ul>
+                    <li><a href="#">Blogs</a></li>
+                    <li><a href="#">Videos</a></li>
+                    <li><a href="#">Product Info</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>INSURANCE</h3>
+                <ul>
+                    <li><a href="#">Life Insurance</a></li>
+                    <li><a href="#">Health Insurance</a></li>
+                    <li><a href="#">General Insurance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Grow With Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Data Storage Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href=""><i class="bi bi-whatsapp"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href=""><i class="bi bi-youtube"></i></a>
+            <a href=""><i class="bi bi-envelope-at-fill"></i></a>
+        </div>
+    </footer>
+    <!-- footer code End -->
+
+
+
+
+    {% comment %} <script src="{% static 'js/Main.js' %}"></script> {% endcomment %}
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script> -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
+   
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+*{
+
+    font-family: 'Maven Pro', sans-serif !important;
+    
+}
+
+
+.myactive{
+    background-color: aqua;
+    border-radius: 10px;
+}
+
+.navbar-section .navbar-nav .nav-item .nav-link:hover{
+
+    background-color: aqua;
+    border-radius: 10px;
+}
+
+.navbar-section .navbar-nav .nav-item .nav-link{
+    border-radius: 10px;
+}
+.custom-background{
+    color:red !important;
+}
+.custom-background:hover{
+    color: red;
+}
+

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+
+<title>LoanAgainstProperty Document Upload</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    .form-section {
+        margin-top: 20px;
+    }
+    .form-section h4 {
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 5px;
+    }
+    .invalid-feedback {
+        display: block;
+        color: red;
+    }
+    .form-group{
+        margin-bottom: 40px;
+        margin-right: 30px;
+    }
+</style>
+</head>
+
+<body>
+    
+    
+<div class="container mt-5">
+    {{loan_type}}
+<h3 text="center">LoanAgainstProperty Document Uploads</h3>
+    {% if form.instance.file_field %}
+    <p>Uploaded Document: <a href="{{ form.instance.file_field.url }}" target="_blank">View Document</a></p>
+{% endif %}
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+
+            <div class="form-group">
+                <label for="id_adhar_card_front">Adharcard front<span class="text-secondary">(Image)<i class="text-danger">*</i></span></label>
+                {{ form.adhar_card_front }}
+                {% if form.adhar_card_front.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.adhar_card_front.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+                
+                <div class="form-group">
+                    <label for="id_adhar_card_back">Adharcard back<span class="text-secondary">(Image)<i class="text-danger">*</i></span></label>
+                    {{ form.adhar_card_back }}
+                    {% if form.adhar_card_back.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.adhar_card_back.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_pan_card">Pan Card<span class="text-secondary">(Image)<i class="text-danger">*</i></span></label>
+                    {{ form.pan_card }}
+                    {% if form.pan_card.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.pan_card.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_customer_photo">Customer selfie/photo<span class="text-secondary">(Image)<i class="text-danger">*</i></span></label>
+                    {{ form.customer_photo }}
+                    {% if form.customer_photo.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.customer_photo.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_property_photo1">property photo1<span class="text-secondary">(Image)<i class="text-danger">*</i></span></label>
+                    {{ form.property_photo1 }}
+                    {% if form.property_photo1.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.property_photo1.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_property_photo2">property photo2<span class="text-secondary">(Image)<i class="text-danger">*</i></span></label>
+                    {{ form.property_photo2 }}
+                    {% if form.property_photo2.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.property_photo2.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_property_photo3">property photo3<span class="text-secondary">(Image)</span></label>
+                    {{ form.property_photo3 }}
+                    {% if form.property_photo3.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.property_photo3.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_property_photo4">property photo4<span class="text-secondary">(Image)</span></label>
+                    {{ form.property_photo4 }}
+                    {% if form.property_photo4.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.property_photo4.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% if incomesource == 'JOB' %}
+                <div class="form-group">
+                    <label for="id_pay_slips_1">Pay Slip 1<span class="text-secondary">(pdf)<i class="text-danger">*</i></span></label>
+                    {{ form.pay_slips_1 }}
+                    {% if form.pay_slips_1.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.pay_slips_1.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_pay_slips_2">Pay Slip 2<span class="text-secondary">(pdf)</span></label>
+                    {{ form.pay_slips_2 }}
+                    {% if form.pay_slips_2.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.pay_slips_2.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="id_pay_slips_3">Pay Slip 3<span class="text-secondary">(pdf)</span></label>
+                    {{ form.pay_slips_3 }}
+                    {% if form.pay_slips_3.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.pay_slips_3.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                    
+                    <div class="form-group">
+                        <label for="id_bank_statement">Latest 3  Months Bank statement<span class="text-secondary">(pdf)<i class="text-danger">*</i></span></label>
+                        {{ form.bank_statement }}
+                        {% if form.bank_statement.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.bank_statement.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_employee_id_card">Employee Id card<span class="text-secondary">(Image)</span></label>
+                        {{ form.employee_id_card }}
+                        {% if form.employee_id_card.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.employee_id_card.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% elif incomesource == 'BUSINESS' %}
+                <div class="form-group">
+                    <label for="id_business_proof1">business proof1<span class="text-secondary">(pdf)<i class="text-danger">*</i></span></label>
+                    {{ form.business_proof1 }}
+                    {% if form.business_proof1.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.business_proof1.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                    <div class="form-group">
+                        <label for="id_business_proof2">business proof2<span class="text-secondary">(pdf)</span></label>
+                        {{ form.business_proof2 }}
+                        {% if form.business_proof2.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.business_proof2.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id_bank_statement_12m">Latest 12 months Bank statement<span class="text-secondary">(pdf)<i class="text-danger">*</i></span></label>
+                        {{ form.bank_statement_12m }}
+                        {% if form.bank_statement_12m.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.bank_statement_12m.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id_business_office_photo">business_office_photo<span class="text-secondary">(Image)<i class="text-danger">*</i></span></label>
+                        {{ form.business_office_photo }}
+                        {% if form.business_office_photo.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.business_office_photo.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_itr1">ITR1<span class="text-secondary">(pdf)<i class="text-danger">*</i></span></label>
+                        {{ form.itr1 }}
+                        {% if form.itr1.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.itr1.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_itr2">ITR2<span class="text-secondary">(pdf)<i class="text-danger">*</i></span></label>
+                        {{ form.itr2 }}
+                        {% if form.itr2.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.itr2.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="id_itr3">ITR3<span class="text-secondary">(pdf)</span></label>
+                        {{ form.itr3 }}
+                        {% if form.itr3.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.itr3.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    
+
+                {% if loan_type == 'LAPBT' %}
+                <h3 style="text-align: center; margin-top: 10px;">LAPBT Specific Documents</h3>
+                <div class="row">
+
+                <div class="form-group">
+                    <label for="id_existing_loan_statement">Existing loan statement<i class="text-danger">*</i></label>
+                    {{ form.existing_loan_statement }}
+                    {% if form.existing_loan_statement.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.existing_loan_statement.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                    <div class="form-group">
+                        <label for="id_other_document1">Other Document1<span class="text-secondary">(pdf)</span></label>
+                        {{ form.other_document1 }}
+                        {% if form.other_document1.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.other_document1.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_other_document2">Other Document2<span class="text-secondary">(pdf)</span></label>
+                        {{ form.other_document2 }}
+                        {% if form.other_document2.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.other_document2.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_other_document3">Other Document3<span class="text-secondary">(pdf)</span></label>
+                        {{ form.other_document3 }}
+                        {% if form.other_document3.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.other_document3.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_other_document4">Other Document4<span class="text-secondary">(pdf)</span></label>
+                        {{ form.other_document4 }}
+                        {% if form.other_document4.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.other_document4.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+</div>
+                    <div class="row">
+            <div class="col-md-6">
+                <h3>Co-Applicant Documents</h3>
+                <div class="form-group mt-3">
+                    <label for="id_co_applicant_adhar_card_front">Co-Applicant Aadhar Front<span class="text-secondary">(Image)<i class="text-danger">*</i></span></label>
+                    {{ form.co_applicant_adhar_card_front}}
+                    {% if form.co_applicant_adhar_card_front.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.co_applicant_adhar_card_front.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                </div>
+            <div class="col-md-6 mt-5">
+                <div class="form-group">
+                    <label for="id_co_applicant_adhar_card_back">Co-Applicant AAdhar Back<span class="text-secondary">(Image)<i class="text-danger">*</i></span></label>
+                    {{ form.co_applicant_adhar_card_back }}
+                    {% if form.co_applicant_adhar_card_back.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.co_applicant_adhar_card_back.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                </div>
+                </div>
+                <div class="form-group mt-5">
+                    <label for="id_co_applicant_pan_card">Co-Applicant Pan Card<span class="text-secondary">(Image)<i class="text-danger">*</i></span></label>
+                    {{ form.co_applicant_pan_card }}
+                    {% if form.co_applicant_pan_card.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.co_applicant_pan_card.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            
+                <div class="form-group mt-5">
+                    <label for="id_co_applicant_selfie_photo">Co-Applicant Selfie Photo<span class="text-secondary">(Image)<i class="text-danger">*</i></span></label>
+                    {{ form.co_applicant_selfie_photo }}
+                    {% if form.co_applicant_selfie_photo.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.co_applicant_selfie_photo.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        
+    </center>
+        <button type="submit" class="btn btn-primary col-md-6">Submit</button></center>
+    </form>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function clearErrorMessages(field) {
+            var parent = field.closest('.form-group');
+            if (parent) {
+                var errorFeedback = parent.querySelector('.invalid-feedback');
+                if (errorFeedback) {
+                    errorFeedback.innerHTML = '';
+                }
+            }
+        }
+    
+        var fields = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
+        fields.forEach(function(field) {
+            field.addEventListener('input', function() {
+                clearErrorMessages(this);
+            });
+   });
+});
+ 
+window.addEventListener('message', function(event) {
+ 
+    if (event.data === 'Apply custom styles') {
+        document.body.style.backgroundColor = 'white';
+        var style = document.createElement('style');
+        style.innerHTML = `
+           body::-webkit-scrollbar{
+           display:none;
+           }
+        `;
+        document.head.appendChild(style);
+    
+   }
+});
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
+
+
+

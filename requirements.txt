@@ -1,0 +1,9 @@
+Django==5.0.7
+mysqlclient
+pillow
+crispy-bootstrap5
+django-crispy-forms
+djangorestframework
+requests
+python-dotenv
+

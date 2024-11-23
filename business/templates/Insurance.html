@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    
+    <title>Hello, world!</title>
+    <style>
+
+        .asterick{
+            color:red;
+        }
+
+    </style>
+  </head>
+  <body>
+
+    
+    
+   
+    <div class="container mt-5">
+        <div class="card p-4" style="background-color: #3b5998; color: white; border-radius: 10px;">
+          <div class="card-body">
+            <h3 class="card-title">We provide the best value Life Insurance</h3>
+            <p class="card-text">Simple steps you can take to improve your financial well-being for the rest of your life.</p>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="insurance_name" value="Life Insurance"/>
+              <div class="mb-3">
+                <label for="name" class="form-label">Your Name<span class="asterick">*</span></label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" />
+              </div>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="phone" class="form-label">Phone<span class="asterick">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text">+91</span>
+                    <input type="text" class="form-control" id="phone" name="mobile_number"  placeholder="Enter your phone number" maxlength="10" />
+                  </div>
+                </div>
+                <div class="col-md-8 mb-3">
+                  <label for="email" class="form-label">Email<span class="asterick">*</span></label>
+                  <input type="email" class="form-control" id="email"  name="email_id" placeholder="Enter your email" />
+                </div>
+
+                <div class="form-group col-md-8 mb-3">
+                  <label for="state" class="form-label">State<span class="asterick">*</span></label>
+                  <select class="form-control" id="state" name="homeAddressState" required>
+                      <option value="" selected disabled>Select State</option>
+                      <option value="andhra-pradesh">Andhra Pradesh</option>
+                      <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                      <option value="assam">Assam</option>
+                      <option value="bihar">Bihar</option>
+                      <option value="chhattisgarh">Chhattisgarh</option>
+                      <option value="goa">Goa</option>
+                      <option value="gujarat">Gujarat</option>
+                      <option value="haryana">Haryana</option>
+                      <option value="himachal-pradesh">Himachal Pradesh</option>
+                      <option value="jharkhand">Jharkhand</option>
+                      <option value="karnataka">Karnataka</option>
+                      <option value="kerala">Kerala</option>
+                      <option value="madhya-pradesh">Madhya Pradesh</option>
+                      <option value="maharashtra">Maharashtra</option>
+                      <option value="manipur">Manipur</option>
+                      <option value="meghalaya">Meghalaya</option>
+                      <option value="mizoram">Mizoram</option>
+                      <option value="nagaland">Nagaland</option>
+                      <option value="odisha">Odisha</option>
+                      <option value="punjab">Punjab</option>
+                      <option value="rajasthan">Rajasthan</option>
+                      <option value="sikkim">Sikkim</option>
+                      <option value="tamil-nadu">Tamil Nadu</option>
+                      <option value="telangana">Telangana</option>
+                      <option value="tripura">Tripura</option>
+                      <option value="uttar-pradesh">Uttar Pradesh</option>
+                      <option value="uttarakhand">Uttarakhand</option>
+                      <option value="west-bengal">West Bengal</option>
+                  </select>
+              </div>
+
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message<span class="asterick">*</span></label>
+                <textarea class="form-control" id="message" name="messgae" rows="3" placeholder="Enter your message"></textarea>
+              </div>
+              <button type="submit" class="btn btn-danger w-100">Get Quote</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

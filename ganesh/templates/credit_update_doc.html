@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>credit card Document Upload Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .form-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff; /* Ensure background color is applied */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h1 {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group .required::after {
+            content: '*';
+            color: red;
+            margin-left: 5px;
+        }
+        .form-group input[type="file"] {
+            width: 100%;
+            margin-top: 5px;
+        }
+        .form-group .invalid-feedback {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .form-container button {
+            grid-column: 1 / -1;
+            width: auto;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-container {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 15px; /* Adjust padding for mobile */
+            }
+            .form-container h1 {
+                font-size: 1.5em;
+            }
+            .form-group {
+                padding: 10px;
+            }
+            .form-group input[type="file"] {
+                font-size: 16px;
+            }
+            .form-container button {
+                font-size: 18px;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-container {
+                margin: 10px;
+                padding: 10px; /* Further adjust padding for very small screens */
+            }
+            .form-container h1 {
+                font-size: 1.2em;
+            }
+            .form-group input[type="file"] {
+                font-size: 18px;
+                padding: 12px;
+            }
+            .form-container button {
+                font-size: 20px;
+                padding: 14px;
+            }
+        }
+    </style> 
+
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+        function clearErrorMessages(field) {
+            var parent = field.closest('.form-group');
+            if (parent) {
+                var errorFeedback = parent.querySelector('.invalid-feedback');
+                if (errorFeedback) {
+                    errorFeedback.innerHTML = '';
+                }
+            }
+        }
+    
+        var fields = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
+        fields.forEach(function(field) {
+            field.addEventListener('input', function() {
+                clearErrorMessages(this);
+            });
+        });
+    });
+    </script>
+</head>
+<body>
+    <h1><center>Credit Card Document Upload Form</center></h1>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-container">
+            {% if random_number %}
+        <p><strong>Application ID:</strong> {{ random_number }}</p>
+{% endif %}
+            
+            {% for field in form %}
+                <div class="form-group">
+                    <label class="{% if field.field.required %}required{% endif %}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in field.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>

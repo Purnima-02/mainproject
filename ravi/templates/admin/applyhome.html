@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>home loan Verification</title>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="container mt-5">
+            <form action="" method="post">
+                {% csrf_token %}
+
+                <div class="row"><!--Row-->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">1.Personal Details</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="personal_detail_verification" id="id_personal_detail_verifiaction_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_documents_upload_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="personal_detail_verification" id="id_documents_upload_status_rejected" value="Rejected">
+                                        <label class="form-check-label text-danger fw-normal" for="id_documents_upload_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+               
+                    <!-- Documents Upload Verification -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">2.Documents Upload </label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="documents_upload_status" id="id_documents_upload_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_documents_upload_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="documents_upload_status" id="id_documents_upload_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_documents_upload_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KYC Documents Verification -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">3.KYC Documents </label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="kyc_documents_verification_status" id="id_kyc_documents_verification_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_kyc_documents_verification_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="kyc_documents_verification_status" id="id_kyc_documents_verification_status_rejected" value="Rejected">
+                                        <label class="form-check-label text-danger fw-normal" for="id_kyc_documents_verification_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filed Officer Visit and Inspection -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">4.Filed Officer Visit and Inspection</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="filed_officer_visit_inspection_status" id="id_filed_officer_visit_inspection_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_filed_officer_visit_inspection_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="filed_officer_visit_inspection_status" id="id_filed_officer_visit_inspection_status_rejected" value="Rejected">
+                                        <label class="form-check-label text-danger fw-normal" for="id_filed_officer_visit_inspection_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Eligibility Check Verification -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">5.Eligibility Check Verification</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="eligibility_check_status" id="id_eligibility_check_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_eligibility_check_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="eligibility_check_status" id="id_eligibility_check_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_eligibility_check_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Application Fee Paid -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">6.Application Fee Paid</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="application_fee_paid_status" id="id_application_fee_paid_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_application_fee_paid_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="application_fee_paid_status" id="id_application_fee_paid_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_application_fee_paid_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tele Verification -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">7.Tele Verification</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="tele_verification_status" id="id_tele_verification_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_tele_verification_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="tele_verification_status" id="id_tele_verification_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_tele_verification_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bank Login Fee Paid -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">8.Bank Login Fee Paid</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="bank_login_fee_paid_status" id="id_bank_login_fee_paid_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_bank_login_fee_paid_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="bank_login_fee_paid_status" id="id_bank_login_fee_paid_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_bank_login_fee_paid_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bank Login Done -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">9.Bank Login Done</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="bank_login_done_status" id="id_bank_login_done_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_bank_login_done_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="bank_login_done_status" id="id_bank_login_done_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_bank_login_done_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Credit Manager Visit -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">10.Credit Manager Visit</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="credit_manager_visit_status" id="id_credit_manager_visit_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_credit_manager_visit_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="credit_manager_visit_status" id="id_credit_manager_visit_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_credit_manager_visit_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6 mb-3"><!--column-->
+                        <div class="card shadow">
+                            <div class="card-body">
+                            <label for="" class="form-label text-center d-block fw-bold">11.Loan Approved/Rejected</label>
+                            <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                <div class="form-check">
+                                    <input class="form-check-input verify fs-5" type="radio" name="approved_rejected" id="id_approved_rejected_approved" value="Approved">
+                                    <label class="form-check-label text-success fw-normal" for="id_approved_rejected_approved">Approved</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input verify fs-5" type="radio" name="approved_rejected" id="id_approved_rejected_rejected" value="Rejected"> 
+                                    <label class="form-check-label text-danger fw-normal" for="id_approved_rejected_rejected">Rejected</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div><!--column-->
+
+                    <!-- Bank/NBFC Soft Loan Sanction Letter Issued -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">12.Bank/NBFC Soft Loan Sanction Letter Issued</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="soft_loan_sanction_letter_issued_status" id="id_soft_loan_sanction_letter_issued_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_soft_loan_sanction_letter_issued_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="soft_loan_sanction_letter_issued_status" id="id_soft_loan_sanction_letter_issued_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_soft_loan_sanction_letter_issued_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Legal & Technical Completed -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">13.Legal & Technical Completed</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="legal_technical_completed_status" id="id_legal_technical_completed_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_legal_technical_completed_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="legal_technical_completed_status" id="id_legal_technical_completed_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_legal_technical_completed_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Final Loan Sanctioned -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">14.Final Loan Sanctioned</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="final_loan_sanctioned_status" id="id_final_loan_sanctioned_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_final_loan_sanctioned_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="final_loan_sanctioned_status" id="id_final_loan_sanctioned_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_final_loan_sanctioned_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Agreement Signatures Done -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">15.Agreement Signatures Done</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="agreement_signatures_done_status" id="id_agreement_signatures_done_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_agreement_signatures_done_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="agreement_signatures_done_status" id="id_agreement_signatures_done_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_agreement_signatures_done_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- E NACH – Auto Debit Done -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">16.E NACH-Auto Debit Done</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="e_nach_auto_debit_done_status" id="id_e_nach_auto_debit_done_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_e_nach_auto_debit_done_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="e_nach_auto_debit_done_status" id="id_e_nach_auto_debit_done_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_e_nach_auto_debit_done_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Disbursement -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">17.Disbursement</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="disbursement_status" id="id_disbursement_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_disbursement_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="disbursement_status" id="id_disbursement_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_disbursement_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post Documentation (Mortgage) -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">18.Post Documentation (Mortgage)</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="post_documentation_status" id="id_post_documentation_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_post_documentation_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="post_documentation_status" id="id_post_documentation_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_post_documentation_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cheque Issued / Loan Amount Credited in Customer Bank Account -->
+                    <div class="col-12 col-lg-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <label class="form-label text-center d-block fw-bold">19.Cheque Issued / Loan Amount Credited in Customer Bank Account</label>
+                                <div class="radio-wrapper d-flex" style="justify-content: space-around;">
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="cheque_issued_loan_amount_credited_status" id="id_cheque_issued_loan_amount_credited_status_approved" value="Approved" >
+                                        <label class="form-check-label text-success fw-normal" for="id_cheque_issued_loan_amount_credited_status_approved">Completed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input verify fs-5" type="radio" name="cheque_issued_loan_amount_credited_status" id="id_cheque_issued_loan_amount_credited_status_rejected" value="Rejected" >
+                                        <label class="form-check-label text-danger fw-normal" for="id_cheque_issued_loan_amount_credited_status_rejected">Rejected</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center mt-3">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+<br><br>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const allRadioButtons = document.querySelectorAll('.form-check-input');
+
+        function updateRadioButtons() {
+            let startDisabling = false;
+            allRadioButtons.forEach((radio) => {
+                if (startDisabling) {
+                    radio.disabled = true;
+                } else {
+                    radio.disabled = false;
+                }
+                if (radio.checked && radio.value === 'Rejected') {
+                    startDisabling = true;
+                    
+                }
+               
+            });
+        }
+
+        allRadioButtons.forEach((radio) => {
+            radio.addEventListener('input', function() {
+                updateRadioButtons();
+            });
+        });
+
+       
+        updateRadioButtons();
+    });
+</script>
+
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+-->
+
+
+</body>
+</html>
+
+
