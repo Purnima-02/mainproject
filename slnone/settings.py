@@ -13,10 +13,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 
 
-load_dotenv()
+#load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,13 +33,13 @@ SECRET_KEY = 'django-insecure-&@d=dat&9+f7^=qt=2pt)9ps484=(wlytul9x+$=%=l0hsyw^d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-DSA_URL = os.getenv('DSA_URL')
-CUSTOMER_SUPPORT_URL= os.getenv('CUSTOMER_SUPPORT_URL')
-SALES_URL=os.getenv('SALES_URL')
-SOURCE_PROJECT_URL=os.getenv('SOURCE_PROJECT_URL')
-HR_URL =os.getenv('HR_URL')
-FRANCHISE_URL=os.getenv('FRANCHISE_URL')
-SUPERADMIN_URL=os.getenv('SUPERADMIN_URL')
+# DSA_URL = os.getenv('DSA_URL')
+# CUSTOMER_SUPPORT_URL= os.getenv('CUSTOMER_SUPPORT_URL')
+# SALES_URL=os.getenv('SALES_URL')
+# SOURCE_PROJECT_URL=os.getenv('SOURCE_PROJECT_URL')
+# HR_URL =os.getenv('HR_URL')
+# FRANCHISE_URL=os.getenv('FRANCHISE_URL')
+# SUPERADMIN_URL=os.getenv('SUPERADMIN_URL')
 
 
 ALLOWED_HOSTS = ['*']
@@ -139,27 +139,27 @@ EMAIL_HOST_PASSWORD = 'vlfe zxrg actb ylvb'
 
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql', 
-#         'NAME': 'slno1', # Database name
-#         'USER': 'root',
-#         'PASSWORD': '',
-#         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-#         'PORT': '3306',
-#          'OPTIONS': {
-#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION'",
-#         }
-#     }
-# }
-
-
-DATABASES = {
+ DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'SLN', # Database name
+        'USER': 'admin',
+        'PASSWORD': 'Project1234567890#',
+        'HOST': 'database-1.c9qyso864g7y.eu-north-1.rds.amazonaws.com',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+         'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION'",
+        }
+    }
 }
-}
+
+
+#DATABASES = {
+ #   'default': {
+  #      'ENGINE': 'django.db.backends.sqlite3',
+   #     'NAME': BASE_DIR / 'db.sqlite3',
+#}
+#}
 
 
 # Password validation
@@ -186,7 +186,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/kolkata'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
